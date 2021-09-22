@@ -18,6 +18,7 @@
 		1690B5CC26FB824A00037328 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B5CB26FB824A00037328 /* Session.swift */; };
 		1690B5CE26FB828600037328 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B5CD26FB828600037328 /* LoginViewController.swift */; };
 		1690B5D026FB873200037328 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B5CF26FB873200037328 /* NetworkService.swift */; };
+		1690B5D326FB969500037328 /* Groups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B5D226FB969500037328 /* Groups.swift */; };
 		3957EC2504B69B08D264FDE8 /* libPods-VkClientWithBasicPatterns.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 841A3A4FD2B5F53FFAA3F698 /* libPods-VkClientWithBasicPatterns.a */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +36,7 @@
 		1690B5CB26FB824A00037328 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		1690B5CD26FB828600037328 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1690B5CF26FB873200037328 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		1690B5D226FB969500037328 /* Groups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Groups.swift; sourceTree = "<group>"; };
 		748B6A96DABCC662707D685C /* Pods-VkClientWithBasicPatterns.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VkClientWithBasicPatterns.debug.xcconfig"; path = "Target Support Files/Pods-VkClientWithBasicPatterns/Pods-VkClientWithBasicPatterns.debug.xcconfig"; sourceTree = "<group>"; };
 		841A3A4FD2B5F53FFAA3F698 /* libPods-VkClientWithBasicPatterns.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VkClientWithBasicPatterns.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B57B47E25DBCED42EBD173E7 /* Pods-VkClientWithBasicPatterns.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VkClientWithBasicPatterns.release.xcconfig"; path = "Target Support Files/Pods-VkClientWithBasicPatterns/Pods-VkClientWithBasicPatterns.release.xcconfig"; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 		1690B5A726FB7B0100037328 /* VkClientWithBasicPatterns */ = {
 			isa = PBXGroup;
 			children = (
+				1690B5D126FB968900037328 /* Models */,
 				1690B5CA26FB811500037328 /* Network */,
 				1690B5BD26FB7FB600037328 /* ViewControllers */,
 				1690B5A826FB7B0100037328 /* AppDelegate.swift */,
@@ -151,6 +154,14 @@
 				1690B5CF26FB873200037328 /* NetworkService.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		1690B5D126FB968900037328 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1690B5D226FB969500037328 /* Groups.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		4525AEAC90B768CE0174EDAF /* Pods */ = {
@@ -287,6 +298,7 @@
 				1690B5CC26FB824A00037328 /* Session.swift in Sources */,
 				1690B5AD26FB7B0100037328 /* ProfileViewController.swift in Sources */,
 				1690B5A926FB7B0100037328 /* AppDelegate.swift in Sources */,
+				1690B5D326FB969500037328 /* Groups.swift in Sources */,
 				1690B5BF26FB7FDA00037328 /* FriendsTableViewController.swift in Sources */,
 				1690B5D026FB873200037328 /* NetworkService.swift in Sources */,
 				1690B5CE26FB828600037328 /* LoginViewController.swift in Sources */,
