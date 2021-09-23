@@ -9,16 +9,20 @@
 /* Begin PBXBuildFile section */
 		1690B5A926FB7B0100037328 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B5A826FB7B0100037328 /* AppDelegate.swift */; };
 		1690B5AB26FB7B0100037328 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B5AA26FB7B0100037328 /* SceneDelegate.swift */; };
-		1690B5AD26FB7B0100037328 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B5AC26FB7B0100037328 /* ProfileViewController.swift */; };
 		1690B5B226FB7B0300037328 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1690B5B126FB7B0300037328 /* Assets.xcassets */; };
 		1690B5B526FB7B0300037328 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1690B5B326FB7B0300037328 /* LaunchScreen.storyboard */; };
 		1690B5BF26FB7FDA00037328 /* FriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B5BE26FB7FDA00037328 /* FriendsTableViewController.swift */; };
-		1690B5C126FB806C00037328 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B5C026FB806C00037328 /* NewsTableViewController.swift */; };
 		1690B5C326FB809A00037328 /* GroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B5C226FB809A00037328 /* GroupsTableViewController.swift */; };
 		1690B5CC26FB824A00037328 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B5CB26FB824A00037328 /* Session.swift */; };
 		1690B5CE26FB828600037328 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B5CD26FB828600037328 /* LoginViewController.swift */; };
 		1690B5D026FB873200037328 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B5CF26FB873200037328 /* NetworkService.swift */; };
 		1690B5D326FB969500037328 /* Groups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B5D226FB969500037328 /* Groups.swift */; };
+		1690B5D626FC653600037328 /* FriendsAndGroupsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B5D526FC653600037328 /* FriendsAndGroupsTableViewCell.swift */; };
+		1690B5D826FC7ACD00037328 /* Friends.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B5D726FC7ACD00037328 /* Friends.swift */; };
+		1690B5DB26FCAB7F00037328 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B5DA26FCAB7F00037328 /* UIColorExtension.swift */; };
+		1690B5DE26FCAED700037328 /* VkTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B5DD26FCAED700037328 /* VkTabBarController.swift */; };
+		1690B5E126FCC0EE00037328 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B5E026FCC0EE00037328 /* ProfileTableViewController.swift */; };
+		1690B5E326FCC14B00037328 /* ProfileFirstTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B5E226FCC14B00037328 /* ProfileFirstTableViewCell.swift */; };
 		3957EC2504B69B08D264FDE8 /* libPods-VkClientWithBasicPatterns.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 841A3A4FD2B5F53FFAA3F698 /* libPods-VkClientWithBasicPatterns.a */; };
 /* End PBXBuildFile section */
 
@@ -26,17 +30,21 @@
 		1690B5A526FB7B0100037328 /* VkClientWithBasicPatterns.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VkClientWithBasicPatterns.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1690B5A826FB7B0100037328 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1690B5AA26FB7B0100037328 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		1690B5AC26FB7B0100037328 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		1690B5B126FB7B0300037328 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1690B5B426FB7B0300037328 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1690B5B626FB7B0300037328 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1690B5BE26FB7FDA00037328 /* FriendsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewController.swift; sourceTree = "<group>"; };
-		1690B5C026FB806C00037328 /* NewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
 		1690B5C226FB809A00037328 /* GroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsTableViewController.swift; sourceTree = "<group>"; };
 		1690B5CB26FB824A00037328 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		1690B5CD26FB828600037328 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1690B5CF26FB873200037328 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		1690B5D226FB969500037328 /* Groups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Groups.swift; sourceTree = "<group>"; };
+		1690B5D526FC653600037328 /* FriendsAndGroupsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsAndGroupsTableViewCell.swift; sourceTree = "<group>"; };
+		1690B5D726FC7ACD00037328 /* Friends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friends.swift; sourceTree = "<group>"; };
+		1690B5DA26FCAB7F00037328 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		1690B5DD26FCAED700037328 /* VkTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VkTabBarController.swift; sourceTree = "<group>"; };
+		1690B5E026FCC0EE00037328 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
+		1690B5E226FCC14B00037328 /* ProfileFirstTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFirstTableViewCell.swift; sourceTree = "<group>"; };
 		748B6A96DABCC662707D685C /* Pods-VkClientWithBasicPatterns.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VkClientWithBasicPatterns.debug.xcconfig"; path = "Target Support Files/Pods-VkClientWithBasicPatterns/Pods-VkClientWithBasicPatterns.debug.xcconfig"; sourceTree = "<group>"; };
 		841A3A4FD2B5F53FFAA3F698 /* libPods-VkClientWithBasicPatterns.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VkClientWithBasicPatterns.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B57B47E25DBCED42EBD173E7 /* Pods-VkClientWithBasicPatterns.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VkClientWithBasicPatterns.release.xcconfig"; path = "Target Support Files/Pods-VkClientWithBasicPatterns/Pods-VkClientWithBasicPatterns.release.xcconfig"; sourceTree = "<group>"; };
@@ -75,6 +83,7 @@
 		1690B5A726FB7B0100037328 /* VkClientWithBasicPatterns */ = {
 			isa = PBXGroup;
 			children = (
+				1690B5D926FCAB6600037328 /* Extensions */,
 				1690B5D126FB968900037328 /* Models */,
 				1690B5CA26FB811500037328 /* Network */,
 				1690B5BD26FB7FB600037328 /* ViewControllers */,
@@ -90,10 +99,11 @@
 		1690B5BD26FB7FB600037328 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				1690B5D426FC651100037328 /* Cell */,
+				1690B5DC26FCAEA800037328 /* VkTabBarController */,
 				1690B5CD26FB828600037328 /* LoginViewController.swift */,
 				1690B5C726FB80D300037328 /* GroupsViewController */,
 				1690B5C626FB80BA00037328 /* FriendsViewController */,
-				1690B5C526FB80B100037328 /* NewsViewController */,
 				1690B5C426FB80A200037328 /* ProfileViewController */,
 			);
 			path = ViewControllers;
@@ -102,18 +112,10 @@
 		1690B5C426FB80A200037328 /* ProfileViewController */ = {
 			isa = PBXGroup;
 			children = (
-				1690B5AC26FB7B0100037328 /* ProfileViewController.swift */,
+				1690B5E026FCC0EE00037328 /* ProfileTableViewController.swift */,
+				1690B5DF26FCC0C800037328 /* Cell */,
 			);
 			path = ProfileViewController;
-			sourceTree = "<group>";
-		};
-		1690B5C526FB80B100037328 /* NewsViewController */ = {
-			isa = PBXGroup;
-			children = (
-				1690B5C026FB806C00037328 /* NewsTableViewController.swift */,
-				1690B5C926FB810300037328 /* Cells */,
-			);
-			path = NewsViewController;
 			sourceTree = "<group>";
 		};
 		1690B5C626FB80BA00037328 /* FriendsViewController */ = {
@@ -128,23 +130,8 @@
 			isa = PBXGroup;
 			children = (
 				1690B5C226FB809A00037328 /* GroupsTableViewController.swift */,
-				1690B5C826FB80F300037328 /* Cells */,
 			);
 			path = GroupsViewController;
-			sourceTree = "<group>";
-		};
-		1690B5C826FB80F300037328 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
-		1690B5C926FB810300037328 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Cells;
 			sourceTree = "<group>";
 		};
 		1690B5CA26FB811500037328 /* Network */ = {
@@ -160,8 +147,41 @@
 			isa = PBXGroup;
 			children = (
 				1690B5D226FB969500037328 /* Groups.swift */,
+				1690B5D726FC7ACD00037328 /* Friends.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		1690B5D426FC651100037328 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				1690B5D526FC653600037328 /* FriendsAndGroupsTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		1690B5D926FCAB6600037328 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1690B5DA26FCAB7F00037328 /* UIColorExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		1690B5DC26FCAEA800037328 /* VkTabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				1690B5DD26FCAED700037328 /* VkTabBarController.swift */,
+			);
+			path = VkTabBarController;
+			sourceTree = "<group>";
+		};
+		1690B5DF26FCC0C800037328 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				1690B5E226FCC14B00037328 /* ProfileFirstTableViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		4525AEAC90B768CE0174EDAF /* Pods */ = {
@@ -296,14 +316,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				1690B5CC26FB824A00037328 /* Session.swift in Sources */,
-				1690B5AD26FB7B0100037328 /* ProfileViewController.swift in Sources */,
 				1690B5A926FB7B0100037328 /* AppDelegate.swift in Sources */,
+				1690B5D626FC653600037328 /* FriendsAndGroupsTableViewCell.swift in Sources */,
+				1690B5DE26FCAED700037328 /* VkTabBarController.swift in Sources */,
 				1690B5D326FB969500037328 /* Groups.swift in Sources */,
 				1690B5BF26FB7FDA00037328 /* FriendsTableViewController.swift in Sources */,
+				1690B5DB26FCAB7F00037328 /* UIColorExtension.swift in Sources */,
 				1690B5D026FB873200037328 /* NetworkService.swift in Sources */,
+				1690B5E126FCC0EE00037328 /* ProfileTableViewController.swift in Sources */,
+				1690B5D826FC7ACD00037328 /* Friends.swift in Sources */,
 				1690B5CE26FB828600037328 /* LoginViewController.swift in Sources */,
-				1690B5C126FB806C00037328 /* NewsTableViewController.swift in Sources */,
 				1690B5AB26FB7B0100037328 /* SceneDelegate.swift in Sources */,
+				1690B5E326FCC14B00037328 /* ProfileFirstTableViewCell.swift in Sources */,
 				1690B5C326FB809A00037328 /* GroupsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

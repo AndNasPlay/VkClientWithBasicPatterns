@@ -86,7 +86,7 @@ extension LoginViewController: WKNavigationDelegate {
 
 		Session.instanse.token = token
 		Session.instanse.userId = userIdInt
-		self.navigationController?.pushViewController(ProfileViewController(), animated: true)
+		self.navigationController?.pushViewController(ProfileTableViewController(), animated: true)
 //		NetworkService.loadGroups(token: token)
 //		NetworkService.loadFrends(userId: userIdInt, token: token)
 //		NetworkService.loadPhoto(userId: userIdInt, token: token)

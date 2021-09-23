@@ -10,7 +10,6 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 	var window: UIWindow?
-	var navController: UINavigationController?
 
 	func scene(
 		_ scene: UIScene,
@@ -19,10 +18,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 	) {
 		guard let windowScene = (scene as? UIWindowScene) else { return }
 		window = UIWindow(frame: UIScreen.main.bounds)
-		let viewController = LoginViewController()
-		navController = UINavigationController()
-		navController?.pushViewController(viewController, animated: false)
-		window?.rootViewController = navController
+		let tabBarController = VkTabBarController()
+		window?.rootViewController = tabBarController
 		window?.makeKeyAndVisible()
 		window?.windowScene = windowScene
 	}
