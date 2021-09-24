@@ -29,9 +29,10 @@ struct GroupResult: Codable {
 	let photo100: String?
 	let photo200: String?
 	let description: String?
+	let activity: String?
 
 	enum CodingKeys: String, CodingKey {
-		case type, description, id, name
+		case type, description, id, name, activity
 		case screenName = "screen_name"
 		case isClosed = "is_closed"
 		case isAdmin = "is_admin"

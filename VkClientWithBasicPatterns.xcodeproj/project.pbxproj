@@ -13,9 +13,8 @@
 		1690B5B526FB7B0300037328 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1690B5B326FB7B0300037328 /* LaunchScreen.storyboard */; };
 		1690B5BF26FB7FDA00037328 /* FriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B5BE26FB7FDA00037328 /* FriendsTableViewController.swift */; };
 		1690B5C326FB809A00037328 /* GroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B5C226FB809A00037328 /* GroupsTableViewController.swift */; };
-		1690B5CC26FB824A00037328 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B5CB26FB824A00037328 /* Session.swift */; };
+		1690B5CC26FB824A00037328 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B5CB26FB824A00037328 /* UserSettings.swift */; };
 		1690B5CE26FB828600037328 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B5CD26FB828600037328 /* LoginViewController.swift */; };
-		1690B5D026FB873200037328 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B5CF26FB873200037328 /* NetworkService.swift */; };
 		1690B5D326FB969500037328 /* Groups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B5D226FB969500037328 /* Groups.swift */; };
 		1690B5D626FC653600037328 /* FriendsAndGroupsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B5D526FC653600037328 /* FriendsAndGroupsTableViewCell.swift */; };
 		1690B5D826FC7ACD00037328 /* Friends.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B5D726FC7ACD00037328 /* Friends.swift */; };
@@ -23,6 +22,19 @@
 		1690B5DE26FCAED700037328 /* VkTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B5DD26FCAED700037328 /* VkTabBarController.swift */; };
 		1690B5E126FCC0EE00037328 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B5E026FCC0EE00037328 /* ProfileTableViewController.swift */; };
 		1690B5E326FCC14B00037328 /* ProfileFirstTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B5E226FCC14B00037328 /* ProfileFirstTableViewCell.swift */; };
+		1690B5EA26FDE69000037328 /* AbstractErrorParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B5E926FDE69000037328 /* AbstractErrorParser.swift */; };
+		1690B5EC26FDE6A800037328 /* ErrorParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B5EB26FDE6A800037328 /* ErrorParser.swift */; };
+		1690B5EE26FDE6C000037328 /* ResponseCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B5ED26FDE6C000037328 /* ResponseCodable.swift */; };
+		1690B5F026FDE6E000037328 /* AbstractRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B5EF26FDE6E000037328 /* AbstractRequestFactory.swift */; };
+		1690B5F226FDE6FC00037328 /* RequestRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B5F126FDE6FC00037328 /* RequestRouter.swift */; };
+		1690B5F526FDE73800037328 /* RequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B5F426FDE73800037328 /* RequestFactory.swift */; };
+		1690B5F826FDE77A00037328 /* LoadFriends.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B5F726FDE77A00037328 /* LoadFriends.swift */; };
+		1690B5FA26FDE79700037328 /* LoadFriendsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B5F926FDE79700037328 /* LoadFriendsService.swift */; };
+		1690B5FD26FDFC7D00037328 /* LoadGroupsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B5FC26FDFC7D00037328 /* LoadGroupsService.swift */; };
+		1690B5FF26FDFCB900037328 /* LoadGroups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B5FE26FDFCB900037328 /* LoadGroups.swift */; };
+		1690B60126FE011100037328 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B60026FE011100037328 /* Profile.swift */; };
+		1690B60426FE022100037328 /* LoadProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B60326FE022100037328 /* LoadProfileService.swift */; };
+		1690B60726FE025600037328 /* LoadProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B60626FE025600037328 /* LoadProfile.swift */; };
 		3957EC2504B69B08D264FDE8 /* libPods-VkClientWithBasicPatterns.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 841A3A4FD2B5F53FFAA3F698 /* libPods-VkClientWithBasicPatterns.a */; };
 /* End PBXBuildFile section */
 
@@ -35,9 +47,8 @@
 		1690B5B626FB7B0300037328 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1690B5BE26FB7FDA00037328 /* FriendsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewController.swift; sourceTree = "<group>"; };
 		1690B5C226FB809A00037328 /* GroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsTableViewController.swift; sourceTree = "<group>"; };
-		1690B5CB26FB824A00037328 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		1690B5CB26FB824A00037328 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		1690B5CD26FB828600037328 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		1690B5CF26FB873200037328 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		1690B5D226FB969500037328 /* Groups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Groups.swift; sourceTree = "<group>"; };
 		1690B5D526FC653600037328 /* FriendsAndGroupsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsAndGroupsTableViewCell.swift; sourceTree = "<group>"; };
 		1690B5D726FC7ACD00037328 /* Friends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friends.swift; sourceTree = "<group>"; };
@@ -45,6 +56,21 @@
 		1690B5DD26FCAED700037328 /* VkTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VkTabBarController.swift; sourceTree = "<group>"; };
 		1690B5E026FCC0EE00037328 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		1690B5E226FCC14B00037328 /* ProfileFirstTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFirstTableViewCell.swift; sourceTree = "<group>"; };
+		1690B5E926FDE69000037328 /* AbstractErrorParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractErrorParser.swift; sourceTree = "<group>"; };
+		1690B5EB26FDE6A800037328 /* ErrorParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorParser.swift; sourceTree = "<group>"; };
+		1690B5ED26FDE6C000037328 /* ResponseCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseCodable.swift; sourceTree = "<group>"; };
+		1690B5EF26FDE6E000037328 /* AbstractRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractRequestFactory.swift; sourceTree = "<group>"; };
+		1690B5F126FDE6FC00037328 /* RequestRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestRouter.swift; sourceTree = "<group>"; };
+		1690B5F426FDE73800037328 /* RequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestFactory.swift; sourceTree = "<group>"; };
+		1690B5F726FDE77A00037328 /* LoadFriends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadFriends.swift; sourceTree = "<group>"; };
+		1690B5F926FDE79700037328 /* LoadFriendsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadFriendsService.swift; sourceTree = "<group>"; };
+		1690B5FC26FDFC7D00037328 /* LoadGroupsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadGroupsService.swift; sourceTree = "<group>"; };
+		1690B5FE26FDFCB900037328 /* LoadGroups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadGroups.swift; sourceTree = "<group>"; };
+		1690B60026FE011100037328 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		1690B60326FE022100037328 /* LoadProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadProfileService.swift; sourceTree = "<group>"; };
+		1690B60626FE025600037328 /* LoadProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadProfile.swift; sourceTree = "<group>"; };
+		1690B60826FE44B900037328 /* libSDWebImage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSDWebImage.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		1690B60A26FE44F700037328 /* libSDWebImage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSDWebImage.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		748B6A96DABCC662707D685C /* Pods-VkClientWithBasicPatterns.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VkClientWithBasicPatterns.debug.xcconfig"; path = "Target Support Files/Pods-VkClientWithBasicPatterns/Pods-VkClientWithBasicPatterns.debug.xcconfig"; sourceTree = "<group>"; };
 		841A3A4FD2B5F53FFAA3F698 /* libPods-VkClientWithBasicPatterns.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VkClientWithBasicPatterns.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B57B47E25DBCED42EBD173E7 /* Pods-VkClientWithBasicPatterns.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VkClientWithBasicPatterns.release.xcconfig"; path = "Target Support Files/Pods-VkClientWithBasicPatterns/Pods-VkClientWithBasicPatterns.release.xcconfig"; sourceTree = "<group>"; };
@@ -83,14 +109,11 @@
 		1690B5A726FB7B0100037328 /* VkClientWithBasicPatterns */ = {
 			isa = PBXGroup;
 			children = (
-				1690B5D926FCAB6600037328 /* Extensions */,
 				1690B5D126FB968900037328 /* Models */,
-				1690B5CA26FB811500037328 /* Network */,
-				1690B5BD26FB7FB600037328 /* ViewControllers */,
-				1690B5A826FB7B0100037328 /* AppDelegate.swift */,
-				1690B5AA26FB7B0100037328 /* SceneDelegate.swift */,
-				1690B5B126FB7B0300037328 /* Assets.xcassets */,
-				1690B5B326FB7B0300037328 /* LaunchScreen.storyboard */,
+				1690B5E826FDDD9C00037328 /* BusinessLogic */,
+				1690B5E626FDDD7F00037328 /* Resources */,
+				1690B5E526FDDD5600037328 /* Core */,
+				1690B5E426FDDD3400037328 /* Flows */,
 				1690B5B626FB7B0300037328 /* Info.plist */,
 			);
 			path = VkClientWithBasicPatterns;
@@ -99,9 +122,9 @@
 		1690B5BD26FB7FB600037328 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				1690B5CD26FB828600037328 /* LoginViewController.swift */,
 				1690B5D426FC651100037328 /* Cell */,
 				1690B5DC26FCAEA800037328 /* VkTabBarController */,
-				1690B5CD26FB828600037328 /* LoginViewController.swift */,
 				1690B5C726FB80D300037328 /* GroupsViewController */,
 				1690B5C626FB80BA00037328 /* FriendsViewController */,
 				1690B5C426FB80A200037328 /* ProfileViewController */,
@@ -113,7 +136,6 @@
 			isa = PBXGroup;
 			children = (
 				1690B5E026FCC0EE00037328 /* ProfileTableViewController.swift */,
-				1690B5DF26FCC0C800037328 /* Cell */,
 			);
 			path = ProfileViewController;
 			sourceTree = "<group>";
@@ -137,8 +159,11 @@
 		1690B5CA26FB811500037328 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				1690B5CB26FB824A00037328 /* Session.swift */,
-				1690B5CF26FB873200037328 /* NetworkService.swift */,
+				1690B5E926FDE69000037328 /* AbstractErrorParser.swift */,
+				1690B5EB26FDE6A800037328 /* ErrorParser.swift */,
+				1690B5ED26FDE6C000037328 /* ResponseCodable.swift */,
+				1690B5EF26FDE6E000037328 /* AbstractRequestFactory.swift */,
+				1690B5F126FDE6FC00037328 /* RequestRouter.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -148,6 +173,7 @@
 			children = (
 				1690B5D226FB969500037328 /* Groups.swift */,
 				1690B5D726FC7ACD00037328 /* Friends.swift */,
+				1690B60026FE011100037328 /* Profile.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -155,6 +181,7 @@
 		1690B5D426FC651100037328 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				1690B5E226FCC14B00037328 /* ProfileFirstTableViewCell.swift */,
 				1690B5D526FC653600037328 /* FriendsAndGroupsTableViewCell.swift */,
 			);
 			path = Cell;
@@ -176,12 +203,79 @@
 			path = VkTabBarController;
 			sourceTree = "<group>";
 		};
-		1690B5DF26FCC0C800037328 /* Cell */ = {
+		1690B5E426FDDD3400037328 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
-				1690B5E226FCC14B00037328 /* ProfileFirstTableViewCell.swift */,
+				1690B5BD26FB7FB600037328 /* ViewControllers */,
 			);
-			path = Cell;
+			path = Flows;
+			sourceTree = "<group>";
+		};
+		1690B5E526FDDD5600037328 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				1690B5AA26FB7B0100037328 /* SceneDelegate.swift */,
+				1690B5CB26FB824A00037328 /* UserSettings.swift */,
+				1690B5CA26FB811500037328 /* Network */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		1690B5E626FDDD7F00037328 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1690B5D926FCAB6600037328 /* Extensions */,
+				1690B5B326FB7B0300037328 /* LaunchScreen.storyboard */,
+				1690B5B126FB7B0300037328 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		1690B5E826FDDD9C00037328 /* BusinessLogic */ = {
+			isa = PBXGroup;
+			children = (
+				1690B5F326FDE71900037328 /* Network */,
+				1690B5A826FB7B0100037328 /* AppDelegate.swift */,
+			);
+			path = BusinessLogic;
+			sourceTree = "<group>";
+		};
+		1690B5F326FDE71900037328 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				1690B5F426FDE73800037328 /* RequestFactory.swift */,
+				1690B60226FE020300037328 /* LoadProfile */,
+				1690B5FB26FDFC6400037328 /* LoadGroups */,
+				1690B5F626FDE76000037328 /* LoadFriends */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		1690B5F626FDE76000037328 /* LoadFriends */ = {
+			isa = PBXGroup;
+			children = (
+				1690B5F726FDE77A00037328 /* LoadFriends.swift */,
+				1690B5F926FDE79700037328 /* LoadFriendsService.swift */,
+			);
+			path = LoadFriends;
+			sourceTree = "<group>";
+		};
+		1690B5FB26FDFC6400037328 /* LoadGroups */ = {
+			isa = PBXGroup;
+			children = (
+				1690B5FE26FDFCB900037328 /* LoadGroups.swift */,
+				1690B5FC26FDFC7D00037328 /* LoadGroupsService.swift */,
+			);
+			path = LoadGroups;
+			sourceTree = "<group>";
+		};
+		1690B60226FE020300037328 /* LoadProfile */ = {
+			isa = PBXGroup;
+			children = (
+				1690B60626FE025600037328 /* LoadProfile.swift */,
+				1690B60326FE022100037328 /* LoadProfileService.swift */,
+			);
+			path = LoadProfile;
 			sourceTree = "<group>";
 		};
 		4525AEAC90B768CE0174EDAF /* Pods */ = {
@@ -196,6 +290,8 @@
 		607E5EF47E62982911B8412C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1690B60A26FE44F700037328 /* libSDWebImage.a */,
+				1690B60826FE44B900037328 /* libSDWebImage.a */,
 				841A3A4FD2B5F53FFAA3F698 /* libPods-VkClientWithBasicPatterns.a */,
 			);
 			name = Frameworks;
@@ -315,16 +411,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1690B5CC26FB824A00037328 /* Session.swift in Sources */,
+				1690B5CC26FB824A00037328 /* UserSettings.swift in Sources */,
+				1690B60126FE011100037328 /* Profile.swift in Sources */,
+				1690B5FF26FDFCB900037328 /* LoadGroups.swift in Sources */,
+				1690B5F526FDE73800037328 /* RequestFactory.swift in Sources */,
 				1690B5A926FB7B0100037328 /* AppDelegate.swift in Sources */,
+				1690B5F826FDE77A00037328 /* LoadFriends.swift in Sources */,
+				1690B5F026FDE6E000037328 /* AbstractRequestFactory.swift in Sources */,
+				1690B5FD26FDFC7D00037328 /* LoadGroupsService.swift in Sources */,
 				1690B5D626FC653600037328 /* FriendsAndGroupsTableViewCell.swift in Sources */,
+				1690B5EA26FDE69000037328 /* AbstractErrorParser.swift in Sources */,
 				1690B5DE26FCAED700037328 /* VkTabBarController.swift in Sources */,
 				1690B5D326FB969500037328 /* Groups.swift in Sources */,
 				1690B5BF26FB7FDA00037328 /* FriendsTableViewController.swift in Sources */,
+				1690B5F226FDE6FC00037328 /* RequestRouter.swift in Sources */,
 				1690B5DB26FCAB7F00037328 /* UIColorExtension.swift in Sources */,
-				1690B5D026FB873200037328 /* NetworkService.swift in Sources */,
+				1690B60726FE025600037328 /* LoadProfile.swift in Sources */,
+				1690B60426FE022100037328 /* LoadProfileService.swift in Sources */,
 				1690B5E126FCC0EE00037328 /* ProfileTableViewController.swift in Sources */,
+				1690B5EE26FDE6C000037328 /* ResponseCodable.swift in Sources */,
 				1690B5D826FC7ACD00037328 /* Friends.swift in Sources */,
+				1690B5FA26FDE79700037328 /* LoadFriendsService.swift in Sources */,
+				1690B5EC26FDE6A800037328 /* ErrorParser.swift in Sources */,
 				1690B5CE26FB828600037328 /* LoginViewController.swift in Sources */,
 				1690B5AB26FB7B0100037328 /* SceneDelegate.swift in Sources */,
 				1690B5E326FCC14B00037328 /* ProfileFirstTableViewCell.swift in Sources */,

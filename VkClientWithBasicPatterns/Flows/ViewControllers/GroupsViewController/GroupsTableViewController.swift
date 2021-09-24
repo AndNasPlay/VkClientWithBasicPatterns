@@ -9,23 +9,38 @@ import UIKit
 
 class GroupsTableViewController: UITableViewController {
 
-	private var groupsArr = [
-		GroupResult(
-			id: 1,
-			name: "Pikabu",
-			screenName: "Pikabu",
-			isClosed: 1,
-			type: "231",
-			isAdmin: 0,
-			isMember: 1,
-			isAdvertiser: 0,
-			photo50: "ad",
-			photo100: "asd",
-			photo200: "ad",
-			description: "norm gruppa")
-	]
+	let requestFactory: RequestFactory
+	init(requestFactory: RequestFactory) {
+		self.requestFactory = requestFactory
+		super.init(nibName: nil, bundle: nil)
+	}
+
+	// swiftlint:disable unavailable_function
+	required init?(coder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
+	// swiftlint:enable unavailable_function
+
+	private var groupsArr = [GroupResult]()
 
 	private var tableCellHeight: CGFloat = 70.0
+
+	private func loadData() {
+		self.requestFactory.makeLoadGroupsRequestFactory().loadGroups(count: 20) { response in
+			DispatchQueue.main.async {
+				switch response.result {
+				case .success(let catalog):
+					guard catalog.response?.items?.count ?? 0 > 0 else { return }
+					// swiftlint:disable force_unwrapping
+						self.groupsArr.append(contentsOf: (catalog.response?.items)!)
+					// swiftlint:enable force_unwrapping
+						self.tableView.reloadData()
+				case .failure(let error):
+					print(error.localizedDescription)
+				}
+			}
+		}
+	}
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -34,7 +49,7 @@ class GroupsTableViewController: UITableViewController {
 		self.tableView.backgroundColor = .white
 		self.title = "Все сообщества"
 		self.tableView.separatorColor = UIColor.white
-
+		loadData()
 		self.tableView.register(FriendsAndGroupsTableViewCell.self, forCellReuseIdentifier: FriendsAndGroupsTableViewCell.identifier)
 
 	}
@@ -55,7 +70,7 @@ class GroupsTableViewController: UITableViewController {
 													  for: indexPath) as! FriendsAndGroupsTableViewCell
 		// swiftlint:enable force_cast
 		cell.friendOrGroupNameLabel.text = "\(groupsArr[indexPath.row].name ?? "petrov")"
-		cell.friendCityOrGroupDiscrLabel.text = groupsArr[indexPath.row].description
+		cell.friendCityOrGroupDiscrLabel.text = groupsArr[indexPath.row].activity
 		cell.avatarImageView.image = UIImage(named: "testImg")?.roundedImage()
 
 		return cell

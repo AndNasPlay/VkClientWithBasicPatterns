@@ -22,9 +22,9 @@ class ProfileFirstTableViewCell: UITableViewCell {
 	let profileNameLabel: UILabel = {
 		let lable = UILabel()
 		lable.textColor = .black
-		lable.font = .systemFont(ofSize: 22, weight: .bold)
+		lable.font = .systemFont(ofSize: 20, weight: .bold)
 		lable.text = "name"
-		lable.numberOfLines = 0
+		lable.numberOfLines = 1
 		lable.translatesAutoresizingMaskIntoConstraints = false
 		return lable
 	}()
@@ -83,7 +83,6 @@ class ProfileFirstTableViewCell: UITableViewCell {
 			avatarImageView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 10),
 			avatarImageView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 10),
 			avatarImageView.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: 0.2),
-			editProfileButton.bottomAnchor.constraint(equalTo: self.editProfileButton.topAnchor, constant: 10),
 
 			profileNameLabel.leadingAnchor.constraint(equalTo: self.avatarImageView.trailingAnchor, constant: 20),
 			profileNameLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 10.0),
@@ -104,5 +103,4 @@ class ProfileFirstTableViewCell: UITableViewCell {
 			editProfileButton.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -5)
 		])
 	}
-
 }

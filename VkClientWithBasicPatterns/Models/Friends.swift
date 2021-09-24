@@ -13,7 +13,7 @@ struct Friends: Codable {
 
 struct FriendsCountAndItems: Codable {
 	let count: Int?
-	let items: [GroupResult]?
+	let items: [FriendsResult]?
 }
 
 struct FriendsResult: Codable {

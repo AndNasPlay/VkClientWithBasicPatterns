@@ -9,7 +9,36 @@ import UIKit
 
 class FriendsTableViewController: UITableViewController {
 
-	private var friendsArr = [
+	let requestFactory: RequestFactory
+	init(requestFactory: RequestFactory) {
+		self.requestFactory = requestFactory
+		super.init(nibName: nil, bundle: nil)
+	}
+
+	// swiftlint:disable unavailable_function
+	required init?(coder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
+	// swiftlint:enable unavailable_function
+
+	private func loadData() {
+		self.requestFactory.makeLoadFriendsRequestFactory().loadFriends(count: 50) { response in
+			DispatchQueue.main.async {
+				switch response.result {
+				case .success(let catalog):
+					guard catalog.response?.items?.count ?? 0 > 0 else { return }
+					// swiftlint:disable force_unwrapping
+						self.friendsArr.append(contentsOf: (catalog.response?.items)!)
+					// swiftlint:enable force_unwrapping
+						self.tableView.reloadData()
+				case .failure(let error):
+					print(error.localizedDescription)
+				}
+			}
+		}
+	}
+
+	private var friendsArr: [FriendsResult] = [
 		FriendsResult(
 			id: 1,
 			firstName: "Dima",
@@ -18,16 +47,6 @@ class FriendsTableViewController: UITableViewController {
 			isClosed: false,
 			domain: "domain",
 			city: City(id: 1, title: "SPB"),
-			canInviteToChats: true,
-			trackCode: "123"),
-		FriendsResult(
-			id: 2,
-			firstName: "Jora",
-			lastName: "Kore",
-			canAccessClosed: true,
-			isClosed: false,
-			domain: "domain",
-			city: City(id: 1, title: "Mosccow"),
 			canInviteToChats: true,
 			trackCode: "123")
 	]
@@ -41,12 +60,10 @@ class FriendsTableViewController: UITableViewController {
 		self.tableView.backgroundColor = .white
 		self.title = "Друзья"
 		self.tableView.separatorColor = UIColor.white
+		loadData()
 
 		self.tableView.register(FriendsAndGroupsTableViewCell.self, forCellReuseIdentifier: FriendsAndGroupsTableViewCell.identifier)
-
     }
-
-    // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
 		1

@@ -41,20 +41,20 @@ class LoginViewController: UIViewController, WKUIDelegate {
 	}
 
 	func setupUI() {
-			self.view.backgroundColor = .white
-			self.view.addSubview(webView)
+		self.view.backgroundColor = .white
+		self.view.addSubview(webView)
 
-			NSLayoutConstraint.activate([
-				webView.topAnchor
-					.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
-				webView.leftAnchor
-					.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor),
-				webView.bottomAnchor
-					.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
-				webView.rightAnchor
-					.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor)
-			])
-		}
+		NSLayoutConstraint.activate([
+			webView.topAnchor
+				.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+			webView.leftAnchor
+				.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor),
+			webView.bottomAnchor
+				.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
+			webView.rightAnchor
+				.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor)
+		])
+	}
 }
 
 extension LoginViewController: WKNavigationDelegate {
@@ -64,8 +64,8 @@ extension LoginViewController: WKNavigationDelegate {
 		decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void
 	) {
 		guard let url = navigationResponse.response.url,
-			url.path == "/blank.html",
-			let fragment = url.fragment else { decisionHandler(.allow); return }
+			  url.path == "/blank.html",
+			  let fragment = url.fragment else { decisionHandler(.allow); return }
 		let params = fragment
 			.components(separatedBy: "&")
 			.map { $0.components(separatedBy: "=") }
@@ -75,21 +75,22 @@ extension LoginViewController: WKNavigationDelegate {
 				let value = param[1]
 				dict[key] = value
 				return dict
-		}
+			}
 
 		guard let token = params["access_token"],
-		let userIdString = params["user_id"],
-			let userIdInt = Int(userIdString) else {
-				decisionHandler(.allow)
-				return
+			  let userIdString = params["user_id"],
+			  let userIdInt = Int(userIdString) else {
+			decisionHandler(.allow)
+			return
 		}
 
-		Session.instanse.token = token
-		Session.instanse.userId = userIdInt
-		self.navigationController?.pushViewController(ProfileTableViewController(), animated: true)
-//		NetworkService.loadGroups(token: token)
-//		NetworkService.loadFrends(userId: userIdInt, token: token)
-//		NetworkService.loadPhoto(userId: userIdInt, token: token)
+		UserSettings.token = token
+		UserSettings.userId = userIdInt
+
+		let vc = VkTabBarController()
+		vc.modalPresentationStyle = .fullScreen
+		self.present(vc, animated: true, completion: nil)
+
 		decisionHandler(.cancel)
 	}
 

@@ -9,6 +9,8 @@ import UIKit
 
 class VkTabBarController: UITabBarController {
 
+	let factory = RequestFactory(baseUrl: UserSettings.baseUrl)
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		view.backgroundColor = .systemBackground
@@ -19,25 +21,25 @@ class VkTabBarController: UITabBarController {
 
 	func setupVCs() {
 		viewControllers = [
-			createNavController(for: FriendsTableViewController(),
-								title: "",
-								image: UIImage(systemName: "house")!),
-			createNavController(for: GroupsTableViewController(),
-								title: "Groups Catalog",
-								image: UIImage(systemName: "magnifyingglass")!),
-			createNavController(for: ProfileTableViewController(),
-								title: "Profile",
-								image: UIImage(systemName: "house")!)
+			createNavController(
+				for: FriendsTableViewController(requestFactory: factory),
+				// swiftlint:disable force_unwrapping
+				image: UIImage(systemName: "house")!),
+			createNavController(
+				for: GroupsTableViewController(requestFactory: factory),
+				image: UIImage(systemName: "magnifyingglass")!),
+			createNavController(
+				for: ProfileTableViewController(requestFactory: factory),
+				image: UIImage(systemName: "house")!)
+			// swiftlint:enable force_unwrapping
 		]
 	}
 
 	fileprivate func createNavController(
 		for rootViewController: UIViewController,
-		title: String,
 		image: UIImage
 	) -> UIViewController {
 		let navController = UINavigationController(rootViewController: rootViewController)
-		navController.tabBarItem.title = title
 		navController.tabBarItem.image = image
 		navController.navigationBar.prefersLargeTitles = true
 		rootViewController.navigationItem.title = title

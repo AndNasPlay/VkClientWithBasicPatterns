@@ -16,7 +16,7 @@ class FriendsAndGroupsTableViewCell: UITableViewCell {
 		lable.textColor = .black
 		lable.font = .systemFont(ofSize: 16, weight: .regular)
 		lable.text = "name"
-		lable.numberOfLines = 0
+		lable.numberOfLines = 1
 		lable.translatesAutoresizingMaskIntoConstraints = false
 		return lable
 	}()
@@ -65,7 +65,7 @@ class FriendsAndGroupsTableViewCell: UITableViewCell {
 
 			friendOrGroupNameLabel.leadingAnchor.constraint(equalTo: self.avatarImageView.trailingAnchor, constant: 10),
 			friendOrGroupNameLabel.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor, constant: -10.0),
-			friendOrGroupNameLabel.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: 0.5),
+			friendOrGroupNameLabel.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: 0.7),
 
 			friendCityOrGroupDiscrLabel.leadingAnchor.constraint(equalTo: self.avatarImageView.trailingAnchor, constant: 10),
 			friendCityOrGroupDiscrLabel.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor, constant: 10.0),
