@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class FriendsTableViewController: UITableViewController {
 
@@ -37,20 +38,7 @@ class FriendsTableViewController: UITableViewController {
 			}
 		}
 	}
-
-	private var friendsArr: [FriendsResult] = [
-		FriendsResult(
-			id: 1,
-			firstName: "Dima",
-			lastName: "Jorin",
-			canAccessClosed: true,
-			isClosed: false,
-			domain: "domain",
-			city: City(id: 1, title: "SPB"),
-			canInviteToChats: true,
-			trackCode: "123")
-	]
-
+	private var friendsArr = [FriendsResult]()
 	private var tableCellHeight: CGFloat = 70.0
 
     override func viewDidLoad() {
@@ -80,8 +68,11 @@ class FriendsTableViewController: UITableViewController {
 		// swiftlint:enable force_cast
 		cell.friendOrGroupNameLabel.text = "\(friendsArr[indexPath.row].firstName ?? "petrov") \(friendsArr[indexPath.row].lastName ?? "Petro")"
 		cell.friendCityOrGroupDiscrLabel.text = friendsArr[indexPath.row].city?.title
-		cell.avatarImageView.image = UIImage(named: "testImg")?.roundedImage()
-
+		if friendsArr[indexPath.row].photo50 != nil {
+			cell.avatarImageView.kf.setImage(with: URL(string: friendsArr[indexPath.row].photo50 ?? "http://placehold.it/50x50"))
+		} else {
+			cell.avatarImageView.image = UIImage(named: "testImg")
+		}
         return cell
     }
 

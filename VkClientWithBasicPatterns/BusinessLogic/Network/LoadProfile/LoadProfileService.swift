@@ -9,5 +9,5 @@ import Foundation
 import Alamofire
 
 protocol LoadProfileService {
-	func loadProfile(completionHandler: @escaping (AFDataResponse<Response>) -> Void)
+	func loadProfile(completionHandler: @escaping (AFDataResponse<ProfileResponse>) -> Void)
 }

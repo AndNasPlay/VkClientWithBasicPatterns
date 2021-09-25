@@ -36,6 +36,7 @@ class FriendsAndGroupsTableViewCell: UITableViewCell {
 		imageView.translatesAutoresizingMaskIntoConstraints = false
 		imageView.layer.masksToBounds = true
 		imageView.clipsToBounds = true
+		imageView.layer.cornerRadius = 25.0
 		return imageView
 	}()
 
@@ -60,7 +61,8 @@ class FriendsAndGroupsTableViewCell: UITableViewCell {
 		NSLayoutConstraint.activate([
 			avatarImageView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 10),
 			avatarImageView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 10),
-			avatarImageView.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: 0.15),
+			avatarImageView.widthAnchor.constraint(equalToConstant: 50.0),
+			avatarImageView.heightAnchor.constraint(equalToConstant: 50.0),
 			avatarImageView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -10),
 
 			friendOrGroupNameLabel.leadingAnchor.constraint(equalTo: self.avatarImageView.trailingAnchor, constant: 10),

@@ -1,5 +1,5 @@
 //
-//  Friends.swift
+//  FriendsResponse.swift
 //  VkClientWithBasicPatterns
 //
 //  Created by Андрей Щекатунов on 23.09.2021.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Friends: Codable {
+struct FriendsResponse: Codable {
 	let response: FriendsCountAndItems?
 }
 
@@ -26,9 +26,11 @@ struct FriendsResult: Codable {
 	let city: City?
 	let canInviteToChats: Bool?
 	let trackCode: String?
+	let photo50: String?
 
 	enum CodingKeys: String, CodingKey {
 		case id, domain, city
+		case photo50 = "photo_50"
 		case firstName = "first_name"
 		case lastName = "last_name"
 		case canAccessClosed = "can_access_closed"

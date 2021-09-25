@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Response: Codable {
+struct ProfileResponse: Codable {
 	let response: Profile?
 }
 

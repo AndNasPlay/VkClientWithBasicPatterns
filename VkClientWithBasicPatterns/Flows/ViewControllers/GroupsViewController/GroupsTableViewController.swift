@@ -71,7 +71,11 @@ class GroupsTableViewController: UITableViewController {
 		// swiftlint:enable force_cast
 		cell.friendOrGroupNameLabel.text = "\(groupsArr[indexPath.row].name ?? "petrov")"
 		cell.friendCityOrGroupDiscrLabel.text = groupsArr[indexPath.row].activity
-		cell.avatarImageView.image = UIImage(named: "testImg")?.roundedImage()
+		if groupsArr[indexPath.row].photo50 != nil {
+			cell.avatarImageView.kf.setImage(with: URL(string: groupsArr[indexPath.row].photo50 ?? "http://placehold.it/50x50"))
+		} else {
+			cell.avatarImageView.image = UIImage(named: "testImg")
+		}
 
 		return cell
 	}

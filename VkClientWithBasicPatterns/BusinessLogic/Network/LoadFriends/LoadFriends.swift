@@ -26,7 +26,7 @@ class LoadFriends: AbstractRequestFactory, LoadFriendsService {
 		self.baseUrl = baseUrl
 	}
 
-	func loadFriends(count: Int, completionHandler: @escaping (AFDataResponse<Friends>) -> Void) {
+	func loadFriends(count: Int, completionHandler: @escaping (AFDataResponse<FriendsResponse>) -> Void) {
 		let requestModel = LoadFriendsRequest(
 			baseUrl: baseUrl,
 			count: count

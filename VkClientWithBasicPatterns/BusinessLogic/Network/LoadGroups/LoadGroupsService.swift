@@ -9,5 +9,5 @@ import Foundation
 import Alamofire
 
 protocol LoadGroupsService {
-	func loadGroups(count: Int, completionHandler: @escaping (AFDataResponse<Groups>) -> Void)
+	func loadGroups(count: Int, completionHandler: @escaping (AFDataResponse<GroupsResponse>) -> Void)
 }

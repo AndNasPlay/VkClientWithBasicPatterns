@@ -59,4 +59,14 @@ class RequestFactory {
 			baseUrl: baseUrl
 		)
 	}
+
+	func makeLoadPhotoRequestFactory() -> LoadPhotoService {
+		let errorParser = makeErrorParser()
+		return LoadPhoto(
+			errorParser: errorParser,
+			sessionManager: commonSession,
+			queue: sessionCallBackQueue,
+			baseUrl: baseUrl
+		)
+	}
 }

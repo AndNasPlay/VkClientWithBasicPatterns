@@ -1,5 +1,5 @@
 //
-//  Groups.swift
+//  GroupsResponse.swift
 //  VkClientWithBasicPatterns
 //
 //  Created by Андрей Щекатунов on 22.09.2021.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Groups: Codable {
+struct GroupsResponse: Codable {
 	let response: GroupsCountAndItems?
 }
 

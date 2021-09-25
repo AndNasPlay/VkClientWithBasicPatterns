@@ -1,14 +1,14 @@
 //
-//  LoadProfile.swift
+//  LoadPhoto.swift
 //  VkClientWithBasicPatterns
 //
-//  Created by Андрей Щекатунов on 24.09.2021.
+//  Created by Андрей Щекатунов on 25.09.2021.
 //
 
 import Foundation
 import Alamofire
 
-class LoadProfile: AbstractRequestFactory, LoadProfileService {
+class LoadPhoto: AbstractRequestFactory, LoadPhotoService {
 
 	let errorParser: AbstractErrorParser
 	let sessionManager: Session
@@ -26,21 +26,23 @@ class LoadProfile: AbstractRequestFactory, LoadProfileService {
 		self.baseUrl = baseUrl
 	}
 
-	func loadProfile(completionHandler: @escaping (AFDataResponse<ProfileResponse>) -> Void) {
-		let requestModel = LoadProfileRequest(
+	func loadPhoto(completionHandler: @escaping (AFDataResponse<PhotoResponse>) -> Void) {
+		let requestModel = LoadPhotoRequest(
 			baseUrl: baseUrl
 		)
 		self.request(request: requestModel, completionHandler: completionHandler)
 	}
 
-	struct LoadProfileRequest: RequestRouter {
+	struct LoadPhotoRequest: RequestRouter {
 		let baseUrl: URL
 		let method: HTTPMethod = .get
-		let path: String = "/method/account.getProfileInfo"
+		let path: String = "/method/photos.get"
 		var parameters: Parameters? {
 			return [
 				"access_token": UserSettings.token,
 				"user_id": UserSettings.userId,
+				"album_id": "profile",
+				"photo_sizes": 1,
 				"v": "5.131"
 			]
 		}

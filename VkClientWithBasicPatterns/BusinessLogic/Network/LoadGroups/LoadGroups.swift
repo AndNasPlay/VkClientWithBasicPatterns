@@ -26,7 +26,7 @@ class LoadGroups: AbstractRequestFactory, LoadGroupsService {
 		self.baseUrl = baseUrl
 	}
 
-	func loadGroups(count: Int, completionHandler: @escaping (AFDataResponse<Groups>) -> Void) {
+	func loadGroups(count: Int, completionHandler: @escaping (AFDataResponse<GroupsResponse>) -> Void) {
 		let requestModel = LoadGroupsRequest(
 			baseUrl: baseUrl,
 			count: count

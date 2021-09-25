@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ProfileTableViewController: UITableViewController {
 
@@ -25,12 +26,25 @@ class ProfileTableViewController: UITableViewController {
 
 	private var profileUser: Profile?
 
+	private var userPhotoUrl: String?
+
 	private func loadData() {
 		self.requestFactory.makeLoadProfileRequestFactory().loadProfile { response in
 			DispatchQueue.main.async {
 				switch response.result {
 				case .success(let profile):
 					self.profileUser = profile.response
+					self.tableView.reloadData()
+				case .failure(let error):
+					print(error.localizedDescription)
+				}
+			}
+		}
+		self.requestFactory.makeLoadPhotoRequestFactory().loadPhoto { response in
+			DispatchQueue.main.async {
+				switch response.result {
+				case .success(let photo):
+					self.userPhotoUrl = photo.response?.items?.first?.sizes?.first?.url
 					self.tableView.reloadData()
 				case .failure(let error):
 					print(error.localizedDescription)
@@ -66,8 +80,12 @@ class ProfileTableViewController: UITableViewController {
 		let cell = self.tableView.dequeueReusableCell(withIdentifier: ProfileFirstTableViewCell.identifier,
 													  for: indexPath) as! ProfileFirstTableViewCell
 		// swiftlint:enable force_cast
-		cell.avatarImageView.image = UIImage(named: "testImg")?.roundedImage()
 		cell.profileNameLabel.text = "\(profileUser?.firstName ?? "name") \(profileUser?.lastName ?? "")"
+		if userPhotoUrl != nil {
+			cell.avatarImageView.kf.setImage(with: URL(string: userPhotoUrl ?? "http://placehold.it/50x50"))
+		} else {
+			cell.avatarImageView.image = UIImage(named: "testImg")
+		}
 
 		return cell
 	}
