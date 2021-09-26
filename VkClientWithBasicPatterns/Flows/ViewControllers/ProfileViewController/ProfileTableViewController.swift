@@ -80,6 +80,7 @@ class ProfileTableViewController: UITableViewController {
 		let cell = self.tableView.dequeueReusableCell(withIdentifier: ProfileFirstTableViewCell.identifier,
 													  for: indexPath) as! ProfileFirstTableViewCell
 		// swiftlint:enable force_cast
+		cell.profileNameLabel.textColor = UIColor.vkBlueText
 		cell.profileNameLabel.text = "\(profileUser?.firstName ?? "name") \(profileUser?.lastName ?? "")"
 		if userPhotoUrl != nil {
 			cell.avatarImageView.kf.setImage(with: URL(string: userPhotoUrl ?? "http://placehold.it/50x50"))

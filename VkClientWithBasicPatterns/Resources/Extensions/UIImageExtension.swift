@@ -1,5 +1,5 @@
 //
-//  UIColorExtension.swift
+//  UIImageExtension.swift
 //  VkClientWithBasicPatterns
 //
 //  Created by Андрей Щекатунов on 23.09.2021.

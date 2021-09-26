@@ -21,7 +21,6 @@ class ProfileFirstTableViewCell: UITableViewCell {
 
 	let profileNameLabel: UILabel = {
 		let lable = UILabel()
-		lable.textColor = .black
 		lable.font = .systemFont(ofSize: 20, weight: .bold)
 		lable.text = "name"
 		lable.numberOfLines = 1
@@ -99,7 +98,7 @@ class ProfileFirstTableViewCell: UITableViewCell {
 			editProfileButton.topAnchor.constraint(equalTo: self.avatarImageView.bottomAnchor, constant: 10.0),
 			editProfileButton.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 10.0),
 			editProfileButton.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -10.0),
-			editProfileButton.heightAnchor.constraint(equalToConstant: 30),
+			editProfileButton.heightAnchor.constraint(equalToConstant: 25),
 			editProfileButton.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -5)
 		])
 	}

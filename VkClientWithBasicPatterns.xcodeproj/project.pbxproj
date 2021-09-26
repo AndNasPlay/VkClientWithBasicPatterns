@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1607A9B42700D53B003874FA /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1607A9B32700D53B003874FA /* UIColor.swift */; };
 		1690B5A926FB7B0100037328 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B5A826FB7B0100037328 /* AppDelegate.swift */; };
 		1690B5AB26FB7B0100037328 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B5AA26FB7B0100037328 /* SceneDelegate.swift */; };
 		1690B5B226FB7B0300037328 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1690B5B126FB7B0300037328 /* Assets.xcassets */; };
@@ -18,7 +19,7 @@
 		1690B5D326FB969500037328 /* GroupsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B5D226FB969500037328 /* GroupsResponse.swift */; };
 		1690B5D626FC653600037328 /* FriendsAndGroupsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B5D526FC653600037328 /* FriendsAndGroupsTableViewCell.swift */; };
 		1690B5D826FC7ACD00037328 /* FriendsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B5D726FC7ACD00037328 /* FriendsResponse.swift */; };
-		1690B5DB26FCAB7F00037328 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B5DA26FCAB7F00037328 /* UIColorExtension.swift */; };
+		1690B5DB26FCAB7F00037328 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B5DA26FCAB7F00037328 /* UIImageExtension.swift */; };
 		1690B5DE26FCAED700037328 /* VkTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B5DD26FCAED700037328 /* VkTabBarController.swift */; };
 		1690B5E126FCC0EE00037328 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B5E026FCC0EE00037328 /* ProfileTableViewController.swift */; };
 		1690B5E326FCC14B00037328 /* ProfileFirstTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B5E226FCC14B00037328 /* ProfileFirstTableViewCell.swift */; };
@@ -42,6 +43,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1607A9B32700D53B003874FA /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		163E903D26FF5D5D006149CE /* libSDWebImage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSDWebImage.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		1690B5A526FB7B0100037328 /* VkClientWithBasicPatterns.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VkClientWithBasicPatterns.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1690B5A826FB7B0100037328 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -56,7 +58,7 @@
 		1690B5D226FB969500037328 /* GroupsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsResponse.swift; sourceTree = "<group>"; };
 		1690B5D526FC653600037328 /* FriendsAndGroupsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsAndGroupsTableViewCell.swift; sourceTree = "<group>"; };
 		1690B5D726FC7ACD00037328 /* FriendsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsResponse.swift; sourceTree = "<group>"; };
-		1690B5DA26FCAB7F00037328 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		1690B5DA26FCAB7F00037328 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		1690B5DD26FCAED700037328 /* VkTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VkTabBarController.swift; sourceTree = "<group>"; };
 		1690B5E026FCC0EE00037328 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		1690B5E226FCC14B00037328 /* ProfileFirstTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFirstTableViewCell.swift; sourceTree = "<group>"; };
@@ -199,7 +201,8 @@
 		1690B5D926FCAB6600037328 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				1690B5DA26FCAB7F00037328 /* UIColorExtension.swift */,
+				1690B5DA26FCAB7F00037328 /* UIImageExtension.swift */,
+				1607A9B32700D53B003874FA /* UIColor.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -447,10 +450,11 @@
 				16EF0CC526FF6C6000587179 /* LoadPhotoService.swift in Sources */,
 				1690B5BF26FB7FDA00037328 /* FriendsTableViewController.swift in Sources */,
 				1690B5F226FDE6FC00037328 /* RequestRouter.swift in Sources */,
-				1690B5DB26FCAB7F00037328 /* UIColorExtension.swift in Sources */,
+				1690B5DB26FCAB7F00037328 /* UIImageExtension.swift in Sources */,
 				1690B60726FE025600037328 /* LoadProfile.swift in Sources */,
 				1690B60426FE022100037328 /* LoadProfileService.swift in Sources */,
 				1690B5E126FCC0EE00037328 /* ProfileTableViewController.swift in Sources */,
+				1607A9B42700D53B003874FA /* UIColor.swift in Sources */,
 				16EF0CC326FF6C4F00587179 /* LoadPhoto.swift in Sources */,
 				1690B5EE26FDE6C000037328 /* ResponseCodable.swift in Sources */,
 				1690B5D826FC7ACD00037328 /* FriendsResponse.swift in Sources */,

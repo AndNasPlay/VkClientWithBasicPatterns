@@ -38,6 +38,7 @@ class FriendsTableViewController: UITableViewController {
 			}
 		}
 	}
+
 	private var friendsArr = [FriendsResult]()
 	private var tableCellHeight: CGFloat = 70.0
 
