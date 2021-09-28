@@ -24,12 +24,15 @@ class VkTabBarController: UITabBarController {
 			createNavController(
 				for: FriendsTableViewController(requestFactory: factory),
 				// swiftlint:disable force_unwrapping
+				title: "Друзья",
 				image: UIImage(systemName: "house")!),
 			createNavController(
 				for: GroupsTableViewController(requestFactory: factory),
-				image: UIImage(systemName: "magnifyingglass")!),
+				title: "Все сообщества",
+				image: UIImage(systemName: "house")!),
 			createNavController(
 				for: ProfileTableViewController(requestFactory: factory),
+				title: "Profile",
 				image: UIImage(systemName: "house")!)
 			// swiftlint:enable force_unwrapping
 		]
@@ -37,9 +40,11 @@ class VkTabBarController: UITabBarController {
 
 	fileprivate func createNavController(
 		for rootViewController: UIViewController,
+		title: String,
 		image: UIImage
 	) -> UIViewController {
 		let navController = UINavigationController(rootViewController: rootViewController)
+		navController.tabBarItem.title = title
 		navController.tabBarItem.image = image
 		navController.navigationBar.prefersLargeTitles = true
 		rootViewController.navigationItem.title = title
