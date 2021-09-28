@@ -22,11 +22,13 @@ class ProfileTableViewController: UITableViewController {
 	}
 	// swiftlint:enable unavailable_function
 
-	private var tableCellHeight: CGFloat = 130.0
+	private var tableCellHeight: CGFloat = 140.0
 
 	private var profileUser: Profile?
 
 	private var userPhotoUrl: String?
+
+	private let profileImageSize: String = "p"
 
 	private func loadData() {
 		self.requestFactory.makeLoadProfileRequestFactory().loadProfile { response in
@@ -34,17 +36,20 @@ class ProfileTableViewController: UITableViewController {
 				switch response.result {
 				case .success(let profile):
 					self.profileUser = profile.response
+					self.title = profile.response?.screenName
 					self.tableView.reloadData()
 				case .failure(let error):
 					print(error.localizedDescription)
 				}
 			}
 		}
+
 		self.requestFactory.makeLoadPhotoRequestFactory().loadPhoto { response in
 			DispatchQueue.main.async {
 				switch response.result {
 				case .success(let photo):
-					self.userPhotoUrl = photo.response?.items?.first?.sizes?.first?.url
+					guard let new: PhotoUrl = (photo.response?.items?.first?.sizes?.first(where: { $0.type == self.profileImageSize })) else { return }
+					self.userPhotoUrl = new.url
 					self.tableView.reloadData()
 				case .failure(let error):
 					print(error.localizedDescription)
@@ -77,17 +82,14 @@ class ProfileTableViewController: UITableViewController {
 
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		// swiftlint:disable force_cast
-		let cell = self.tableView.dequeueReusableCell(withIdentifier: ProfileFirstTableViewCell.identifier,
-													  for: indexPath) as! ProfileFirstTableViewCell
+		let cell = self.tableView.dequeueReusableCell(withIdentifier: ProfileFirstTableViewCell.identifier, for: indexPath) as! ProfileFirstTableViewCell
 		// swiftlint:enable force_cast
-		cell.profileNameLabel.textColor = UIColor.vkBlueText
 		cell.profileNameLabel.text = "\(profileUser?.firstName ?? "name") \(profileUser?.lastName ?? "")"
 		if userPhotoUrl != nil {
 			cell.avatarImageView.kf.setImage(with: URL(string: userPhotoUrl ?? "http://placehold.it/50x50"))
 		} else {
 			cell.avatarImageView.image = UIImage(named: "testImg")
 		}
-
 		return cell
 	}
 

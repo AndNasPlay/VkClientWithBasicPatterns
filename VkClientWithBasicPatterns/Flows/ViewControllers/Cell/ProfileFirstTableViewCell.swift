@@ -6,16 +6,29 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ProfileFirstTableViewCell: UITableViewCell {
 
 	static let identifier = "ProfileFirstTableViewCell"
+
+	private static let avatarWidthHeight: CGFloat = 80.0
+
+	private let standartIndent: CGFloat = 10.0
+
+	private let buttonHeight: CGFloat = 30.0
+
+	private let textIndent: CGFloat = 20.0
+
+	private let textMultiplier: CGFloat = 0.5
 
 	let avatarImageView: UIImageView = {
 		let imageView = UIImageView()
 		imageView.translatesAutoresizingMaskIntoConstraints = false
 		imageView.layer.masksToBounds = true
 		imageView.clipsToBounds = true
+		imageView.layer.cornerRadius = avatarWidthHeight / 2
+		imageView.contentMode = .scaleAspectFill
 		return imageView
 	}()
 
@@ -30,8 +43,7 @@ class ProfileFirstTableViewCell: UITableViewCell {
 
 	let profileStatusLabel: UILabel = {
 		let lable = UILabel()
-		lable.textColor = .systemBlue
-		lable.font = .systemFont(ofSize: 16, weight: .regular)
+		lable.font = .systemFont(ofSize: 15, weight: .regular)
 		lable.text = "Установить статус"
 		lable.numberOfLines = 0
 		lable.translatesAutoresizingMaskIntoConstraints = false
@@ -40,7 +52,6 @@ class ProfileFirstTableViewCell: UITableViewCell {
 
 	let profileActiveStatusLabel: UILabel = {
 		let lable = UILabel()
-		lable.textColor = .lightGray
 		lable.font = .systemFont(ofSize: 14, weight: .regular)
 		lable.text = "online"
 		lable.numberOfLines = 0
@@ -50,13 +61,19 @@ class ProfileFirstTableViewCell: UITableViewCell {
 
 	let editProfileButton: UIButton = {
 		let button = UIButton()
-		button.backgroundColor = .lightGray
 		button.setTitle("Редактировать", for: .normal)
-		button.tintColor = UIColor.systemBlue
 		button.translatesAutoresizingMaskIntoConstraints = false
 		button.layer.cornerRadius = 10
 		return button
 	}()
+
+	private func setupCellCorol() {
+		profileActiveStatusLabel.textColor = UIColor.vkGreyText
+		editProfileButton.backgroundColor = UIColor.vkButtonGrey
+		editProfileButton.setTitleColor(UIColor.vkBlueText, for: .normal)
+		profileStatusLabel.textColor = UIColor.vkBlueText
+		profileNameLabel.textColor = UIColor.vkBlackText
+	}
 
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -67,6 +84,7 @@ class ProfileFirstTableViewCell: UITableViewCell {
 		contentView.addSubview(profileStatusLabel)
 		contentView.addSubview(profileActiveStatusLabel)
 		contentView.addSubview(editProfileButton)
+		setupCellCorol()
 	}
 
 	// swiftlint:disable unavailable_function
@@ -79,27 +97,28 @@ class ProfileFirstTableViewCell: UITableViewCell {
 		super.layoutSubviews()
 
 		NSLayoutConstraint.activate([
-			avatarImageView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 10),
-			avatarImageView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 10),
-			avatarImageView.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: 0.2),
+			avatarImageView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: standartIndent),
+			avatarImageView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: standartIndent),
+			avatarImageView.widthAnchor.constraint(equalToConstant: ProfileFirstTableViewCell.avatarWidthHeight),
+			avatarImageView.heightAnchor.constraint(equalToConstant: ProfileFirstTableViewCell.avatarWidthHeight),
+			avatarImageView.bottomAnchor.constraint(equalTo: self.editProfileButton.topAnchor, constant: -standartIndent),
 
-			profileNameLabel.leadingAnchor.constraint(equalTo: self.avatarImageView.trailingAnchor, constant: 20),
-			profileNameLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 10.0),
-			profileNameLabel.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: 0.5),
+			profileNameLabel.leadingAnchor.constraint(equalTo: self.avatarImageView.trailingAnchor, constant: textIndent),
+			profileNameLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: standartIndent),
+			profileNameLabel.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: textMultiplier),
 
-			profileStatusLabel.leadingAnchor.constraint(equalTo: self.avatarImageView.trailingAnchor, constant: 20),
-			profileStatusLabel.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor, constant: -10),
-			profileStatusLabel.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: 0.5),
+			profileStatusLabel.leadingAnchor.constraint(equalTo: self.avatarImageView.trailingAnchor, constant: textIndent),
+			profileStatusLabel.centerYAnchor.constraint(equalTo: self.avatarImageView.centerYAnchor),
+			profileStatusLabel.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: textMultiplier),
 
-			profileActiveStatusLabel.leadingAnchor.constraint(equalTo: self.avatarImageView.trailingAnchor, constant: 20),
-			profileActiveStatusLabel.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor, constant: 10.0),
-			profileActiveStatusLabel.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: 0.5),
+			profileActiveStatusLabel.leadingAnchor.constraint(equalTo: self.avatarImageView.trailingAnchor, constant: textIndent),
+			profileActiveStatusLabel.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor, constant: standartIndent),
+			profileActiveStatusLabel.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: textMultiplier),
 
-			editProfileButton.topAnchor.constraint(equalTo: self.avatarImageView.bottomAnchor, constant: 10.0),
-			editProfileButton.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 10.0),
-			editProfileButton.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -10.0),
-			editProfileButton.heightAnchor.constraint(equalToConstant: 25),
-			editProfileButton.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -5)
+			editProfileButton.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: standartIndent),
+			editProfileButton.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -standartIndent),
+			editProfileButton.heightAnchor.constraint(equalToConstant: buttonHeight),
+			editProfileButton.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -standartIndent)
 		])
 	}
 }
