@@ -37,14 +37,12 @@ class LoadPhoto: AbstractRequestFactory, LoadPhotoService {
 		let baseUrl: URL
 		let method: HTTPMethod = .get
 		let path: String = "/method/photos.get"
-		var parameters: Parameters? {
-			return [
-				"access_token": UserSettings.token,
-				"user_id": UserSettings.userId,
-				"album_id": "profile",
-				"photo_sizes": 1,
-				"v": "5.131"
-			]
-		}
+		var parameters: Parameters? {[
+			"access_token": UserSettings.token,
+			"user_id": UserSettings.userId,
+			"album_id": "profile",
+			"photo_sizes": 1,
+			"v": "5.131"
+		]}
 	}
 }

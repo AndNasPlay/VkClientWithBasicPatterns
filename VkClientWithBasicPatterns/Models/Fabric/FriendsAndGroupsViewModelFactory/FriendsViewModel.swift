@@ -1,15 +1,14 @@
 //
-//  FriendsAndGroupsViewModel.swift
+//  FriendsViewModel.swift
 //  VkClientWithBasicPatterns
 //
 //  Created by Андрей Щекатунов on 28.09.2021.
 //
 
 import Foundation
-import Kingfisher
 
-struct FriendsAndGroupsViewModel {
-	let avatarImage: KFImage?
+struct FriendsViewModel {
+	let avatarImage: String?
 	let nameLable: String?
-	let description: String?
+	let cityName: String?
 }

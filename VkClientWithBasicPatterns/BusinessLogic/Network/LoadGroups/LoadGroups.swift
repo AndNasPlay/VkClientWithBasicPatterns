@@ -39,15 +39,13 @@ class LoadGroups: AbstractRequestFactory, LoadGroupsService {
 		let method: HTTPMethod = .get
 		let path: String = "/method/groups.get"
 		let count: Int
-		var parameters: Parameters? {
-			return [
-				"access_token": UserSettings.token,
-				"user_id": UserSettings.userId,
-				"extended": 1,
-				"v": "5.181",
-				"fields": "activity",
-				"count": "\(count)"
-			]
-		}
+		var parameters: Parameters? {[
+			"access_token": UserSettings.token,
+			"user_id": UserSettings.userId,
+			"extended": 1,
+			"v": "5.181",
+			"fields": "activity",
+			"count": "\(count)"
+		]}
 	}
 }

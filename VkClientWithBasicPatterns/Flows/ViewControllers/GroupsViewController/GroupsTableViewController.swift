@@ -21,8 +21,8 @@ class GroupsTableViewController: UITableViewController {
 	}
 	// swiftlint:enable unavailable_function
 
-	private var groupsArr = [GroupResult]()
-
+	private let groupsViewModelFactory = GroupsViewModelFactory()
+	private var groupsViewModels: [GroupsViewModel] = []
 	private var tableCellHeight: CGFloat = 70.0
 
 	private func loadData() {
@@ -32,7 +32,7 @@ class GroupsTableViewController: UITableViewController {
 				case .success(let catalog):
 					guard catalog.response?.items?.count ?? 0 > 0 else { return }
 					// swiftlint:disable force_unwrapping
-						self.groupsArr.append(contentsOf: (catalog.response?.items)!)
+					self.groupsViewModels = self.groupsViewModelFactory.constructViewModel(from: (catalog.response?.items)!)
 					// swiftlint:enable force_unwrapping
 						self.tableView.reloadData()
 				case .failure(let error):
@@ -50,8 +50,7 @@ class GroupsTableViewController: UITableViewController {
 		self.title = "Все сообщества"
 		self.tableView.separatorColor = UIColor.white
 		loadData()
-		self.tableView.register(FriendsAndGroupsTableViewCell.self, forCellReuseIdentifier: FriendsAndGroupsTableViewCell.identifier)
-
+		self.tableView.register(GroupsTableViewCell.self, forCellReuseIdentifier: GroupsTableViewCell.identifier)
 	}
 
 	// MARK: - Table view data source
@@ -61,22 +60,15 @@ class GroupsTableViewController: UITableViewController {
 	}
 
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		groupsArr.count
+		groupsViewModels.count
 	}
 
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		// swiftlint:disable force_cast
-		let cell = self.tableView.dequeueReusableCell(withIdentifier: FriendsAndGroupsTableViewCell.identifier,
-													  for: indexPath) as! FriendsAndGroupsTableViewCell
+		let cell = self.tableView.dequeueReusableCell(withIdentifier: GroupsTableViewCell.identifier,
+													  for: indexPath) as! GroupsTableViewCell
 		// swiftlint:enable force_cast
-		cell.friendOrGroupNameLabel.text = "\(groupsArr[indexPath.row].name ?? "petrov")"
-		cell.friendCityOrGroupDiscrLabel.text = groupsArr[indexPath.row].activity
-		if groupsArr[indexPath.row].photo50 != nil {
-			cell.avatarImageView.kf.setImage(with: URL(string: groupsArr[indexPath.row].photo50 ?? "http://placehold.it/50x50"))
-		} else {
-			cell.avatarImageView.image = UIImage(named: "testImg")
-		}
-
+		cell.configureCell(groupsViewModel: groupsViewModels[indexPath.row])
 		return cell
 	}
 

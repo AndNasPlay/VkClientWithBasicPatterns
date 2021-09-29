@@ -39,15 +39,13 @@ class LoadFriends: AbstractRequestFactory, LoadFriendsService {
 		let method: HTTPMethod = .get
 		let path: String = "/method/friends.get"
 		let count: Int
-		var parameters: Parameters? {
-			return [
-				"access_token": UserSettings.token,
-				"user_id": UserSettings.userId,
-				"order": "random",
-				"v": "5.181",
-				"fields": "city,domain,photo_50,nickname",
-				"count": "\(count)"
-			]
-		}
+		var parameters: Parameters? {[
+			"access_token": UserSettings.token,
+			"user_id": UserSettings.userId,
+			"order": "random",
+			"v": "5.181",
+			"fields": "city,domain,photo_50,nickname",
+			"count": "\(count)"
+		]}
 	}
 }

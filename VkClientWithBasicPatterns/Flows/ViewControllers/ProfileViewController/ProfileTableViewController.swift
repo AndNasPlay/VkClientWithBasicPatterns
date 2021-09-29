@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Kingfisher
 
 class ProfileTableViewController: UITableViewController {
 
@@ -24,10 +23,9 @@ class ProfileTableViewController: UITableViewController {
 
 	private var tableCellHeight: CGFloat = 140.0
 
-	private var profileUser: Profile?
-
+	private let profileViewModelFactory = ProfileViewModelFactory()
+	private var profileViewModel: ProfileViewModel?
 	private var userPhotoUrl: String?
-
 	private let profileImageSize: String = "p"
 
 	private func loadData() {
@@ -35,7 +33,10 @@ class ProfileTableViewController: UITableViewController {
 			DispatchQueue.main.async {
 				switch response.result {
 				case .success(let profile):
-					self.profileUser = profile.response
+					guard profile.response != nil else { return }
+					// swiftlint:disable force_unwrapping
+					self.profileViewModel = self.profileViewModelFactory.constructViewModel(from: profile.response!)
+					// swiftlint:enable force_unwrapping
 					self.title = profile.response?.screenName
 					self.tableView.reloadData()
 				case .failure(let error):
@@ -84,7 +85,7 @@ class ProfileTableViewController: UITableViewController {
 		// swiftlint:disable force_cast
 		let cell = self.tableView.dequeueReusableCell(withIdentifier: ProfileFirstTableViewCell.identifier, for: indexPath) as! ProfileFirstTableViewCell
 		// swiftlint:enable force_cast
-		cell.profileNameLabel.text = "\(profileUser?.firstName ?? "name") \(profileUser?.lastName ?? "")"
+		cell.profileNameLabel.text = profileViewModel?.name
 		if userPhotoUrl != nil {
 			cell.avatarImageView.kf.setImage(with: URL(string: userPhotoUrl ?? "http://placehold.it/50x50"))
 		} else {

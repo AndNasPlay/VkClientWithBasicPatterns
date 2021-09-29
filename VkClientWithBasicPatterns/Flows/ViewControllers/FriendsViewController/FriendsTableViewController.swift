@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Kingfisher
 
 class FriendsTableViewController: UITableViewController {
 
@@ -22,6 +21,10 @@ class FriendsTableViewController: UITableViewController {
 	}
 	// swiftlint:enable unavailable_function
 
+	private let friendsViewModelFactory = FriendsViewModelFactory()
+	private var friendsViewModels: [FriendsViewModel] = []
+	private var tableCellHeight: CGFloat = 70.0
+
 	private func loadData() {
 		self.requestFactory.makeLoadFriendsRequestFactory().loadFriends(count: 50) { response in
 			DispatchQueue.main.async {
@@ -29,7 +32,7 @@ class FriendsTableViewController: UITableViewController {
 				case .success(let catalog):
 					guard catalog.response?.items?.count ?? 0 > 0 else { return }
 					// swiftlint:disable force_unwrapping
-						self.friendsArr.append(contentsOf: (catalog.response?.items)!)
+					self.friendsViewModels = self.friendsViewModelFactory.constructViewModel(from: (catalog.response?.items)!)
 					// swiftlint:enable force_unwrapping
 						self.tableView.reloadData()
 				case .failure(let error):
@@ -38,9 +41,6 @@ class FriendsTableViewController: UITableViewController {
 			}
 		}
 	}
-
-	private var friendsArr = [FriendsResult]()
-	private var tableCellHeight: CGFloat = 70.0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +51,7 @@ class FriendsTableViewController: UITableViewController {
 		self.tableView.separatorColor = UIColor.white
 		loadData()
 
-		self.tableView.register(FriendsAndGroupsTableViewCell.self, forCellReuseIdentifier: FriendsAndGroupsTableViewCell.identifier)
+		self.tableView.register(FriendsTableViewCell.self, forCellReuseIdentifier: FriendsTableViewCell.identifier)
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -59,21 +59,16 @@ class FriendsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		friendsArr.count
+		friendsViewModels.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		// swiftlint:disable force_cast
-		let cell = self.tableView.dequeueReusableCell(withIdentifier: FriendsAndGroupsTableViewCell.identifier,
-													  for: indexPath) as! FriendsAndGroupsTableViewCell
+		let cell = self.tableView.dequeueReusableCell(withIdentifier: FriendsTableViewCell.identifier,
+													  for: indexPath) as! FriendsTableViewCell
 		// swiftlint:enable force_cast
-		cell.friendOrGroupNameLabel.text = "\(friendsArr[indexPath.row].firstName ?? "petrov") \(friendsArr[indexPath.row].lastName ?? "Petro")"
-		cell.friendCityOrGroupDiscrLabel.text = friendsArr[indexPath.row].city?.title
-		if friendsArr[indexPath.row].photo50 != nil {
-			cell.avatarImageView.kf.setImage(with: URL(string: friendsArr[indexPath.row].photo50 ?? "http://placehold.it/50x50"))
-		} else {
-			cell.avatarImageView.image = UIImage(named: "testImg")
-		}
+
+		cell.configureCell(friendsViewModel: friendsViewModels[indexPath.row])
         return cell
     }
 
