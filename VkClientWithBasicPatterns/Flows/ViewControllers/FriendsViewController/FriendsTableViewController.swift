@@ -26,7 +26,7 @@ class FriendsTableViewController: UITableViewController {
 	private var tableCellHeight: CGFloat = 70.0
 
 	private func loadData() {
-		self.requestFactory.makeLoadFriendsRequestFactory().loadFriends(count: 50) { response in
+		self.requestFactory.makeLoadFriendsRequestFactory().loadFriends { response in
 			DispatchQueue.main.async {
 				switch response.result {
 				case .success(let catalog):
@@ -74,5 +74,14 @@ class FriendsTableViewController: UITableViewController {
 
 	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 		tableCellHeight
+	}
+
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		let profileController = FriendProfileViewController(
+			requestFactory: requestFactory,
+			userPhotoUrl: friendsViewModels[indexPath.row].avatarImage ?? "http://placehold.it/50x50",
+			userName: friendsViewModels[indexPath.row].nameLable ?? "Дима")
+
+		 self.navigationController?.pushViewController(profileController, animated: true)
 	}
 }

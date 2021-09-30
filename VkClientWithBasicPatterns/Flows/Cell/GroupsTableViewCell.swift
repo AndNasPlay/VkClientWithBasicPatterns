@@ -1,38 +1,38 @@
 //
-//  FriendsTableViewCell.swift
+//  GroupsTableViewCell.swift
 //  VkClientWithBasicPatterns
 //
-//  Created by Андрей Щекатунов on 23.09.2021.
+//  Created by Андрей Щекатунов on 29.09.2021.
 //
 
 import UIKit
 import Kingfisher
 
-class FriendsTableViewCell: UITableViewCell {
+class GroupsTableViewCell: UITableViewCell {
 
-	static let identifier = "FriendsTableViewCell"
+	static let identifier = "GroupsTableViewCell"
 
 	private static let avatarWidthHeight: CGFloat = 50.0
 
 	private let standartIndent: CGFloat = 10.0
 
-	private let cityMultiplier: CGFloat = 0.5
+	private let activityMultiplier: CGFloat = 0.5
 
 	private let nameMultiplier: CGFloat = 0.7
 
-	let friendNameLabel: UILabel = {
+	let groupNameLabel: UILabel = {
 		let lable = UILabel()
 		lable.textColor = .black
-		lable.font = .systemFont(ofSize: 16, weight: .regular)
+		lable.font = UIFont.titleCellFont
 		lable.numberOfLines = 1
 		lable.translatesAutoresizingMaskIntoConstraints = false
 		return lable
 	}()
 
-	let friendCityLabel: UILabel = {
+	let groupActivityLabel: UILabel = {
 		let lable = UILabel()
 		lable.textColor = .lightGray
-		lable.font = .systemFont(ofSize: 13, weight: .regular)
+		lable.font = UIFont.subTitleCellFont
 		lable.numberOfLines = 0
 		lable.translatesAutoresizingMaskIntoConstraints = false
 		return lable
@@ -51,9 +51,9 @@ class FriendsTableViewCell: UITableViewCell {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 		contentView.backgroundColor = .white
 		selectionStyle = UITableViewCell.SelectionStyle.none
-		contentView.addSubview(friendNameLabel)
+		contentView.addSubview(groupNameLabel)
 		contentView.addSubview(avatarImageView)
-		contentView.addSubview(friendCityLabel)
+		contentView.addSubview(groupActivityLabel)
 	}
 
 	// swiftlint:disable unavailable_function
@@ -62,11 +62,11 @@ class FriendsTableViewCell: UITableViewCell {
 	}
 	// swiftlint:enable unavailable_function
 
-	func configureCell(friendsViewModel: FriendsViewModel) {
-		friendNameLabel.text = friendsViewModel.nameLable
-		friendCityLabel.text = friendsViewModel.cityName
-		if friendsViewModel.avatarImage != nil {
-			avatarImageView.kf.setImage(with: URL(string: friendsViewModel.avatarImage ?? "http://placehold.it/50x50"))
+	func configureCell(groupsViewModel: GroupsViewModel) {
+		groupNameLabel.text = groupsViewModel.nameLable
+		groupActivityLabel.text = groupsViewModel.description
+		if groupsViewModel.avatarImage != nil {
+			avatarImageView.kf.setImage(with: URL(string: groupsViewModel.avatarImage ?? "http://placehold.it/50x50"))
 		} else {
 			avatarImageView.image = UIImage(named: "testImg")
 		}
@@ -78,17 +78,17 @@ class FriendsTableViewCell: UITableViewCell {
 		NSLayoutConstraint.activate([
 			avatarImageView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: standartIndent),
 			avatarImageView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: standartIndent),
-			avatarImageView.widthAnchor.constraint(equalToConstant: FriendsTableViewCell.avatarWidthHeight),
-			avatarImageView.heightAnchor.constraint(equalToConstant: FriendsTableViewCell.avatarWidthHeight),
+			avatarImageView.widthAnchor.constraint(equalToConstant: GroupsTableViewCell.avatarWidthHeight),
+			avatarImageView.heightAnchor.constraint(equalToConstant: GroupsTableViewCell.avatarWidthHeight),
 			avatarImageView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -standartIndent),
 
-			friendNameLabel.leadingAnchor.constraint(equalTo: self.avatarImageView.trailingAnchor, constant: standartIndent),
-			friendNameLabel.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor, constant: -standartIndent),
-			friendNameLabel.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: nameMultiplier),
+			groupNameLabel.leadingAnchor.constraint(equalTo: self.avatarImageView.trailingAnchor, constant: standartIndent),
+			groupNameLabel.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor, constant: -standartIndent),
+			groupNameLabel.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: nameMultiplier),
 
-			friendCityLabel.leadingAnchor.constraint(equalTo: self.avatarImageView.trailingAnchor, constant: standartIndent),
-			friendCityLabel.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor, constant: standartIndent),
-			friendCityLabel.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: cityMultiplier)
+			groupActivityLabel.leadingAnchor.constraint(equalTo: self.avatarImageView.trailingAnchor, constant: standartIndent),
+			groupActivityLabel.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor, constant: standartIndent),
+			groupActivityLabel.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: activityMultiplier)
 		])
 	}
 

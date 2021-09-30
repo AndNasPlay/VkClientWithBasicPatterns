@@ -9,5 +9,5 @@ import Foundation
 import Alamofire
 
 protocol LoadFriendsService {
-	func loadFriends(count: Int, completionHandler: @escaping (AFDataResponse<FriendsResponse>) -> Void)
+	func loadFriends(completionHandler: @escaping (AFDataResponse<FriendsResponse>) -> Void)
 }

@@ -34,8 +34,8 @@ class LoginViewController: UIViewController, WKUIDelegate {
 			URLQueryItem(name: "redirect_uri", value: "https://oauth.vk.com/blank.html"),
 			URLQueryItem(name: "response_type", value: "token"),
 			URLQueryItem(name: "v", value: "5.131")
-
 		]
+
 		let request = URLRequest(url: components.url!)
 		webView.load(request)
 	}
@@ -93,5 +93,4 @@ extension LoginViewController: WKNavigationDelegate {
 
 		decisionHandler(.cancel)
 	}
-
 }

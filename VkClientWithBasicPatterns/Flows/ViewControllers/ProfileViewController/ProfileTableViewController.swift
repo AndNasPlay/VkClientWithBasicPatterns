@@ -21,7 +21,7 @@ class ProfileTableViewController: UITableViewController {
 	}
 	// swiftlint:enable unavailable_function
 
-	private var tableCellHeight: CGFloat = 140.0
+	private var tableCellHeight: CGFloat = 210.0
 
 	private let profileViewModelFactory = ProfileViewModelFactory()
 	private var profileViewModel: ProfileViewModel?

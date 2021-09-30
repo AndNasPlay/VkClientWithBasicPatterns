@@ -26,10 +26,9 @@ class LoadFriends: AbstractRequestFactory, LoadFriendsService {
 		self.baseUrl = baseUrl
 	}
 
-	func loadFriends(count: Int, completionHandler: @escaping (AFDataResponse<FriendsResponse>) -> Void) {
+	func loadFriends(completionHandler: @escaping (AFDataResponse<FriendsResponse>) -> Void) {
 		let requestModel = LoadFriendsRequest(
-			baseUrl: baseUrl,
-			count: count
+			baseUrl: baseUrl
 		)
 		self.request(request: requestModel, completionHandler: completionHandler)
 	}
@@ -38,14 +37,12 @@ class LoadFriends: AbstractRequestFactory, LoadFriendsService {
 		let baseUrl: URL
 		let method: HTTPMethod = .get
 		let path: String = "/method/friends.get"
-		let count: Int
 		var parameters: Parameters? {[
 			"access_token": UserSettings.token,
 			"user_id": UserSettings.userId,
-			"order": "random",
+			"order": "hints",
 			"v": "5.181",
-			"fields": "city,domain,photo_50,nickname",
-			"count": "\(count)"
+			"fields": "city,domain,photo_100,nickname"
 		]}
 	}
 }

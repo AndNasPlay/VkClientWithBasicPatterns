@@ -16,7 +16,7 @@ class FriendsViewModelFactory {
 	private func getViewModel(from friend: FriendsResult) -> FriendsViewModel {
 		let fullName = "\(friend.firstName ?? "Павел") \(friend.lastName ?? "Дуров")"
 		let city = friend.city?.title
-		let avatar = friend.photo50
+		let avatar = friend.photo100
 		return FriendsViewModel(
 			avatarImage: avatar,
 			nameLable: fullName,

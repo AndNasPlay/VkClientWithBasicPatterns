@@ -26,11 +26,11 @@ struct FriendsResult: Codable {
 	let city: City?
 	let canInviteToChats: Bool?
 	let trackCode: String?
-	let photo50: String?
+	let photo100: String?
 
 	enum CodingKeys: String, CodingKey {
 		case id, domain, city
-		case photo50 = "photo_50"
+		case photo100 = "photo_100"
 		case firstName = "first_name"
 		case lastName = "last_name"
 		case canAccessClosed = "can_access_closed"
