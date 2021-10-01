@@ -10,6 +10,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 	var window: UIWindow?
+	let factory = RequestFactory(baseUrl: UserSettings.baseUrl)
 
 	func scene(
 		_ scene: UIScene,
@@ -18,7 +19,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 	) {
 		guard let windowScene = (scene as? UIWindowScene) else { return }
 		window = UIWindow(frame: UIScreen.main.bounds)
-		let newController = LoginViewController()
+//		let newController = LoginViewController()
+		let newController = TestViewController()
 		window?.rootViewController = newController
 		window?.makeKeyAndVisible()
 		window?.windowScene = windowScene

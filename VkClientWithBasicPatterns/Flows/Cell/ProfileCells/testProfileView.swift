@@ -1,16 +1,16 @@
 //
-//  ProfileFirstTableViewCell.swift
+//  testProfileView.swift
 //  VkClientWithBasicPatterns
 //
-//  Created by Андрей Щекатунов on 23.09.2021.
+//  Created by Андрей Щекатунов on 01.10.2021.
 //
 
 import UIKit
 import Kingfisher
 
-class ProfileFirstTableViewCell: UITableViewCell {
+class TestProfileView: UITableViewCell {
 
-	static let identifier = "ProfileFirstTableViewCell"
+	static let identifier = "TestProfileView"
 
 	private let avatarWidthHeight: CGFloat = 80.0
 
@@ -67,128 +67,65 @@ class ProfileFirstTableViewCell: UITableViewCell {
 		return button
 	}()
 
-	private(set) lazy var storyIconImageView: UIImageView = {
-		let imageView = UIImageView()
-		imageView.image = UIImage(named: "camera")
-		imageView.translatesAutoresizingMaskIntoConstraints = false
-		imageView.layer.masksToBounds = true
-		imageView.clipsToBounds = true
-		imageView.contentMode = .scaleAspectFill
-		return imageView
-	}()
-
-	private(set) lazy var storyLabel: UILabel = {
-		let lable = UILabel()
-		lable.font = UIFont.iconsFont
-		lable.text = "История"
-		lable.textAlignment = .center
-		lable.translatesAutoresizingMaskIntoConstraints = false
-		return lable
-	}()
-
-	private(set) lazy var recordingIconImageView: UIImageView = {
-		let imageView = UIImageView()
-		imageView.image = UIImage(named: "recording")
-		imageView.translatesAutoresizingMaskIntoConstraints = false
-		imageView.layer.masksToBounds = true
-		imageView.clipsToBounds = true
-		imageView.contentMode = .scaleAspectFill
-		return imageView
-	}()
-
-	private(set) lazy var recordingLabel: UILabel = {
-		let lable = UILabel()
-		lable.font = UIFont.iconsFont
-		lable.text = "Запись"
-		lable.textAlignment = .center
-		lable.translatesAutoresizingMaskIntoConstraints = false
-		return lable
-	}()
-
-	private(set) lazy var photoIconImageView: UIImageView = {
-		let imageView = UIImageView()
-		imageView.image = UIImage(named: "photo")
-		imageView.translatesAutoresizingMaskIntoConstraints = false
-		imageView.layer.masksToBounds = true
-		imageView.clipsToBounds = true
-		imageView.contentMode = .scaleAspectFill
-		return imageView
-	}()
-
-	private(set) lazy var photoLabel: UILabel = {
-		let lable = UILabel()
-		lable.font = UIFont.iconsFont
-		lable.text = "Фото"
-		lable.textAlignment = .center
-		lable.translatesAutoresizingMaskIntoConstraints = false
-		return lable
-	}()
-
-	private(set) lazy var clipIconImageView: UIImageView = {
-		let imageView = UIImageView()
-		imageView.image = UIImage(named: "like")
-		imageView.translatesAutoresizingMaskIntoConstraints = false
-		imageView.layer.masksToBounds = true
-		imageView.clipsToBounds = true
-		imageView.contentMode = .scaleAspectFill
-		return imageView
-	}()
-
-	private(set) lazy var clipLabel: UILabel = {
-		let lable = UILabel()
-		lable.font = UIFont.iconsFont
-		lable.text = "Клип"
-		lable.textAlignment = .center
-		lable.translatesAutoresizingMaskIntoConstraints = false
-		return lable
-	}()
-
 	private(set) lazy var iconsAndLablesStackView: UIStackView = {
 		let stackView = UIStackView()
 		stackView.axis = .horizontal
 		stackView.distribution = .equalSpacing
-
-		stackView.translatesAutoresizingMaskIntoConstraints = false
-		stackView.backgroundColor = .red
-		return stackView
-	}()
-
-	private(set) lazy var storyStackView: UIStackView = {
-		let stackView = UIStackView()
-		stackView.axis = .vertical
-//		stackView.distribution = .fillProportionally
-//		stackView.spacing = 5
-		stackView.backgroundColor = .green
 		stackView.translatesAutoresizingMaskIntoConstraints = false
 		return stackView
 	}()
 
-	private(set) lazy var recordingStackView: UIStackView = {
-		let stackView = UIStackView()
-		stackView.axis = .vertical
-//		stackView.distribution = .equalCentering
-		stackView.backgroundColor = .yellow
-//		stackView.spacing = 5
-		stackView.translatesAutoresizingMaskIntoConstraints = false
-		return stackView
+	private(set) lazy var storyButton1: UIButton = {
+		let button = UIButton()
+		button.setTitle("История", for: .normal)
+		button.translatesAutoresizingMaskIntoConstraints = false
+		let spacing: CGFloat = 20.0
+		button.backgroundColor = .red
+		button.imageEdgeInsets = UIEdgeInsets(top: spacing, left: 0, bottom: spacing, right: spacing)
+		button.setBackgroundImage(UIImage(named: "camera"), for: .normal)
+		button.titleLabel?.font = UIFont.systemFont(ofSize: 10.0)
+		button.setTitleColor(UIColor.vkBlueText, for: .normal)
+//		button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: -80, right: 0)
+		return button
 	}()
 
-	private(set) lazy var photoStackView: UIStackView = {
-		let stackView = UIStackView()
-		stackView.axis = .vertical
-//		stackView.distribution = .equalCentering
-//		stackView.spacing = 5
-		stackView.translatesAutoresizingMaskIntoConstraints = false
-		return stackView
+	private(set) lazy var storyButton2: UIButton = {
+		let button = UIButton()
+		button.setTitle("История", for: .normal)
+		button.translatesAutoresizingMaskIntoConstraints = false
+		button.clipsToBounds = false
+		button.setBackgroundImage(UIImage(named: "camera"), for: .normal)
+		button.titleLabel?.font = UIFont.systemFont(ofSize: 10.0)
+		button.imageEdgeInsets = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+		button.setTitleColor(UIColor.vkBlueText, for: .normal)
+		button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: -80, right: 0)
+		return button
 	}()
 
-	private(set) lazy var clipStackView: UIStackView = {
-		let stackView = UIStackView()
-		stackView.axis = .vertical
-//		stackView.distribution = .equalCentering
-//		stackView.spacing = 5
-		stackView.translatesAutoresizingMaskIntoConstraints = false
-		return stackView
+	private(set) lazy var storyButton3: UIButton = {
+		let button = UIButton()
+		button.setTitle("История", for: .normal)
+		button.translatesAutoresizingMaskIntoConstraints = false
+		button.clipsToBounds = false
+		button.setBackgroundImage(UIImage(named: "camera"), for: .normal)
+		button.titleLabel?.font = UIFont.systemFont(ofSize: 10.0)
+		button.imageEdgeInsets = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+		button.setTitleColor(UIColor.vkBlueText, for: .normal)
+		button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: -80, right: 0)
+		return button
+	}()
+
+	private(set) lazy var storyButton4: UIButton = {
+		let button = UIButton()
+		button.setTitle("История", for: .normal)
+		button.translatesAutoresizingMaskIntoConstraints = false
+		button.clipsToBounds = false
+		button.setBackgroundImage(UIImage(named: "camera"), for: .normal)
+		button.titleLabel?.font = UIFont.systemFont(ofSize: 10.0)
+		button.imageEdgeInsets = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+		button.setTitleColor(UIColor.vkBlueText, for: .normal)
+		button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: -80, right: 0)
+		return button
 	}()
 
 	private func setupCellCorol() {
@@ -200,18 +137,10 @@ class ProfileFirstTableViewCell: UITableViewCell {
 	}
 
 	private func additionStackView() {
-		iconsAndLablesStackView.addArrangedSubview(storyStackView)
-		iconsAndLablesStackView.addArrangedSubview(recordingStackView)
-		iconsAndLablesStackView.addArrangedSubview(photoStackView)
-		iconsAndLablesStackView.addArrangedSubview(clipStackView)
-		storyStackView.addArrangedSubview(storyIconImageView)
-		storyStackView.addArrangedSubview(storyLabel)
-		recordingStackView.addArrangedSubview(recordingIconImageView)
-		recordingStackView.addArrangedSubview(recordingLabel)
-		photoStackView.addArrangedSubview(photoIconImageView)
-		photoStackView.addArrangedSubview(photoLabel)
-		clipStackView.addArrangedSubview(clipIconImageView)
-		clipStackView.addArrangedSubview(clipLabel)
+		iconsAndLablesStackView.addArrangedSubview(storyButton1)
+		iconsAndLablesStackView.addArrangedSubview(storyButton2)
+		iconsAndLablesStackView.addArrangedSubview(storyButton3)
+		iconsAndLablesStackView.addArrangedSubview(storyButton4)
 	}
 
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -265,22 +194,10 @@ class ProfileFirstTableViewCell: UITableViewCell {
 			iconsAndLablesStackView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -standartIndent),
 			iconsAndLablesStackView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -standartIndent),
 
-//			recordingIconImageView.heightAnchor.constraint(equalToConstant: 25.0),
-//			recordingIconImageView.widthAnchor.constraint(equalToConstant: 25.0),
-//
-//			photoIconImageView.heightAnchor.constraint(equalToConstant: 25.0),
-//			photoIconImageView.widthAnchor.constraint(equalToConstant: 25.0),
-//
-//			storyIconImageView.heightAnchor.constraint(equalToConstant: 25.0),
-//			storyIconImageView.widthAnchor.constraint(equalToConstant: 25.0),
-
-			storyStackView.widthAnchor.constraint(equalToConstant: 60.0),
-			clipStackView.widthAnchor.constraint(equalToConstant: 60.0),
-			photoStackView.widthAnchor.constraint(equalToConstant: 60.0),
-			recordingStackView.widthAnchor.constraint(equalToConstant: 60.0),
-
-			clipIconImageView.heightAnchor.constraint(equalToConstant: 25.0),
-			clipIconImageView.widthAnchor.constraint(equalToConstant: 25.0)
+			storyButton1.widthAnchor.constraint(equalToConstant: 40.0),
+			storyButton2.widthAnchor.constraint(equalToConstant: 40.0),
+			storyButton3.widthAnchor.constraint(equalToConstant: 40.0),
+			storyButton4.widthAnchor.constraint(equalToConstant: 40.0),
 		])
 	}
 }
