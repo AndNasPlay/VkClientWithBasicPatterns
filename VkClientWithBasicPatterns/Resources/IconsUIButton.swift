@@ -46,13 +46,12 @@ class IconsUIButton: UIButton {
 	override func layoutSubviews() {
 		NSLayoutConstraint.activate([
 			iconImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 10.0),
-			iconImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10.0),
-			iconImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10.0),
-			iconImageView.bottomAnchor.constraint(equalTo: iconTitleLable.topAnchor, constant: -10.0),
+			iconImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+			iconImageView.bottomAnchor.constraint(equalTo: self.iconTitleLable.topAnchor, constant: -10.0),
 
-			iconTitleLable.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10.0),
-			iconTitleLable.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 10.0),
-			iconTitleLable.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 10.0)
+			iconTitleLable.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+			iconTitleLable.heightAnchor.constraint(equalToConstant: 20),
+			iconTitleLable.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10.0)
 		])
 	}
 }
