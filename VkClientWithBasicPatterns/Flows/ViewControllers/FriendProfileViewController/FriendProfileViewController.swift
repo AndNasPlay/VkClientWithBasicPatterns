@@ -26,7 +26,7 @@ class FriendProfileViewController: UITableViewController {
 	}
 	// swiftlint:enable unavailable_function
 
-	private var tableCellHeight: CGFloat = 140.0
+	private var tableCellHeight: CGFloat = 210.0
 
 	override func viewDidLoad() {
 		super.viewDidLoad()

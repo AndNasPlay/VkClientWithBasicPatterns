@@ -68,7 +68,7 @@ class ProfileTableViewController: UITableViewController {
 		self.tableView.separatorColor = UIColor.white
 		loadData()
 
-		self.tableView.register(TestProfileView.self, forCellReuseIdentifier: TestProfileView.identifier)
+		self.tableView.register(ProfileFirstTableViewCell.self, forCellReuseIdentifier: ProfileFirstTableViewCell.identifier)
 	}
 
 	// MARK: - Table view data source
@@ -83,7 +83,7 @@ class ProfileTableViewController: UITableViewController {
 
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		// swiftlint:disable force_cast
-		let cell = self.tableView.dequeueReusableCell(withIdentifier: TestProfileView.identifier, for: indexPath) as! TestProfileView
+		let cell = self.tableView.dequeueReusableCell(withIdentifier: ProfileFirstTableViewCell.identifier, for: indexPath) as! ProfileFirstTableViewCell
 		// swiftlint:enable force_cast
 		cell.profileNameLabel.text = profileViewModel?.name
 		if userPhotoUrl != nil {

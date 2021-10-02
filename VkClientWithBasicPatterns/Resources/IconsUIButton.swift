@@ -9,10 +9,16 @@ import UIKit
 
 class IconsUIButton: UIButton {
 
+	var heightTitleLable: CGFloat = 25.0
+	var paddingButtonConstant: CGFloat = 10.0
+	var paddingTopButtonConstant: CGFloat = 20.0
+	var iconTitleLableColor: UIColor = .systemBlue
+
 	private(set) lazy var iconTitleLable: UILabel = {
 		let lable = UILabel()
 		lable.numberOfLines = 1
 		lable.textAlignment = .center
+		lable.textColor = iconTitleLableColor
 		lable.translatesAutoresizingMaskIntoConstraints = false
 		return lable
 	}()
@@ -45,13 +51,13 @@ class IconsUIButton: UIButton {
 
 	override func layoutSubviews() {
 		NSLayoutConstraint.activate([
-			iconImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 10.0),
+			iconImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: paddingTopButtonConstant),
 			iconImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-			iconImageView.bottomAnchor.constraint(equalTo: self.iconTitleLable.topAnchor, constant: -10.0),
+			iconImageView.bottomAnchor.constraint(equalTo: self.iconTitleLable.topAnchor, constant: -paddingButtonConstant),
 
 			iconTitleLable.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-			iconTitleLable.heightAnchor.constraint(equalToConstant: 20),
-			iconTitleLable.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10.0)
+			iconTitleLable.heightAnchor.constraint(equalToConstant: heightTitleLable),
+			iconTitleLable.bottomAnchor.constraint(equalTo: self.bottomAnchor)
 		])
 	}
 }

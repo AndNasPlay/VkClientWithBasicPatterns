@@ -16,6 +16,8 @@ class ProfileFirstTableViewCell: UITableViewCell {
 
 	private let standartIndent: CGFloat = 10.0
 
+	private let onlineIndent: CGFloat = 20.0
+
 	private let buttonHeight: CGFloat = 30.0
 
 	private let textIndent: CGFloat = 20.0
@@ -67,128 +69,48 @@ class ProfileFirstTableViewCell: UITableViewCell {
 		return button
 	}()
 
-	private(set) lazy var storyIconImageView: UIImageView = {
-		let imageView = UIImageView()
-		imageView.image = UIImage(named: "camera")
-		imageView.translatesAutoresizingMaskIntoConstraints = false
-		imageView.layer.masksToBounds = true
-		imageView.clipsToBounds = true
-		imageView.contentMode = .scaleAspectFill
-		return imageView
-	}()
-
-	private(set) lazy var storyLabel: UILabel = {
-		let lable = UILabel()
-		lable.font = UIFont.iconsFont
-		lable.text = "История"
-		lable.textAlignment = .center
-		lable.translatesAutoresizingMaskIntoConstraints = false
-		return lable
-	}()
-
-	private(set) lazy var recordingIconImageView: UIImageView = {
-		let imageView = UIImageView()
-		imageView.image = UIImage(named: "recording")
-		imageView.translatesAutoresizingMaskIntoConstraints = false
-		imageView.layer.masksToBounds = true
-		imageView.clipsToBounds = true
-		imageView.contentMode = .scaleAspectFill
-		return imageView
-	}()
-
-	private(set) lazy var recordingLabel: UILabel = {
-		let lable = UILabel()
-		lable.font = UIFont.iconsFont
-		lable.text = "Запись"
-		lable.textAlignment = .center
-		lable.translatesAutoresizingMaskIntoConstraints = false
-		return lable
-	}()
-
-	private(set) lazy var photoIconImageView: UIImageView = {
-		let imageView = UIImageView()
-		imageView.image = UIImage(named: "photo")
-		imageView.translatesAutoresizingMaskIntoConstraints = false
-		imageView.layer.masksToBounds = true
-		imageView.clipsToBounds = true
-		imageView.contentMode = .scaleAspectFill
-		return imageView
-	}()
-
-	private(set) lazy var photoLabel: UILabel = {
-		let lable = UILabel()
-		lable.font = UIFont.iconsFont
-		lable.text = "Фото"
-		lable.textAlignment = .center
-		lable.translatesAutoresizingMaskIntoConstraints = false
-		return lable
-	}()
-
-	private(set) lazy var clipIconImageView: UIImageView = {
-		let imageView = UIImageView()
-		imageView.image = UIImage(named: "like")
-		imageView.translatesAutoresizingMaskIntoConstraints = false
-		imageView.layer.masksToBounds = true
-		imageView.clipsToBounds = true
-		imageView.contentMode = .scaleAspectFill
-		return imageView
-	}()
-
-	private(set) lazy var clipLabel: UILabel = {
-		let lable = UILabel()
-		lable.font = UIFont.iconsFont
-		lable.text = "Клип"
-		lable.textAlignment = .center
-		lable.translatesAutoresizingMaskIntoConstraints = false
-		return lable
-	}()
-
 	private(set) lazy var iconsAndLablesStackView: UIStackView = {
 		let stackView = UIStackView()
 		stackView.axis = .horizontal
-		stackView.distribution = .equalSpacing
-
-		stackView.translatesAutoresizingMaskIntoConstraints = false
-		stackView.backgroundColor = .red
-		return stackView
-	}()
-
-	private(set) lazy var storyStackView: UIStackView = {
-		let stackView = UIStackView()
-		stackView.axis = .vertical
-//		stackView.distribution = .fillProportionally
-//		stackView.spacing = 5
-		stackView.backgroundColor = .green
+		stackView.distribution = .fillEqually
 		stackView.translatesAutoresizingMaskIntoConstraints = false
 		return stackView
 	}()
 
-	private(set) lazy var recordingStackView: UIStackView = {
-		let stackView = UIStackView()
-		stackView.axis = .vertical
-//		stackView.distribution = .equalCentering
-		stackView.backgroundColor = .yellow
-//		stackView.spacing = 5
-		stackView.translatesAutoresizingMaskIntoConstraints = false
-		return stackView
+	private(set) lazy var storyButton1: IconsUIButton = {
+		let button = IconsUIButton(with: IconsButtonViewModel(iconTitleLable: "История", iconeImageView: "camera"))
+		button.translatesAutoresizingMaskIntoConstraints = false
+		button.paddingButtonConstant = 5.0
+		button.iconTitleLable.font = .systemFont(ofSize: 10.0, weight: .medium)
+		button.heightTitleLable = 10.0
+		return button
 	}()
 
-	private(set) lazy var photoStackView: UIStackView = {
-		let stackView = UIStackView()
-		stackView.axis = .vertical
-//		stackView.distribution = .equalCentering
-//		stackView.spacing = 5
-		stackView.translatesAutoresizingMaskIntoConstraints = false
-		return stackView
+	private(set) lazy var storyButton2: IconsUIButton = {
+		let button = IconsUIButton(with: IconsButtonViewModel(iconTitleLable: "Запись", iconeImageView: "recording"))
+		button.translatesAutoresizingMaskIntoConstraints = false
+		button.paddingButtonConstant = 5.0
+		button.iconTitleLable.font = .systemFont(ofSize: 10.0, weight: .medium)
+		button.heightTitleLable = 10.0
+		return button
 	}()
 
-	private(set) lazy var clipStackView: UIStackView = {
-		let stackView = UIStackView()
-		stackView.axis = .vertical
-//		stackView.distribution = .equalCentering
-//		stackView.spacing = 5
-		stackView.translatesAutoresizingMaskIntoConstraints = false
-		return stackView
+	private(set) lazy var storyButton3: IconsUIButton = {
+		let button = IconsUIButton(with: IconsButtonViewModel(iconTitleLable: "Фото", iconeImageView: "photo"))
+		button.translatesAutoresizingMaskIntoConstraints = false
+		button.paddingButtonConstant = 5.0
+		button.iconTitleLable.font = .systemFont(ofSize: 10.0, weight: .medium)
+		button.heightTitleLable = 10.0
+		return button
+	}()
+
+	private(set) lazy var storyButton4: IconsUIButton = {
+		let button = IconsUIButton(with: IconsButtonViewModel(iconTitleLable: "Клип", iconeImageView: "like"))
+		button.translatesAutoresizingMaskIntoConstraints = false
+		button.paddingButtonConstant = 5.0
+		button.iconTitleLable.font = .systemFont(ofSize: 10.0, weight: .medium)
+		button.heightTitleLable = 10.0
+		return button
 	}()
 
 	private func setupCellCorol() {
@@ -200,24 +122,15 @@ class ProfileFirstTableViewCell: UITableViewCell {
 	}
 
 	private func additionStackView() {
-		iconsAndLablesStackView.addArrangedSubview(storyStackView)
-		iconsAndLablesStackView.addArrangedSubview(recordingStackView)
-		iconsAndLablesStackView.addArrangedSubview(photoStackView)
-		iconsAndLablesStackView.addArrangedSubview(clipStackView)
-		storyStackView.addArrangedSubview(storyIconImageView)
-		storyStackView.addArrangedSubview(storyLabel)
-		recordingStackView.addArrangedSubview(recordingIconImageView)
-		recordingStackView.addArrangedSubview(recordingLabel)
-		photoStackView.addArrangedSubview(photoIconImageView)
-		photoStackView.addArrangedSubview(photoLabel)
-		clipStackView.addArrangedSubview(clipIconImageView)
-		clipStackView.addArrangedSubview(clipLabel)
+		iconsAndLablesStackView.addArrangedSubview(storyButton1)
+		iconsAndLablesStackView.addArrangedSubview(storyButton2)
+		iconsAndLablesStackView.addArrangedSubview(storyButton3)
+		iconsAndLablesStackView.addArrangedSubview(storyButton4)
 	}
 
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 		contentView.backgroundColor = .white
-		selectionStyle = UITableViewCell.SelectionStyle.none
 		contentView.addSubview(profileNameLabel)
 		contentView.addSubview(avatarImageView)
 		contentView.addSubview(profileStatusLabel)
@@ -253,7 +166,7 @@ class ProfileFirstTableViewCell: UITableViewCell {
 			profileStatusLabel.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: textMultiplier),
 
 			profileActiveStatusLabel.leadingAnchor.constraint(equalTo: self.avatarImageView.trailingAnchor, constant: textIndent),
-			profileActiveStatusLabel.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor, constant: standartIndent),
+			profileActiveStatusLabel.centerYAnchor.constraint(equalTo: self.avatarImageView.centerYAnchor, constant: onlineIndent),
 			profileActiveStatusLabel.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: textMultiplier),
 
 			editProfileButton.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: standartIndent),
@@ -263,24 +176,7 @@ class ProfileFirstTableViewCell: UITableViewCell {
 
 			iconsAndLablesStackView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: standartIndent),
 			iconsAndLablesStackView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -standartIndent),
-			iconsAndLablesStackView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -standartIndent),
-
-//			recordingIconImageView.heightAnchor.constraint(equalToConstant: 25.0),
-//			recordingIconImageView.widthAnchor.constraint(equalToConstant: 25.0),
-//
-//			photoIconImageView.heightAnchor.constraint(equalToConstant: 25.0),
-//			photoIconImageView.widthAnchor.constraint(equalToConstant: 25.0),
-//
-//			storyIconImageView.heightAnchor.constraint(equalToConstant: 25.0),
-//			storyIconImageView.widthAnchor.constraint(equalToConstant: 25.0),
-
-			storyStackView.widthAnchor.constraint(equalToConstant: 60.0),
-			clipStackView.widthAnchor.constraint(equalToConstant: 60.0),
-			photoStackView.widthAnchor.constraint(equalToConstant: 60.0),
-			recordingStackView.widthAnchor.constraint(equalToConstant: 60.0),
-
-			clipIconImageView.heightAnchor.constraint(equalToConstant: 25.0),
-			clipIconImageView.widthAnchor.constraint(equalToConstant: 25.0)
+			iconsAndLablesStackView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -standartIndent)
 		])
 	}
 }
