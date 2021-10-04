@@ -1,15 +1,16 @@
 {
   "images" : [
     {
-      "filename" : "post_69.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "home_46.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "domik_69.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

@@ -9,12 +9,14 @@ import UIKit
 
 class ProfileViewModelFactory {
 
-	func constructViewModel(from profile: Profile) -> ProfileViewModel {
+	func constructViewModel(from profile: Profile) -> ProfileFirstSectionViewModel {
 		getViewModel(from: profile)
 	}
 
-	private func getViewModel(from profile: Profile) -> ProfileViewModel {
+	private func getViewModel(from profile: Profile) -> ProfileFirstSectionViewModel {
 		let fullName = "\(profile.firstName ?? "Павел") \(profile.lastName ?? "Дуров")"
-		return ProfileViewModel(name: fullName)
+		let city = "Город: \(profile.city?.title ?? "Москва")"
+
+		return ProfileFirstSectionViewModel(name: fullName, homeTown: city)
 	}
 }

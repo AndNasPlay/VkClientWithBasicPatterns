@@ -25,15 +25,15 @@ class VkTabBarController: UITabBarController {
 				for: FriendsTableViewController(requestFactory: factory),
 				// swiftlint:disable force_unwrapping
 				title: "Друзья",
-				image: UIImage(systemName: "house")!),
+				image: UIImage(named: "friends")!),
 			createNavController(
 				for: GroupsTableViewController(requestFactory: factory),
 				title: "Все сообщества",
-				image: UIImage(systemName: "house")!),
+				image: UIImage(named: "group")!),
 			createNavController(
 				for: ProfileTableViewController(requestFactory: factory),
 				title: "Profile",
-				image: UIImage(systemName: "house")!)
+				image: UIImage(named: "profile")!)
 			// swiftlint:enable force_unwrapping
 		]
 	}

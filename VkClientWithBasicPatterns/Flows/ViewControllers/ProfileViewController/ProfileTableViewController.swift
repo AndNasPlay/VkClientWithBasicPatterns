@@ -24,7 +24,7 @@ class ProfileTableViewController: UITableViewController {
 	private var tableCellHeight: CGFloat = 210.0
 
 	private let profileViewModelFactory = ProfileViewModelFactory()
-	private var profileViewModel: ProfileViewModel?
+	private var profileViewModel: ProfileFirstSectionViewModel?
 	private var userPhotoUrl: String?
 	private let profileImageSize: String = "p"
 
@@ -66,15 +66,17 @@ class ProfileTableViewController: UITableViewController {
 		self.tableView.backgroundColor = .white
 		self.title = "Profile"
 		self.tableView.separatorColor = UIColor.white
+//		self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.singleLine
 		loadData()
 
 		self.tableView.register(ProfileFirstTableViewCell.self, forCellReuseIdentifier: ProfileFirstTableViewCell.identifier)
+		self.tableView.register(ProfileInfoBlockViewCell.self, forCellReuseIdentifier: ProfileInfoBlockViewCell.identifier)
 	}
 
 	// MARK: - Table view data source
 
 	override func numberOfSections(in tableView: UITableView) -> Int {
-		1
+		2
 	}
 
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -82,19 +84,32 @@ class ProfileTableViewController: UITableViewController {
 	}
 
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		// swiftlint:disable force_cast
-		let cell = self.tableView.dequeueReusableCell(withIdentifier: ProfileFirstTableViewCell.identifier, for: indexPath) as! ProfileFirstTableViewCell
-		// swiftlint:enable force_cast
-		cell.profileNameLabel.text = profileViewModel?.name
-		if userPhotoUrl != nil {
-			cell.avatarImageView.kf.setImage(with: URL(string: userPhotoUrl ?? "http://placehold.it/50x50"))
+		if indexPath.section == 0 {
+			// swiftlint:disable force_cast
+			let cell = self.tableView.dequeueReusableCell(withIdentifier: ProfileFirstTableViewCell.identifier, for: indexPath) as! ProfileFirstTableViewCell
+			// swiftlint:enable force_cast
+			cell.profileNameLabel.text = profileViewModel?.name
+			if userPhotoUrl != nil {
+				cell.avatarImageView.kf.setImage(with: URL(string: userPhotoUrl ?? "http://placehold.it/50x50"))
+			} else {
+				cell.avatarImageView.image = UIImage(named: "testImg")
+			}
+			return cell
 		} else {
-			cell.avatarImageView.image = UIImage(named: "testImg")
+			// swiftlint:disable force_cast
+			let cell = self.tableView.dequeueReusableCell(withIdentifier: ProfileInfoBlockViewCell.identifier, for: indexPath) as! ProfileInfoBlockViewCell
+			// swiftlint:enable force_cast
+			cell.cityLabel.text = profileViewModel?.homeTown
+			return cell
 		}
-		return cell
+
 	}
 
 	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-		tableCellHeight
+		if indexPath.section == 0 {
+			return tableCellHeight
+		} else {
+			return 140.0
+		}
 	}
 }

@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1607A9B42700D53B003874FA /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1607A9B32700D53B003874FA /* UIColorExtension.swift */; };
-		1607A9B827039FB8003874FA /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1607A9B727039FB8003874FA /* ProfileViewModel.swift */; };
+		1607A9B827039FB8003874FA /* ProfileFirstSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1607A9B727039FB8003874FA /* ProfileFirstSectionViewModel.swift */; };
 		1607A9BA2703A04D003874FA /* FriendsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1607A9B92703A04D003874FA /* FriendsViewModel.swift */; };
 		16434A442704973900AF5501 /* FriendsViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16434A432704973900AF5501 /* FriendsViewModelFactory.swift */; };
 		16434A462704A12B00AF5501 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16434A452704A12B00AF5501 /* UIImageViewExtension.swift */; };
@@ -56,7 +56,7 @@
 
 /* Begin PBXFileReference section */
 		1607A9B32700D53B003874FA /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
-		1607A9B727039FB8003874FA /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		1607A9B727039FB8003874FA /* ProfileFirstSectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFirstSectionViewModel.swift; sourceTree = "<group>"; };
 		1607A9B92703A04D003874FA /* FriendsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewModel.swift; sourceTree = "<group>"; };
 		163E903D26FF5D5D006149CE /* libSDWebImage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSDWebImage.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		16434A432704973900AF5501 /* FriendsViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewModelFactory.swift; sourceTree = "<group>"; };
@@ -127,7 +127,7 @@
 			children = (
 				16434A492704C30F00AF5501 /* GroupsViewModelFactory */,
 				16434A422704971A00AF5501 /* FriendsAndGroupsViewModelFactory */,
-				16434A41270496FA00AF5501 /* ProfileViewModelFactory */,
+				16434A41270496FA00AF5501 /* ProfileFirstSectionViewModelFactory */,
 			);
 			path = ViewModelFactory;
 			sourceTree = "<group>";
@@ -143,13 +143,13 @@
 			path = ResponseModel;
 			sourceTree = "<group>";
 		};
-		16434A41270496FA00AF5501 /* ProfileViewModelFactory */ = {
+		16434A41270496FA00AF5501 /* ProfileFirstSectionViewModelFactory */ = {
 			isa = PBXGroup;
 			children = (
-				1607A9B727039FB8003874FA /* ProfileViewModel.swift */,
+				1607A9B727039FB8003874FA /* ProfileFirstSectionViewModel.swift */,
 				16434A472704C30500AF5501 /* ProfileViewModelFactory.swift */,
 			);
-			path = ProfileViewModelFactory;
+			path = ProfileFirstSectionViewModelFactory;
 			sourceTree = "<group>";
 		};
 		16434A422704971A00AF5501 /* FriendsAndGroupsViewModelFactory */ = {
@@ -550,7 +550,7 @@
 				1690B60426FE022100037328 /* LoadProfileService.swift in Sources */,
 				16434A5427061B3700AF5501 /* FriendProfileViewController.swift in Sources */,
 				16434A4D2704C3B100AF5501 /* GroupsViewModelFactory.swift in Sources */,
-				1607A9B827039FB8003874FA /* ProfileViewModel.swift in Sources */,
+				1607A9B827039FB8003874FA /* ProfileFirstSectionViewModel.swift in Sources */,
 				1690B5E126FCC0EE00037328 /* ProfileTableViewController.swift in Sources */,
 				16434A4F2704C4C400AF5501 /* GroupsTableViewCell.swift in Sources */,
 				1607A9B42700D53B003874FA /* UIColorExtension.swift in Sources */,

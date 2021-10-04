@@ -16,6 +16,8 @@ class ProfileFirstTableViewCell: UITableViewCell {
 
 	private let standartIndent: CGFloat = 10.0
 
+	private let bottomIndent: CGFloat = 20.0
+
 	private let onlineIndent: CGFloat = 20.0
 
 	private let buttonHeight: CGFloat = 30.0
@@ -64,6 +66,7 @@ class ProfileFirstTableViewCell: UITableViewCell {
 	private(set) lazy var editProfileButton: UIButton = {
 		let button = UIButton()
 		button.setTitle("Редактировать", for: .normal)
+		button.titleLabel?.font = UIFont.systemFont(ofSize: 14.0, weight: .semibold)
 		button.translatesAutoresizingMaskIntoConstraints = false
 		button.layer.cornerRadius = 10
 		return button
@@ -81,7 +84,6 @@ class ProfileFirstTableViewCell: UITableViewCell {
 		let button = IconsUIButton(with: IconsButtonViewModel(iconTitleLable: "История", iconeImageView: "camera"))
 		button.translatesAutoresizingMaskIntoConstraints = false
 		button.paddingButtonConstant = 5.0
-		button.iconTitleLable.font = .systemFont(ofSize: 10.0, weight: .medium)
 		button.heightTitleLable = 10.0
 		return button
 	}()
@@ -90,7 +92,6 @@ class ProfileFirstTableViewCell: UITableViewCell {
 		let button = IconsUIButton(with: IconsButtonViewModel(iconTitleLable: "Запись", iconeImageView: "recording"))
 		button.translatesAutoresizingMaskIntoConstraints = false
 		button.paddingButtonConstant = 5.0
-		button.iconTitleLable.font = .systemFont(ofSize: 10.0, weight: .medium)
 		button.heightTitleLable = 10.0
 		return button
 	}()
@@ -99,7 +100,6 @@ class ProfileFirstTableViewCell: UITableViewCell {
 		let button = IconsUIButton(with: IconsButtonViewModel(iconTitleLable: "Фото", iconeImageView: "photo"))
 		button.translatesAutoresizingMaskIntoConstraints = false
 		button.paddingButtonConstant = 5.0
-		button.iconTitleLable.font = .systemFont(ofSize: 10.0, weight: .medium)
 		button.heightTitleLable = 10.0
 		return button
 	}()
@@ -108,7 +108,6 @@ class ProfileFirstTableViewCell: UITableViewCell {
 		let button = IconsUIButton(with: IconsButtonViewModel(iconTitleLable: "Клип", iconeImageView: "like"))
 		button.translatesAutoresizingMaskIntoConstraints = false
 		button.paddingButtonConstant = 5.0
-		button.iconTitleLable.font = .systemFont(ofSize: 10.0, weight: .medium)
 		button.heightTitleLable = 10.0
 		return button
 	}()
@@ -172,11 +171,11 @@ class ProfileFirstTableViewCell: UITableViewCell {
 			editProfileButton.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: standartIndent),
 			editProfileButton.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -standartIndent),
 			editProfileButton.heightAnchor.constraint(equalToConstant: buttonHeight),
-			editProfileButton.bottomAnchor.constraint(equalTo: self.iconsAndLablesStackView.topAnchor, constant: -standartIndent),
+			editProfileButton.bottomAnchor.constraint(equalTo: self.iconsAndLablesStackView.topAnchor),
 
 			iconsAndLablesStackView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: standartIndent),
 			iconsAndLablesStackView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -standartIndent),
-			iconsAndLablesStackView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -standartIndent)
+			iconsAndLablesStackView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -bottomIndent)
 		])
 	}
 }

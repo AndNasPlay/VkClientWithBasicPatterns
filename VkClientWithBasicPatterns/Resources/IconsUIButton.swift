@@ -9,15 +9,16 @@ import UIKit
 
 class IconsUIButton: UIButton {
 
-	var heightTitleLable: CGFloat = 25.0
-	var paddingButtonConstant: CGFloat = 10.0
+	var heightTitleLable: CGFloat = 15.0
+	var paddingButtonConstant: CGFloat = 20.0
 	var paddingTopButtonConstant: CGFloat = 20.0
-	var iconTitleLableColor: UIColor = .systemBlue
+	var iconTitleLableColor = UIColor.vkBlueText
 
 	private(set) lazy var iconTitleLable: UILabel = {
 		let lable = UILabel()
 		lable.numberOfLines = 1
 		lable.textAlignment = .center
+		lable.font = UIFont.systemFont(ofSize: 12.0, weight: .medium)
 		lable.textColor = iconTitleLableColor
 		lable.translatesAutoresizingMaskIntoConstraints = false
 		return lable
@@ -56,7 +57,7 @@ class IconsUIButton: UIButton {
 			iconImageView.bottomAnchor.constraint(equalTo: self.iconTitleLable.topAnchor, constant: -paddingButtonConstant),
 
 			iconTitleLable.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-			iconTitleLable.heightAnchor.constraint(equalToConstant: heightTitleLable),
+			iconTitleLable.heightAnchor.constraint(equalToConstant: self.heightTitleLable),
 			iconTitleLable.bottomAnchor.constraint(equalTo: self.bottomAnchor)
 		])
 	}
