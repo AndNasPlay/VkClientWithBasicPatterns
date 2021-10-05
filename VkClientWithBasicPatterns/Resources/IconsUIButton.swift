@@ -10,7 +10,7 @@ import UIKit
 class IconsUIButton: UIButton {
 
 	var heightTitleLable: CGFloat = 15.0
-	var paddingButtonConstant: CGFloat = 20.0
+	var paddingButtonConstant: CGFloat = 10.0
 	var paddingTopButtonConstant: CGFloat = 20.0
 	var iconTitleLableColor = UIColor.vkBlueText
 

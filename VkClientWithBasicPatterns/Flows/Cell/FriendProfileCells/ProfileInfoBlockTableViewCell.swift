@@ -1,15 +1,15 @@
 //
-//  ProfileInfoBlockViewCell.swift
+//  ProfileInfoBlockTableViewCell.swift
 //  VkClientWithBasicPatterns
 //
-//  Created by Андрей Щекатунов on 30.09.2021.
+//  Created by Андрей Щекатунов on 05.10.2021.
 //
 
 import UIKit
 
-class ProfileInfoBlockViewCell: UITableViewCell {
+class ProfileInfoBlockTableViewCell: UITableViewCell {
 
-	static let identifier = "ProfileInfoBlockViewCell"
+	static let identifier = "ProfileInfoBlockTableViewCell"
 
 	private let lableMultiplier: CGFloat = 0.85
 

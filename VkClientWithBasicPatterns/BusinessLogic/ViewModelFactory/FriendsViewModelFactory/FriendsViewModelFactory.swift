@@ -17,10 +17,12 @@ class FriendsViewModelFactory {
 		let fullName = "\(friend.firstName ?? "Павел") \(friend.lastName ?? "Дуров")"
 		let city = friend.city?.title
 		let avatar = friend.photo100
+		let trackCode = friend.domain
 		return FriendsViewModel(
 			avatarImage: avatar,
 			nameLable: fullName,
-			cityName: city
+			cityName: city,
+			domain: trackCode
 		)
 	}
 }

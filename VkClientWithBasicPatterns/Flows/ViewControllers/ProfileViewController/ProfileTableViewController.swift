@@ -22,9 +22,12 @@ class ProfileTableViewController: UITableViewController {
 	// swiftlint:enable unavailable_function
 
 	private var tableCellHeight: CGFloat = 210.0
+	private var secondTableCellHeight: CGFloat = 140.0
+	private var sectionCount = 2
+	private var rowCount = 1
 
 	private let profileViewModelFactory = ProfileViewModelFactory()
-	private var profileViewModel: ProfileFirstSectionViewModel?
+	private var profileViewModel = ProfileViewModel(name: "", homeTown: "")
 	private var userPhotoUrl: String?
 	private let profileImageSize: String = "p"
 
@@ -61,26 +64,24 @@ class ProfileTableViewController: UITableViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		self.title = "Profile"
 		self.tableView.delegate = self
 		self.tableView.dataSource = self
 		self.tableView.backgroundColor = .white
-		self.title = "Profile"
 		self.tableView.separatorColor = UIColor.white
-//		self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.singleLine
-		loadData()
-
 		self.tableView.register(ProfileFirstTableViewCell.self, forCellReuseIdentifier: ProfileFirstTableViewCell.identifier)
 		self.tableView.register(ProfileInfoBlockViewCell.self, forCellReuseIdentifier: ProfileInfoBlockViewCell.identifier)
+		loadData()
 	}
 
 	// MARK: - Table view data source
 
 	override func numberOfSections(in tableView: UITableView) -> Int {
-		2
+		sectionCount
 	}
 
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		1
+		rowCount
 	}
 
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -88,7 +89,7 @@ class ProfileTableViewController: UITableViewController {
 			// swiftlint:disable force_cast
 			let cell = self.tableView.dequeueReusableCell(withIdentifier: ProfileFirstTableViewCell.identifier, for: indexPath) as! ProfileFirstTableViewCell
 			// swiftlint:enable force_cast
-			cell.profileNameLabel.text = profileViewModel?.name
+			cell.configureCell(profileViewModel: profileViewModel)
 			if userPhotoUrl != nil {
 				cell.avatarImageView.kf.setImage(with: URL(string: userPhotoUrl ?? "http://placehold.it/50x50"))
 			} else {
@@ -99,17 +100,16 @@ class ProfileTableViewController: UITableViewController {
 			// swiftlint:disable force_cast
 			let cell = self.tableView.dequeueReusableCell(withIdentifier: ProfileInfoBlockViewCell.identifier, for: indexPath) as! ProfileInfoBlockViewCell
 			// swiftlint:enable force_cast
-			cell.cityLabel.text = profileViewModel?.homeTown
+			cell.configureCell(profileViewModel: profileViewModel)
 			return cell
 		}
-
 	}
 
 	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 		if indexPath.section == 0 {
 			return tableCellHeight
 		} else {
-			return 140.0
+			return secondTableCellHeight
 		}
 	}
 }

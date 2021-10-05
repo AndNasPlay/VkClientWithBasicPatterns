@@ -34,7 +34,7 @@ class FriendsTableViewController: UITableViewController {
 					// swiftlint:disable force_unwrapping
 					self.friendsViewModels = self.friendsViewModelFactory.constructViewModel(from: (catalog.response?.items)!)
 					// swiftlint:enable force_unwrapping
-						self.tableView.reloadData()
+					self.tableView.reloadData()
 				case .failure(let error):
 					print(error.localizedDescription)
 				}
@@ -42,35 +42,35 @@ class FriendsTableViewController: UITableViewController {
 		}
 	}
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+	override func viewDidLoad() {
+		super.viewDidLoad()
 		self.tableView.delegate = self
 		self.tableView.dataSource = self
 		self.tableView.backgroundColor = .white
 		self.title = "Друзья"
-		self.tableView.separatorColor = UIColor.white
+		self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.singleLine
 		loadData()
 
 		self.tableView.register(FriendsTableViewCell.self, forCellReuseIdentifier: FriendsTableViewCell.identifier)
-    }
+	}
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+	override func numberOfSections(in tableView: UITableView) -> Int {
 		1
-    }
+	}
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		friendsViewModels.count
-    }
+	}
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		// swiftlint:disable force_cast
 		let cell = self.tableView.dequeueReusableCell(withIdentifier: FriendsTableViewCell.identifier,
 													  for: indexPath) as! FriendsTableViewCell
 		// swiftlint:enable force_cast
 
 		cell.configureCell(friendsViewModel: friendsViewModels[indexPath.row])
-        return cell
-    }
+		return cell
+	}
 
 	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 		tableCellHeight
@@ -80,8 +80,9 @@ class FriendsTableViewController: UITableViewController {
 		let profileController = FriendProfileViewController(
 			requestFactory: requestFactory,
 			userPhotoUrl: friendsViewModels[indexPath.row].avatarImage ?? "http://placehold.it/50x50",
-			userName: friendsViewModels[indexPath.row].nameLable ?? "Дима")
+			userName: friendsViewModels[indexPath.row].nameLable ?? "Дима",
+			trackCode: friendsViewModels[indexPath.row].domain ?? "Profile")
 
-		 self.navigationController?.pushViewController(profileController, animated: true)
+		self.navigationController?.pushViewController(profileController, animated: true)
 	}
 }

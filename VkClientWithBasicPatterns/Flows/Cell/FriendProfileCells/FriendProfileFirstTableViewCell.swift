@@ -1,15 +1,15 @@
 //
-//  ProfileFirstTableViewCell.swift
+//  FriendProfileFirstTableViewCell.swift
 //  VkClientWithBasicPatterns
 //
-//  Created by Андрей Щекатунов on 23.09.2021.
+//  Created by Андрей Щекатунов on 05.10.2021.
 //
 
 import UIKit
 
-class ProfileFirstTableViewCell: UITableViewCell {
+class FriendProfileFirstTableViewCell: UITableViewCell {
 
-	static let identifier = "ProfileFirstTableViewCell"
+	static let identifier = "FriendProfileFirstTableViewCell"
 
 	private let avatarWidthHeight: CGFloat = 80.0
 
@@ -17,9 +17,9 @@ class ProfileFirstTableViewCell: UITableViewCell {
 
 	private let bottomIndent: CGFloat = 20.0
 
-	private let onlineIndent: CGFloat = 20.0
+	private let onlineIndent: CGFloat = 15.0
 
-	private let buttonHeight: CGFloat = 30.0
+	private let buttonHeight: CGFloat = 35.0
 
 	private let textIndent: CGFloat = 20.0
 
@@ -44,15 +44,6 @@ class ProfileFirstTableViewCell: UITableViewCell {
 		return lable
 	}()
 
-	private(set) lazy var profileStatusLabel: UILabel = {
-		let lable = UILabel()
-		lable.font = UIFont.profileStatusFont
-		lable.text = "Установить статус"
-		lable.numberOfLines = 0
-		lable.translatesAutoresizingMaskIntoConstraints = false
-		return lable
-	}()
-
 	private(set) lazy var profileActiveStatusLabel: UILabel = {
 		let lable = UILabel()
 		lable.font = UIFont.profileActiveStatusFont
@@ -62,13 +53,31 @@ class ProfileFirstTableViewCell: UITableViewCell {
 		return lable
 	}()
 
-	private(set) lazy var editProfileButton: UIButton = {
+	private(set) lazy var messageButton: UIButton = {
 		let button = UIButton()
-		button.setTitle("Редактировать", for: .normal)
+		button.setTitle("Сообщение", for: .normal)
 		button.titleLabel?.font = UIFont.systemFont(ofSize: 14.0, weight: .semibold)
 		button.translatesAutoresizingMaskIntoConstraints = false
 		button.layer.cornerRadius = 10
 		return button
+	}()
+
+	private(set) lazy var callButton: UIButton = {
+		let button = UIButton()
+		button.setTitle("Звонок", for: .normal)
+		button.titleLabel?.font = UIFont.systemFont(ofSize: 14.0, weight: .semibold)
+		button.translatesAutoresizingMaskIntoConstraints = false
+		button.layer.cornerRadius = 10
+		return button
+	}()
+
+	private(set) lazy var buttonsStackView: UIStackView = {
+		let stackView = UIStackView()
+		stackView.axis = .horizontal
+		stackView.distribution = .fillEqually
+		stackView.spacing = 10.0
+		stackView.translatesAutoresizingMaskIntoConstraints = false
+		return stackView
 	}()
 
 	private(set) lazy var iconsAndLablesStackView: UIStackView = {
@@ -79,61 +88,59 @@ class ProfileFirstTableViewCell: UITableViewCell {
 		return stackView
 	}()
 
-	private(set) lazy var storyButton1: IconsUIButton = {
-		let button = IconsUIButton(with: IconsButtonViewModel(iconTitleLable: "История", iconeImageView: "camera"))
+	private(set) lazy var inFriendButton: IconsUIButton = {
+		let button = IconsUIButton(with: IconsButtonViewModel(iconTitleLable: "В друзьях", iconeImageView: "confirmIcone"))
 		button.translatesAutoresizingMaskIntoConstraints = false
 		button.paddingButtonConstant = 5.0
-		button.heightTitleLable = 10.0
 		return button
 	}()
 
-	private(set) lazy var storyButton2: IconsUIButton = {
-		let button = IconsUIButton(with: IconsButtonViewModel(iconTitleLable: "Запись", iconeImageView: "recording"))
+	private(set) lazy var moneyButton: IconsUIButton = {
+		let button = IconsUIButton(with: IconsButtonViewModel(iconTitleLable: "Деньги", iconeImageView: "payIcone"))
 		button.translatesAutoresizingMaskIntoConstraints = false
 		button.paddingButtonConstant = 5.0
-		button.heightTitleLable = 10.0
 		return button
 	}()
 
-	private(set) lazy var storyButton3: IconsUIButton = {
-		let button = IconsUIButton(with: IconsButtonViewModel(iconTitleLable: "Фото", iconeImageView: "photo"))
+	private(set) lazy var giftButton: IconsUIButton = {
+		let button = IconsUIButton(with: IconsButtonViewModel(iconTitleLable: "Подарок", iconeImageView: "giftIcone"))
 		button.translatesAutoresizingMaskIntoConstraints = false
 		button.paddingButtonConstant = 5.0
-		button.heightTitleLable = 10.0
 		return button
 	}()
 
-	private(set) lazy var storyButton4: IconsUIButton = {
-		let button = IconsUIButton(with: IconsButtonViewModel(iconTitleLable: "Клип", iconeImageView: "like"))
+	private(set) lazy var notificationButton: IconsUIButton = {
+		let button = IconsUIButton(with: IconsButtonViewModel(iconTitleLable: "Уведомления", iconeImageView: "bellIcone"))
 		button.translatesAutoresizingMaskIntoConstraints = false
 		button.paddingButtonConstant = 5.0
-		button.heightTitleLable = 10.0
 		return button
 	}()
 
 	private func setupCellCorol() {
 		profileActiveStatusLabel.textColor = UIColor.vkGreyText
-		editProfileButton.backgroundColor = UIColor.vkButtonGrey
-		editProfileButton.setTitleColor(UIColor.vkBlueText, for: .normal)
-		profileStatusLabel.textColor = UIColor.vkBlueText
+		messageButton.backgroundColor = UIColor.vkButtonBlue
+		messageButton.setTitleColor(UIColor.white, for: .normal)
+		callButton.backgroundColor = UIColor.vkButtonBlue
+		callButton.setTitleColor(UIColor.white, for: .normal)
 		profileNameLabel.textColor = UIColor.vkBlackText
 	}
 
 	private func additionStackView() {
-		iconsAndLablesStackView.addArrangedSubview(storyButton1)
-		iconsAndLablesStackView.addArrangedSubview(storyButton2)
-		iconsAndLablesStackView.addArrangedSubview(storyButton3)
-		iconsAndLablesStackView.addArrangedSubview(storyButton4)
+		buttonsStackView.addArrangedSubview(messageButton)
+		buttonsStackView.addArrangedSubview(callButton)
+		iconsAndLablesStackView.addArrangedSubview(inFriendButton)
+		iconsAndLablesStackView.addArrangedSubview(moneyButton)
+		iconsAndLablesStackView.addArrangedSubview(giftButton)
+		iconsAndLablesStackView.addArrangedSubview(notificationButton)
 	}
 
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
-		contentView.backgroundColor = .white
+		contentView.backgroundColor = .green
 		contentView.addSubview(profileNameLabel)
 		contentView.addSubview(avatarImageView)
-		contentView.addSubview(profileStatusLabel)
 		contentView.addSubview(profileActiveStatusLabel)
-		contentView.addSubview(editProfileButton)
+		contentView.addSubview(buttonsStackView)
 		contentView.addSubview(iconsAndLablesStackView)
 		additionStackView()
 		setupCellCorol()
@@ -157,24 +164,20 @@ class ProfileFirstTableViewCell: UITableViewCell {
 			avatarImageView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: standartIndent),
 			avatarImageView.widthAnchor.constraint(equalToConstant: avatarWidthHeight),
 			avatarImageView.heightAnchor.constraint(equalToConstant: avatarWidthHeight),
-			avatarImageView.bottomAnchor.constraint(equalTo: self.editProfileButton.topAnchor, constant: -standartIndent),
+			avatarImageView.bottomAnchor.constraint(equalTo: self.messageButton.topAnchor, constant: -standartIndent),
 
 			profileNameLabel.leadingAnchor.constraint(equalTo: self.avatarImageView.trailingAnchor, constant: textIndent),
-			profileNameLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: standartIndent),
+			profileNameLabel.centerYAnchor.constraint(equalTo: self.avatarImageView.centerYAnchor, constant: -standartIndent),
 			profileNameLabel.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: textMultiplier),
-
-			profileStatusLabel.leadingAnchor.constraint(equalTo: self.avatarImageView.trailingAnchor, constant: textIndent),
-			profileStatusLabel.centerYAnchor.constraint(equalTo: self.avatarImageView.centerYAnchor),
-			profileStatusLabel.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: textMultiplier),
 
 			profileActiveStatusLabel.leadingAnchor.constraint(equalTo: self.avatarImageView.trailingAnchor, constant: textIndent),
 			profileActiveStatusLabel.centerYAnchor.constraint(equalTo: self.avatarImageView.centerYAnchor, constant: onlineIndent),
 			profileActiveStatusLabel.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: textMultiplier),
 
-			editProfileButton.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: standartIndent),
-			editProfileButton.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -standartIndent),
-			editProfileButton.heightAnchor.constraint(equalToConstant: buttonHeight),
-			editProfileButton.bottomAnchor.constraint(equalTo: self.iconsAndLablesStackView.topAnchor),
+			buttonsStackView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: standartIndent),
+			buttonsStackView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -standartIndent),
+			buttonsStackView.heightAnchor.constraint(equalToConstant: buttonHeight),
+			buttonsStackView.bottomAnchor.constraint(equalTo: self.iconsAndLablesStackView.topAnchor),
 
 			iconsAndLablesStackView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: standartIndent),
 			iconsAndLablesStackView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -standartIndent),

@@ -13,10 +13,12 @@ class FriendProfileViewController: UITableViewController {
 	let requestFactory: RequestFactory
 	let userPhotoUrl: String
 	let userName: String
-	init(requestFactory: RequestFactory, userPhotoUrl: String, userName: String) {
+	let domain: String
+	init(requestFactory: RequestFactory, userPhotoUrl: String, userName: String, trackCode: String) {
 		self.requestFactory = requestFactory
 		self.userName = userName
 		self.userPhotoUrl = userPhotoUrl
+		self.domain = trackCode
 		super.init(nibName: nil, bundle: nil)
 	}
 
@@ -26,17 +28,15 @@ class FriendProfileViewController: UITableViewController {
 	}
 	// swiftlint:enable unavailable_function
 
-	private var tableCellHeight: CGFloat = 210.0
+	private var tableCellHeight: CGFloat = 220.0
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		self.tableView.delegate = self
 		self.tableView.dataSource = self
 		self.tableView.backgroundColor = .white
-		self.title = "Profile"
-		self.tableView.separatorColor = UIColor.white
-
-		self.tableView.register(ProfileFirstTableViewCell.self, forCellReuseIdentifier: ProfileFirstTableViewCell.identifier)
+		self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.singleLine
+		self.tableView.register(FriendProfileFirstTableViewCell.self, forCellReuseIdentifier: FriendProfileFirstTableViewCell.identifier)
 	}
 
 	// MARK: - Table view data source
@@ -51,11 +51,10 @@ class FriendProfileViewController: UITableViewController {
 
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		// swiftlint:disable force_cast
-		let cell = self.tableView.dequeueReusableCell(withIdentifier: ProfileFirstTableViewCell.identifier, for: indexPath) as! ProfileFirstTableViewCell
+		let cell = self.tableView.dequeueReusableCell(withIdentifier: FriendProfileFirstTableViewCell.identifier, for: indexPath) as! FriendProfileFirstTableViewCell
 		// swiftlint:enable force_cast
 		cell.profileNameLabel.text = userName
 		cell.avatarImageView.kf.setImage(with: URL(string: userPhotoUrl))
-
 		return cell
 	}
 

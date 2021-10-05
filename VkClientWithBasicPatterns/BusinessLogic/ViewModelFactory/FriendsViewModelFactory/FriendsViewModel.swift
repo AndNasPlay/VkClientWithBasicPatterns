@@ -11,4 +11,5 @@ struct FriendsViewModel {
 	let avatarImage: String?
 	let nameLable: String?
 	let cityName: String?
+	let domain: String?
 }
