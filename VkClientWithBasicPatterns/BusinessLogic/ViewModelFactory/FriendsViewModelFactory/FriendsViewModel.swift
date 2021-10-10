@@ -12,4 +12,7 @@ struct FriendsViewModel {
 	let nameLable: String?
 	let cityName: String?
 	let domain: String?
+	let online: Int?
+	let education: String?
+	let followersCount: Int?
 }

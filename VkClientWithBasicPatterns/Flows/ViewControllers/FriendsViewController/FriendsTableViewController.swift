@@ -79,10 +79,8 @@ class FriendsTableViewController: UITableViewController {
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		let profileController = FriendProfileViewController(
 			requestFactory: requestFactory,
-			userPhotoUrl: friendsViewModels[indexPath.row].avatarImage ?? "http://placehold.it/50x50",
-			userName: friendsViewModels[indexPath.row].nameLable ?? "Дима",
-			trackCode: friendsViewModels[indexPath.row].domain ?? "Profile")
-
+			friendProfile: friendsViewModels[indexPath.row])
+		print(friendsViewModels[indexPath.row])
 		self.navigationController?.pushViewController(profileController, animated: true)
 	}
 }

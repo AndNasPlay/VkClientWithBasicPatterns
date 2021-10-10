@@ -27,9 +27,19 @@ struct FriendsResult: Codable {
 	let canInviteToChats: Bool?
 	let trackCode: String?
 	let photo100: String?
+	let online: Int?
+	let followersCount: Int?
+	let university: Int?
+	let universityName: String?
+	let faculty: Int?
+	let facultyName: String?
+	let graduation: Int?
 
 	enum CodingKeys: String, CodingKey {
-		case id, domain, city
+		case id, domain, city, university, faculty, graduation, online
+		case universityName = "university_name"
+		case facultyName = "faculty_name"
+		case followersCount = "followers_count"
 		case photo100 = "photo_100"
 		case firstName = "first_name"
 		case lastName = "last_name"

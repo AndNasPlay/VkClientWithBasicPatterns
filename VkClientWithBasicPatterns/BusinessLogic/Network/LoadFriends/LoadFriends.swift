@@ -42,7 +42,7 @@ class LoadFriends: AbstractRequestFactory, LoadFriendsService {
 			"user_id": UserSettings.userId,
 			"order": "hints",
 			"v": "5.181",
-			"fields": "city,domain,photo_100,nickname"
+			"fields": "city,domain,photo_100,nickname,education,followers_count,online"
 		]}
 	}
 }

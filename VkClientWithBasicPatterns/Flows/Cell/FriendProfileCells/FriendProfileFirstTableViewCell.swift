@@ -136,7 +136,6 @@ class FriendProfileFirstTableViewCell: UITableViewCell {
 
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
-		contentView.backgroundColor = .green
 		contentView.addSubview(profileNameLabel)
 		contentView.addSubview(avatarImageView)
 		contentView.addSubview(profileActiveStatusLabel)
@@ -152,8 +151,11 @@ class FriendProfileFirstTableViewCell: UITableViewCell {
 	}
 	// swiftlint:enable unavailable_function
 
-	func configureCell(profileViewModel: ProfileViewModel) {
-		profileNameLabel.text = profileViewModel.name
+	func configureCell(friendsViewModel: FriendsViewModel) {
+		profileNameLabel.text = friendsViewModel.nameLable
+		if friendsViewModel.online == 0 {
+			profileActiveStatusLabel.text = "был час назад"
+		}
 	}
 
 	override func layoutSubviews() {

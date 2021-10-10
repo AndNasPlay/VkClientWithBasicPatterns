@@ -1,5 +1,5 @@
 //
-//  ProfileInfoBlockTableViewCell.swift
+//  FriendProfileInfoBlockTableViewCell.swift
 //  VkClientWithBasicPatterns
 //
 //  Created by Андрей Щекатунов on 05.10.2021.
@@ -7,9 +7,9 @@
 
 import UIKit
 
-class ProfileInfoBlockTableViewCell: UITableViewCell {
+class FriendProfileInfoBlockTableViewCell: UITableViewCell {
 
-	static let identifier = "ProfileInfoBlockTableViewCell"
+	static let identifier = "FriendProfileInfoBlockTableViewCell"
 
 	private let lableMultiplier: CGFloat = 0.85
 
@@ -162,8 +162,29 @@ class ProfileInfoBlockTableViewCell: UITableViewCell {
 	}
 	// swiftlint:enable unavailable_function
 
-	func configureCell(profileViewModel: ProfileViewModel) {
-		cityLabel.text = profileViewModel.homeTown
+	func configureCell(friendsViewModel: FriendsViewModel) {
+
+		if (friendsViewModel.cityName ?? "").isEmpty {
+			cityLabel.isHidden = true
+			cityImageView.isHidden = true
+		} else {
+			cityLabel.text = "Город: \(friendsViewModel.cityName ?? "")"
+		}
+
+		if (friendsViewModel.education ?? "").isEmpty {
+			placeOfStudyLabel.isHidden = true
+			placeOfStudyImageView.isHidden = true
+		} else {
+			placeOfStudyLabel.text = "Образование: \(friendsViewModel.education ?? "")"
+			placeOfStudyImageView.image = UIImage(named: "hat")
+			placeOfStudyLabel.textColor = UIColor.vkGreyText
+		}
+
+		if (friendsViewModel.followersCount ?? 0) != 0 {
+			placeOfWorkLabel.text = "\(friendsViewModel.followersCount ?? 0) подписчик"
+			placeOfWorkLabel.textColor = UIColor.vkGreyText
+			placeOfWorkImageView.image = UIImage(named: "rss")
+		}
 	}
 
 	private func setupCellCorol() {

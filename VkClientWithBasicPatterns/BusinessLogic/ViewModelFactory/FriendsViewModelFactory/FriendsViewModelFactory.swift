@@ -18,11 +18,17 @@ class FriendsViewModelFactory {
 		let city = friend.city?.title
 		let avatar = friend.photo100
 		let trackCode = friend.domain
+		let online = friend.online
+		let education = friend.universityName
+		let followersCount = friend.followersCount
 		return FriendsViewModel(
 			avatarImage: avatar,
 			nameLable: fullName,
 			cityName: city,
-			domain: trackCode
+			domain: trackCode,
+			online: online,
+			education: education,
+			followersCount: followersCount
 		)
 	}
 }
