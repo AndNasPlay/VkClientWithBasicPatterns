@@ -14,4 +14,5 @@ extension UIFont {
 	static let profileStatusFont: UIFont = .systemFont(ofSize: 15, weight: .regular)
 	static let profileActiveStatusFont: UIFont = .systemFont(ofSize: 14, weight: .regular)
 	static let iconsFont: UIFont = .systemFont(ofSize: 8, weight: .regular)
+	static let profileButtonFont: UIFont = .systemFont(ofSize: 14.0, weight: .semibold)
 }

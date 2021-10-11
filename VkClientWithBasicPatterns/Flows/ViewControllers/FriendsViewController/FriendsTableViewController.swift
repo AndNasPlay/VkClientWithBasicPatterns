@@ -80,7 +80,6 @@ class FriendsTableViewController: UITableViewController {
 		let profileController = FriendProfileViewController(
 			requestFactory: requestFactory,
 			friendProfile: friendsViewModels[indexPath.row])
-		print(friendsViewModels[indexPath.row])
 		self.navigationController?.pushViewController(profileController, animated: true)
 	}
 }

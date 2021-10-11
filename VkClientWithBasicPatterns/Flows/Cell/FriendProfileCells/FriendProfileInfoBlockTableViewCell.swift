@@ -165,15 +165,13 @@ class FriendProfileInfoBlockTableViewCell: UITableViewCell {
 	func configureCell(friendsViewModel: FriendsViewModel) {
 
 		if (friendsViewModel.cityName ?? "").isEmpty {
-			cityLabel.isHidden = true
-			cityImageView.isHidden = true
+			cityStackView.isHidden = true
 		} else {
 			cityLabel.text = "Город: \(friendsViewModel.cityName ?? "")"
 		}
 
 		if (friendsViewModel.education ?? "").isEmpty {
-			placeOfStudyLabel.isHidden = true
-			placeOfStudyImageView.isHidden = true
+			placeOfStudyStackView.isHidden = true
 		} else {
 			placeOfStudyLabel.text = "Образование: \(friendsViewModel.education ?? "")"
 			placeOfStudyImageView.image = UIImage(named: "hat")
@@ -184,6 +182,8 @@ class FriendProfileInfoBlockTableViewCell: UITableViewCell {
 			placeOfWorkLabel.text = "\(friendsViewModel.followersCount ?? 0) подписчик"
 			placeOfWorkLabel.textColor = UIColor.vkGreyText
 			placeOfWorkImageView.image = UIImage(named: "rss")
+		} else {
+			placeOfWorkStackView.isHidden = true
 		}
 	}
 

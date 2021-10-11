@@ -17,11 +17,17 @@ class FriendProfileFirstTableViewCell: UITableViewCell {
 
 	private let bottomIndent: CGFloat = 20.0
 
+	private let iconspaddingButtonConstant: CGFloat = 5.0
+
 	private let onlineIndent: CGFloat = 15.0
 
 	private let buttonHeight: CGFloat = 35.0
 
 	private let textIndent: CGFloat = 20.0
+
+	private let spacingStackView: CGFloat = 10.0
+
+	private let buttonCornerRadius: CGFloat = 10.0
 
 	private let textMultiplier: CGFloat = 0.8
 
@@ -56,18 +62,18 @@ class FriendProfileFirstTableViewCell: UITableViewCell {
 	private(set) lazy var messageButton: UIButton = {
 		let button = UIButton()
 		button.setTitle("Сообщение", for: .normal)
-		button.titleLabel?.font = UIFont.systemFont(ofSize: 14.0, weight: .semibold)
+		button.titleLabel?.font = .profileButtonFont
 		button.translatesAutoresizingMaskIntoConstraints = false
-		button.layer.cornerRadius = 10
+		button.layer.cornerRadius = buttonCornerRadius
 		return button
 	}()
 
 	private(set) lazy var callButton: UIButton = {
 		let button = UIButton()
 		button.setTitle("Звонок", for: .normal)
-		button.titleLabel?.font = UIFont.systemFont(ofSize: 14.0, weight: .semibold)
+		button.titleLabel?.font = .profileButtonFont
 		button.translatesAutoresizingMaskIntoConstraints = false
-		button.layer.cornerRadius = 10
+		button.layer.cornerRadius = buttonCornerRadius
 		return button
 	}()
 
@@ -75,7 +81,7 @@ class FriendProfileFirstTableViewCell: UITableViewCell {
 		let stackView = UIStackView()
 		stackView.axis = .horizontal
 		stackView.distribution = .fillEqually
-		stackView.spacing = 10.0
+		stackView.spacing = spacingStackView
 		stackView.translatesAutoresizingMaskIntoConstraints = false
 		return stackView
 	}()
@@ -91,28 +97,28 @@ class FriendProfileFirstTableViewCell: UITableViewCell {
 	private(set) lazy var inFriendButton: IconsUIButton = {
 		let button = IconsUIButton(with: IconsButtonViewModel(iconTitleLable: "В друзьях", iconeImageView: "confirmIcone"))
 		button.translatesAutoresizingMaskIntoConstraints = false
-		button.paddingButtonConstant = 5.0
+		button.paddingButtonConstant = iconspaddingButtonConstant
 		return button
 	}()
 
 	private(set) lazy var moneyButton: IconsUIButton = {
 		let button = IconsUIButton(with: IconsButtonViewModel(iconTitleLable: "Деньги", iconeImageView: "payIcone"))
 		button.translatesAutoresizingMaskIntoConstraints = false
-		button.paddingButtonConstant = 5.0
+		button.paddingButtonConstant = iconspaddingButtonConstant
 		return button
 	}()
 
 	private(set) lazy var giftButton: IconsUIButton = {
 		let button = IconsUIButton(with: IconsButtonViewModel(iconTitleLable: "Подарок", iconeImageView: "giftIcone"))
 		button.translatesAutoresizingMaskIntoConstraints = false
-		button.paddingButtonConstant = 5.0
+		button.paddingButtonConstant = iconspaddingButtonConstant
 		return button
 	}()
 
 	private(set) lazy var notificationButton: IconsUIButton = {
 		let button = IconsUIButton(with: IconsButtonViewModel(iconTitleLable: "Уведомления", iconeImageView: "bellIcone"))
 		button.translatesAutoresizingMaskIntoConstraints = false
-		button.paddingButtonConstant = 5.0
+		button.paddingButtonConstant = iconspaddingButtonConstant
 		return button
 	}()
 

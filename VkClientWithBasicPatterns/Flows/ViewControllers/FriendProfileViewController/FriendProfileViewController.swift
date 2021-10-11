@@ -25,15 +25,17 @@ class FriendProfileViewController: UITableViewController {
 	// swiftlint:enable unavailable_function
 
 	private var tableCellHeight: CGFloat = 210.0
-	private var secondTableCellHeight: CGFloat = 140.0
-	private var secondTableCellElementHeight: CGFloat = 80.0
+
+	private var secondTableCellElementHeight: CGFloat = 30.0
+
+	private var secondTableCellFirstElementHeight: CGFloat = 50.0
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		self.tableView.delegate = self
 		self.tableView.dataSource = self
 		self.tableView.backgroundColor = .white
-		self.navigationController?.navigationItem.title = friendProfile.nameLable
+		self.title = friendProfile.domain
 
 		self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.singleLine
 		self.tableView.register(FriendProfileFirstTableViewCell.self, forCellReuseIdentifier: FriendProfileFirstTableViewCell.identifier)
@@ -41,15 +43,15 @@ class FriendProfileViewController: UITableViewController {
 	}
 
 	func checkElementsCount(friendProfileInfo: FriendsViewModel) -> CGFloat {
-		var allElementsHeight: CGFloat = secondTableCellElementHeight
+		var allElementsHeight: CGFloat = secondTableCellFirstElementHeight
 		if (friendProfileInfo.followersCount ?? 0) != 0 {
-			allElementsHeight += 20
+			allElementsHeight += secondTableCellElementHeight
 		}
 		if !(friendProfileInfo.cityName ?? "").isEmpty {
-			allElementsHeight += 20
+			allElementsHeight += secondTableCellElementHeight
 		}
 		if !(friendProfileInfo.education ?? "").isEmpty {
-			allElementsHeight += 20
+			allElementsHeight += secondTableCellElementHeight
 		}
 		return allElementsHeight
 	}

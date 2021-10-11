@@ -65,7 +65,7 @@ class ProfileFirstTableViewCell: UITableViewCell {
 	private(set) lazy var editProfileButton: UIButton = {
 		let button = UIButton()
 		button.setTitle("Редактировать", for: .normal)
-		button.titleLabel?.font = UIFont.systemFont(ofSize: 14.0, weight: .semibold)
+		button.titleLabel?.font = .profileButtonFont
 		button.translatesAutoresizingMaskIntoConstraints = false
 		button.layer.cornerRadius = 10
 		return button

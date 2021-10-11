@@ -10,8 +10,11 @@ import UIKit
 class IconsUIButton: UIButton {
 
 	var heightTitleLable: CGFloat = 15.0
+
 	var paddingButtonConstant: CGFloat = 10.0
+
 	var paddingTopButtonConstant: CGFloat = 20.0
+
 	var iconTitleLableColor = UIColor.vkBlueText
 
 	private(set) lazy var iconTitleLable: UILabel = {
@@ -40,10 +43,11 @@ class IconsUIButton: UIButton {
 		addSubview(iconImageView)
 		configure(with: viewModel)
 	}
-
+	// swiftlint:disable unavailable_function
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
+	// swiftlint:enable unavailable_function
 
 	public func configure(with viewModel: IconsButtonViewModel) {
 		iconTitleLable.text = viewModel.iconTitleLable
