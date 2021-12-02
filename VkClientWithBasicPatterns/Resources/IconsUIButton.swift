@@ -43,11 +43,11 @@ class IconsUIButton: UIButton {
 		addSubview(iconImageView)
 		configure(with: viewModel)
 	}
-	// swiftlint:disable unavailable_function
+
 	required init?(coder: NSCoder) {
-		fatalError("init(coder:) has not been implemented")
+		self.viewModel = IconsButtonViewModel(iconTitleLable: "", iconeImageView: "")
+		super.init()
 	}
-	// swiftlint:enable unavailable_function
 
 	public func configure(with viewModel: IconsButtonViewModel) {
 		iconTitleLable.text = viewModel.iconTitleLable

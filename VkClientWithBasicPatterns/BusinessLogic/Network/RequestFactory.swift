@@ -40,6 +40,11 @@ class RequestFactory {
 		)
 	}
 
+	func makeLoadFriendsWithPeoxyRequestFactory() -> LoadFriendsServiceLoggingProxy {
+		LoadFriendsServiceLoggingProxy(loadFriendsService: makeLoadFriendsRequestFactory())
+
+	}
+
 	func makeLoadGroupsRequestFactory() -> LoadGroupsService {
 		let errorParser = makeErrorParser()
 		return LoadGroups(

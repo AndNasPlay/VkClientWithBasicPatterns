@@ -38,8 +38,8 @@ class LoadFriends: AbstractRequestFactory, LoadFriendsService {
 		let method: HTTPMethod = .get
 		let path: String = "/method/friends.get"
 		var parameters: Parameters? {[
-			"access_token": UserSettings.token,
-			"user_id": UserSettings.userId,
+			"access_token": UserSettings.shared.token,
+			"user_id": UserSettings.shared.userId,
 			"order": "hints",
 			"v": "5.181",
 			"fields": "city,domain,photo_100,nickname,education,followers_count,online"

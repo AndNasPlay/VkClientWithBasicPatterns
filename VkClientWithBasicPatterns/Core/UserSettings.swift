@@ -8,7 +8,12 @@
 import Foundation
 
 final class UserSettings {
-	static var token: String = ""
-	static var userId: Int = 0
-	static var baseUrl = URL(string: "https://api.vk.com")!
+
+	public static let shared = UserSettings()
+
+	private init() { }
+
+	var token: String = ""
+	var userId: Int = 0
+	var baseUrl = URL(string: "https://api.vk.com")!
 }

@@ -28,8 +28,8 @@ class LoginViewController: UIViewController, WKUIDelegate {
 		components.host = "oauth.vk.com"
 		components.path = "/authorize"
 		components.queryItems = [
-			URLQueryItem(name: "client_id", value: ""),
-			URLQueryItem(name: "scope", value: ""),
+			URLQueryItem(name: "client_id", value: "7568757"),
+			URLQueryItem(name: "scope", value: "262150"),
 			URLQueryItem(name: "display", value: "mobile"),
 			URLQueryItem(name: "redirect_uri", value: "https://oauth.vk.com/blank.html"),
 			URLQueryItem(name: "response_type", value: "token"),
@@ -84,8 +84,8 @@ extension LoginViewController: WKNavigationDelegate {
 			return
 		}
 
-		UserSettings.token = token
-		UserSettings.userId = userIdInt
+		UserSettings.shared.token = token
+		UserSettings.shared.userId = userIdInt
 
 		let vc = VkTabBarController()
 		vc.modalPresentationStyle = .fullScreen

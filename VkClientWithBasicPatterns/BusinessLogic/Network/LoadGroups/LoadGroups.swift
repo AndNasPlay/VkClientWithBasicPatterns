@@ -40,8 +40,8 @@ class LoadGroups: AbstractRequestFactory, LoadGroupsService {
 		let path: String = "/method/groups.get"
 		let count: Int
 		var parameters: Parameters? {[
-			"access_token": UserSettings.token,
-			"user_id": UserSettings.userId,
+			"access_token": UserSettings.shared.token,
+			"user_id": UserSettings.shared.userId,
 			"extended": 1,
 			"v": "5.181",
 			"fields": "activity",
