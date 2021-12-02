@@ -26,7 +26,7 @@ class FriendsTableViewController: UITableViewController {
 	private var tableCellHeight: CGFloat = 70.0
 
 	private func loadData() {
-		self.requestFactory.makeLoadFriendsRequestFactory().loadFriends { response in
+		self.requestFactory.makeLoadFriendsWithPeoxyRequestFactory().loadFriends { response in
 			DispatchQueue.main.async {
 				switch response.result {
 				case .success(let catalog):

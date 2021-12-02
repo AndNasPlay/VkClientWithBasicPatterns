@@ -10,7 +10,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 	var window: UIWindow?
-	let factory = RequestFactory(baseUrl: UserSettings.baseUrl)
+	let factory = RequestFactory(baseUrl: UserSettings.shared.baseUrl)
 
 	func scene(
 		_ scene: UIScene,

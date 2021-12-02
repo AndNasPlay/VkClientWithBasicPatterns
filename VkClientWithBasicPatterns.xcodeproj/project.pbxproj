@@ -12,6 +12,7 @@
 		1607A9BA2703A04D003874FA /* FriendsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1607A9B92703A04D003874FA /* FriendsViewModel.swift */; };
 		1619FFAE270CAA910067FE4F /* FriendProfileInfoBlockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1619FFAD270CAA910067FE4F /* FriendProfileInfoBlockTableViewCell.swift */; };
 		161ED3EE270C64C700F5BE89 /* FriendProfileFirstTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161ED3ED270C64C700F5BE89 /* FriendProfileFirstTableViewCell.swift */; };
+		1627AD4D2758DA81003F1BD7 /* Proxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1627AD4C2758DA80003F1BD7 /* Proxy.swift */; };
 		16434A442704973900AF5501 /* FriendsViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16434A432704973900AF5501 /* FriendsViewModelFactory.swift */; };
 		16434A462704A12B00AF5501 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16434A452704A12B00AF5501 /* UIImageViewExtension.swift */; };
 		16434A482704C30500AF5501 /* ProfileViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16434A472704C30500AF5501 /* ProfileViewModelFactory.swift */; };
@@ -62,6 +63,7 @@
 		1607A9B92703A04D003874FA /* FriendsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewModel.swift; sourceTree = "<group>"; };
 		1619FFAD270CAA910067FE4F /* FriendProfileInfoBlockTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendProfileInfoBlockTableViewCell.swift; sourceTree = "<group>"; };
 		161ED3ED270C64C700F5BE89 /* FriendProfileFirstTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendProfileFirstTableViewCell.swift; sourceTree = "<group>"; };
+		1627AD4C2758DA80003F1BD7 /* Proxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Proxy.swift; sourceTree = "<group>"; };
 		163E903D26FF5D5D006149CE /* libSDWebImage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSDWebImage.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		16434A432704973900AF5501 /* FriendsViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewModelFactory.swift; sourceTree = "<group>"; };
 		16434A452704A12B00AF5501 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
@@ -154,6 +156,14 @@
 				1619FFAD270CAA910067FE4F /* FriendProfileInfoBlockTableViewCell.swift */,
 			);
 			path = FriendProfileCells;
+			sourceTree = "<group>";
+		};
+		1627AD4B2758D945003F1BD7 /* Proxy */ = {
+			isa = PBXGroup;
+			children = (
+				1627AD4C2758DA80003F1BD7 /* Proxy.swift */,
+			);
+			path = Proxy;
 			sourceTree = "<group>";
 		};
 		163A82282713076600AED9A0 /* FriendsTableViewCell */ = {
@@ -378,6 +388,7 @@
 			isa = PBXGroup;
 			children = (
 				1690B5F426FDE73800037328 /* RequestFactory.swift */,
+				1627AD4B2758D945003F1BD7 /* Proxy */,
 				16EF0CC126FF6C3700587179 /* LoadPhoto */,
 				1690B60226FE020300037328 /* LoadProfile */,
 				1690B5FB26FDFC6400037328 /* LoadGroups */,
@@ -576,6 +587,7 @@
 				16EF0CC526FF6C6000587179 /* LoadPhotoService.swift in Sources */,
 				1619FFAE270CAA910067FE4F /* FriendProfileInfoBlockTableViewCell.swift in Sources */,
 				1690B5BF26FB7FDA00037328 /* FriendsTableViewController.swift in Sources */,
+				1627AD4D2758DA81003F1BD7 /* Proxy.swift in Sources */,
 				1690B5F226FDE6FC00037328 /* RequestRouter.swift in Sources */,
 				1690B5DB26FCAB7F00037328 /* UIImageExtension.swift in Sources */,
 				1690B60726FE025600037328 /* LoadProfile.swift in Sources */,

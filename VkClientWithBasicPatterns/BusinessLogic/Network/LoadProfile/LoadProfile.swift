@@ -38,8 +38,8 @@ class LoadProfile: AbstractRequestFactory, LoadProfileService {
 		let method: HTTPMethod = .get
 		let path: String = "/method/account.getProfileInfo"
 		var parameters: Parameters? {[
-			"access_token": UserSettings.token,
-			"user_id": UserSettings.userId,
+			"access_token": UserSettings.shared.token,
+			"user_id": UserSettings.shared.userId,
 			"v": "5.131"
 		]}
 	}

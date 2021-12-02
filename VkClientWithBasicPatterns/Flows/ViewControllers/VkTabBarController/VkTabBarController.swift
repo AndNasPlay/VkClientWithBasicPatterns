@@ -9,7 +9,7 @@ import UIKit
 
 class VkTabBarController: UITabBarController {
 
-	let factory = RequestFactory(baseUrl: UserSettings.baseUrl)
+	let factory = RequestFactory(baseUrl: UserSettings.shared.baseUrl)
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
