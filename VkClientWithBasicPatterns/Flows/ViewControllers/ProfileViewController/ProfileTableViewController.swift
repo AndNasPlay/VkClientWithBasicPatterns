@@ -39,6 +39,7 @@ class ProfileTableViewController: UITableViewController {
 					guard profile.response != nil else { return }
 					// swiftlint:disable force_unwrapping
 					self.profileViewModel = self.profileViewModelFactory.constructViewModel(from: profile.response!)
+					print(UserSettings.shared.userId)
 					// swiftlint:enable force_unwrapping
 					self.title = profile.response?.screenName
 					self.tableView.reloadData()

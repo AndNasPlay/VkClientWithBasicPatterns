@@ -51,6 +51,12 @@
 		1690B60126FE011100037328 /* ProfileResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B60026FE011100037328 /* ProfileResponse.swift */; };
 		1690B60426FE022100037328 /* LoadProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B60326FE022100037328 /* LoadProfileService.swift */; };
 		1690B60726FE025600037328 /* LoadProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B60626FE025600037328 /* LoadProfile.swift */; };
+		16DFD17427E90C4700E91EF9 /* WallTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DFD17327E90C4700E91EF9 /* WallTableViewCell.swift */; };
+		16DFD17627E912C100E91EF9 /* WallResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DFD17527E912C100E91EF9 /* WallResponse.swift */; };
+		16DFD17927E913CF00E91EF9 /* LoadWall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DFD17827E913CF00E91EF9 /* LoadWall.swift */; };
+		16DFD17B27E913F100E91EF9 /* LoadWallService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DFD17A27E913F100E91EF9 /* LoadWallService.swift */; };
+		16DFD17E27E9199600E91EF9 /* WallViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DFD17D27E9199600E91EF9 /* WallViewModel.swift */; };
+		16DFD18027E91ADB00E91EF9 /* WallViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DFD17F27E91ADB00E91EF9 /* WallViewModelFactory.swift */; };
 		16EF0CC326FF6C4F00587179 /* LoadPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EF0CC226FF6C4F00587179 /* LoadPhoto.swift */; };
 		16EF0CC526FF6C6000587179 /* LoadPhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EF0CC426FF6C6000587179 /* LoadPhotoService.swift */; };
 		16EF0CC726FF6C7C00587179 /* PhotoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EF0CC626FF6C7C00587179 /* PhotoResponse.swift */; };
@@ -108,6 +114,12 @@
 		1690B60826FE44B900037328 /* libSDWebImage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSDWebImage.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		1690B60A26FE44F700037328 /* libSDWebImage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSDWebImage.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		1699C25C26FF5A8F00AB0D9E /* libSDWebImage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSDWebImage.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		16DFD17327E90C4700E91EF9 /* WallTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallTableViewCell.swift; sourceTree = "<group>"; };
+		16DFD17527E912C100E91EF9 /* WallResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallResponse.swift; sourceTree = "<group>"; };
+		16DFD17827E913CF00E91EF9 /* LoadWall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadWall.swift; sourceTree = "<group>"; };
+		16DFD17A27E913F100E91EF9 /* LoadWallService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadWallService.swift; sourceTree = "<group>"; };
+		16DFD17D27E9199600E91EF9 /* WallViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallViewModel.swift; sourceTree = "<group>"; };
+		16DFD17F27E91ADB00E91EF9 /* WallViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallViewModelFactory.swift; sourceTree = "<group>"; };
 		16EF0CC226FF6C4F00587179 /* LoadPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadPhoto.swift; sourceTree = "<group>"; };
 		16EF0CC426FF6C6000587179 /* LoadPhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadPhotoService.swift; sourceTree = "<group>"; };
 		16EF0CC626FF6C7C00587179 /* PhotoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoResponse.swift; sourceTree = "<group>"; };
@@ -131,6 +143,7 @@
 		1607A9B527039F59003874FA /* ViewModelFactory */ = {
 			isa = PBXGroup;
 			children = (
+				16DFD17C27E9198400E91EF9 /* WallViewModel */,
 				16434A492704C30F00AF5501 /* GroupsViewModelFactory */,
 				16434A422704971A00AF5501 /* FriendsViewModelFactory */,
 				16434A41270496FA00AF5501 /* ProfileFirstSectionViewModelFactory */,
@@ -145,6 +158,7 @@
 				1690B5D726FC7ACD00037328 /* FriendsResponse.swift */,
 				1690B60026FE011100037328 /* ProfileResponse.swift */,
 				16EF0CC626FF6C7C00587179 /* PhotoResponse.swift */,
+				16DFD17527E912C100E91EF9 /* WallResponse.swift */,
 			);
 			path = ResponseModel;
 			sourceTree = "<group>";
@@ -317,6 +331,7 @@
 		1690B5D426FC651100037328 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				16DFD17227E90C2600E91EF9 /* WallCell */,
 				163A82292713076F00AED9A0 /* GroupsTableViewCell */,
 				163A82282713076600AED9A0 /* FriendsTableViewCell */,
 				161ED3EC270C648D00F5BE89 /* FriendProfileCells */,
@@ -393,6 +408,7 @@
 				1690B60226FE020300037328 /* LoadProfile */,
 				1690B5FB26FDFC6400037328 /* LoadGroups */,
 				1690B5F626FDE76000037328 /* LoadFriends */,
+				16DFD17727E913A800E91EF9 /* LoadWall */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -422,6 +438,32 @@
 				1690B60326FE022100037328 /* LoadProfileService.swift */,
 			);
 			path = LoadProfile;
+			sourceTree = "<group>";
+		};
+		16DFD17227E90C2600E91EF9 /* WallCell */ = {
+			isa = PBXGroup;
+			children = (
+				16DFD17327E90C4700E91EF9 /* WallTableViewCell.swift */,
+			);
+			path = WallCell;
+			sourceTree = "<group>";
+		};
+		16DFD17727E913A800E91EF9 /* LoadWall */ = {
+			isa = PBXGroup;
+			children = (
+				16DFD17827E913CF00E91EF9 /* LoadWall.swift */,
+				16DFD17A27E913F100E91EF9 /* LoadWallService.swift */,
+			);
+			path = LoadWall;
+			sourceTree = "<group>";
+		};
+		16DFD17C27E9198400E91EF9 /* WallViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				16DFD17D27E9199600E91EF9 /* WallViewModel.swift */,
+				16DFD17F27E91ADB00E91EF9 /* WallViewModelFactory.swift */,
+			);
+			path = WallViewModel;
 			sourceTree = "<group>";
 		};
 		16EF0CC126FF6C3700587179 /* LoadPhoto */ = {
@@ -581,17 +623,22 @@
 				16434A442704973900AF5501 /* FriendsViewModelFactory.swift in Sources */,
 				1690B5D626FC653600037328 /* FriendsTableViewCell.swift in Sources */,
 				16434A5627062A4B00AF5501 /* ProfileInfoBlockViewCell.swift in Sources */,
+				16DFD17427E90C4700E91EF9 /* WallTableViewCell.swift in Sources */,
+				16DFD17627E912C100E91EF9 /* WallResponse.swift in Sources */,
 				1690B5EA26FDE69000037328 /* AbstractErrorParser.swift in Sources */,
 				1690B5DE26FCAED700037328 /* VkTabBarController.swift in Sources */,
 				1690B5D326FB969500037328 /* GroupsResponse.swift in Sources */,
 				16EF0CC526FF6C6000587179 /* LoadPhotoService.swift in Sources */,
 				1619FFAE270CAA910067FE4F /* FriendProfileInfoBlockTableViewCell.swift in Sources */,
+				16DFD17E27E9199600E91EF9 /* WallViewModel.swift in Sources */,
 				1690B5BF26FB7FDA00037328 /* FriendsTableViewController.swift in Sources */,
 				1627AD4D2758DA81003F1BD7 /* Proxy.swift in Sources */,
 				1690B5F226FDE6FC00037328 /* RequestRouter.swift in Sources */,
 				1690B5DB26FCAB7F00037328 /* UIImageExtension.swift in Sources */,
 				1690B60726FE025600037328 /* LoadProfile.swift in Sources */,
+				16DFD17927E913CF00E91EF9 /* LoadWall.swift in Sources */,
 				1690B60426FE022100037328 /* LoadProfileService.swift in Sources */,
+				16DFD18027E91ADB00E91EF9 /* WallViewModelFactory.swift in Sources */,
 				16434A5427061B3700AF5501 /* FriendProfileViewController.swift in Sources */,
 				16434A4D2704C3B100AF5501 /* GroupsViewModelFactory.swift in Sources */,
 				1607A9B827039FB8003874FA /* ProfileViewModel.swift in Sources */,
@@ -608,6 +655,7 @@
 				1690B5EC26FDE6A800037328 /* ErrorParser.swift in Sources */,
 				16434A5D27077AB900AF5501 /* IconsUIButton.swift in Sources */,
 				1690B5CE26FB828600037328 /* LoginViewController.swift in Sources */,
+				16DFD17B27E913F100E91EF9 /* LoadWallService.swift in Sources */,
 				1690B5AB26FB7B0100037328 /* SceneDelegate.swift in Sources */,
 				16434A462704A12B00AF5501 /* UIImageViewExtension.swift in Sources */,
 				1690B5E326FCC14B00037328 /* ProfileFirstTableViewCell.swift in Sources */,
