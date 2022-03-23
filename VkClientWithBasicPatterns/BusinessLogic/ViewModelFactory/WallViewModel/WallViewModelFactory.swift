@@ -17,10 +17,16 @@ class WallViewModelFactory {
 		let authorName = "\(wall.ownerID ?? 2)"
 		let authorDate = "\(wall.date ?? 2)"
 		let likeCount = "\(wall.likes?.count ?? 2)"
-		let image = wall.copyHistory?.first?.attachments?.first?.link?.url
+		let avatarImage: String = "https://via.placeholder.com/50x50"
+		var image: String = "https://via.placeholder.com/150x150"
+
+		if let imageSize: Size = (wall.copyHistory?.first?.attachments?.first?.photo?.sizes?.first(where: { $0.type == "r" })) {
+			image = imageSize.url ?? "https://via.placeholder.com/150x150"
+		}
+
 		return WallViewModel(authorNameLable: authorName,
 							 authorDateLable: authorDate,
-							 authorAvatarLable: image,
+							 authorAvatarImg: avatarImage,
 							 wallImg: image,
 							 likeCount: likeCount)
 	}

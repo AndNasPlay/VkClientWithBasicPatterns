@@ -30,6 +30,8 @@ class FriendProfileViewController: UITableViewController {
 
 	private var secondTableCellFirstElementHeight: CGFloat = 50.0
 
+	private var rowCount: Int = 2
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		self.tableView.delegate = self
@@ -38,8 +40,11 @@ class FriendProfileViewController: UITableViewController {
 		self.title = friendProfile.domain
 
 		self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.singleLine
-		self.tableView.register(FriendProfileFirstTableViewCell.self, forCellReuseIdentifier: FriendProfileFirstTableViewCell.identifier)
-		self.tableView.register(FriendProfileInfoBlockTableViewCell.self, forCellReuseIdentifier: FriendProfileInfoBlockTableViewCell.identifier)
+
+		self.tableView.register(FriendProfileFirstTableViewCell.self,
+								forCellReuseIdentifier: FriendProfileFirstTableViewCell.identifier)
+		self.tableView.register(FriendProfileInfoBlockTableViewCell.self,
+								forCellReuseIdentifier: FriendProfileInfoBlockTableViewCell.identifier)
 	}
 
 	func checkElementsCount(friendProfileInfo: FriendsViewModel) -> CGFloat {
@@ -58,21 +63,17 @@ class FriendProfileViewController: UITableViewController {
 
 	// MARK: - Table view data source
 
-	override func numberOfSections(in tableView: UITableView) -> Int {
-		2
-	}
-
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		1
+		rowCount
 	}
 
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		if indexPath.section == 0 {
+		if indexPath.row == 0 {
 			// swiftlint:disable force_cast
 			let cell = self.tableView.dequeueReusableCell(withIdentifier: FriendProfileFirstTableViewCell.identifier, for: indexPath) as! FriendProfileFirstTableViewCell
 			// swiftlint:enable force_cast
 			cell.configureCell(friendsViewModel: friendProfile)
-			cell.avatarImageView.kf.setImage(with: URL(string: friendProfile.avatarImage ?? "http://placehold.it/50x50"))
+			cell.avatarImageView.kf.setImage(with: URL(string: friendProfile.avatarImage ?? "https://via.placeholder.com/50x50"))
 			return cell
 		} else {
 			// swiftlint:disable force_cast
@@ -84,7 +85,7 @@ class FriendProfileViewController: UITableViewController {
 	}
 
 	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-		if indexPath.section == 0 {
+		if indexPath.row == 0 {
 			return tableCellHeight
 		} else {
 			return checkElementsCount(friendProfileInfo: friendProfile)

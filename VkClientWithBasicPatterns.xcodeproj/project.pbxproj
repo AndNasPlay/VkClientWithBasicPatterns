@@ -51,6 +51,11 @@
 		1690B60126FE011100037328 /* ProfileResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B60026FE011100037328 /* ProfileResponse.swift */; };
 		1690B60426FE022100037328 /* LoadProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B60326FE022100037328 /* LoadProfileService.swift */; };
 		1690B60726FE025600037328 /* LoadProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690B60626FE025600037328 /* LoadProfile.swift */; };
+		1698F70227EB750B001C43C6 /* WallLoaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1698F70127EB750B001C43C6 /* WallLoaderTableViewCell.swift */; };
+		1698F70527EB7DD1001C43C6 /* ParentFriendProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1698F70427EB7DD1001C43C6 /* ParentFriendProfileViewController.swift */; };
+		1698F70827EB7E3B001C43C6 /* WallTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1698F70727EB7E3B001C43C6 /* WallTableViewController.swift */; };
+		1698F70C27EB80B6001C43C6 /* ParentFriendProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1698F70B27EB80B6001C43C6 /* ParentFriendProfileView.swift */; };
+		1698F70E27EB8300001C43C6 /* WallLoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1698F70D27EB8300001C43C6 /* WallLoaderView.swift */; };
 		16DFD17427E90C4700E91EF9 /* WallTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DFD17327E90C4700E91EF9 /* WallTableViewCell.swift */; };
 		16DFD17627E912C100E91EF9 /* WallResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DFD17527E912C100E91EF9 /* WallResponse.swift */; };
 		16DFD17927E913CF00E91EF9 /* LoadWall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DFD17827E913CF00E91EF9 /* LoadWall.swift */; };
@@ -113,6 +118,11 @@
 		1690B60626FE025600037328 /* LoadProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadProfile.swift; sourceTree = "<group>"; };
 		1690B60826FE44B900037328 /* libSDWebImage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSDWebImage.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		1690B60A26FE44F700037328 /* libSDWebImage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSDWebImage.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		1698F70127EB750B001C43C6 /* WallLoaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallLoaderTableViewCell.swift; sourceTree = "<group>"; };
+		1698F70427EB7DD1001C43C6 /* ParentFriendProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentFriendProfileViewController.swift; sourceTree = "<group>"; };
+		1698F70727EB7E3B001C43C6 /* WallTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallTableViewController.swift; sourceTree = "<group>"; };
+		1698F70B27EB80B6001C43C6 /* ParentFriendProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentFriendProfileView.swift; sourceTree = "<group>"; };
+		1698F70D27EB8300001C43C6 /* WallLoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallLoaderView.swift; sourceTree = "<group>"; };
 		1699C25C26FF5A8F00AB0D9E /* libSDWebImage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSDWebImage.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		16DFD17327E90C4700E91EF9 /* WallTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallTableViewCell.swift; sourceTree = "<group>"; };
 		16DFD17527E912C100E91EF9 /* WallResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallResponse.swift; sourceTree = "<group>"; };
@@ -275,6 +285,8 @@
 			isa = PBXGroup;
 			children = (
 				1690B5CD26FB828600037328 /* LoginViewController.swift */,
+				1698F70627EB7E22001C43C6 /* WallViewController */,
+				1698F70327EB7D95001C43C6 /* ParentFriendProvileViewController */,
 				16434A5227061B0F00AF5501 /* FriendProfileViewController */,
 				1690B5DC26FCAEA800037328 /* VkTabBarController */,
 				1690B5C726FB80D300037328 /* GroupsViewController */,
@@ -362,6 +374,7 @@
 		1690B5E426FDDD3400037328 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				1698F70927EB807F001C43C6 /* Views */,
 				1690B5D426FC651100037328 /* Cell */,
 				1690B5BD26FB7FB600037328 /* ViewControllers */,
 			);
@@ -440,10 +453,44 @@
 			path = LoadProfile;
 			sourceTree = "<group>";
 		};
+		1698F70327EB7D95001C43C6 /* ParentFriendProvileViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1698F70427EB7DD1001C43C6 /* ParentFriendProfileViewController.swift */,
+			);
+			path = ParentFriendProvileViewController;
+			sourceTree = "<group>";
+		};
+		1698F70627EB7E22001C43C6 /* WallViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1698F70727EB7E3B001C43C6 /* WallTableViewController.swift */,
+			);
+			path = WallViewController;
+			sourceTree = "<group>";
+		};
+		1698F70927EB807F001C43C6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1698F70A27EB8090001C43C6 /* ParentFriendProfileView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1698F70A27EB8090001C43C6 /* ParentFriendProfileView */ = {
+			isa = PBXGroup;
+			children = (
+				1698F70B27EB80B6001C43C6 /* ParentFriendProfileView.swift */,
+				1698F70D27EB8300001C43C6 /* WallLoaderView.swift */,
+			);
+			path = ParentFriendProfileView;
+			sourceTree = "<group>";
+		};
 		16DFD17227E90C2600E91EF9 /* WallCell */ = {
 			isa = PBXGroup;
 			children = (
 				16DFD17327E90C4700E91EF9 /* WallTableViewCell.swift */,
+				1698F70127EB750B001C43C6 /* WallLoaderTableViewCell.swift */,
 			);
 			path = WallCell;
 			sourceTree = "<group>";
@@ -611,6 +658,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1690B5CC26FB824A00037328 /* UserSettings.swift in Sources */,
+				1698F70C27EB80B6001C43C6 /* ParentFriendProfileView.swift in Sources */,
 				1690B60126FE011100037328 /* ProfileResponse.swift in Sources */,
 				1690B5FF26FDFCB900037328 /* LoadGroups.swift in Sources */,
 				1690B5F526FDE73800037328 /* RequestFactory.swift in Sources */,
@@ -624,7 +672,9 @@
 				1690B5D626FC653600037328 /* FriendsTableViewCell.swift in Sources */,
 				16434A5627062A4B00AF5501 /* ProfileInfoBlockViewCell.swift in Sources */,
 				16DFD17427E90C4700E91EF9 /* WallTableViewCell.swift in Sources */,
+				1698F70227EB750B001C43C6 /* WallLoaderTableViewCell.swift in Sources */,
 				16DFD17627E912C100E91EF9 /* WallResponse.swift in Sources */,
+				1698F70527EB7DD1001C43C6 /* ParentFriendProfileViewController.swift in Sources */,
 				1690B5EA26FDE69000037328 /* AbstractErrorParser.swift in Sources */,
 				1690B5DE26FCAED700037328 /* VkTabBarController.swift in Sources */,
 				1690B5D326FB969500037328 /* GroupsResponse.swift in Sources */,
@@ -633,6 +683,7 @@
 				16DFD17E27E9199600E91EF9 /* WallViewModel.swift in Sources */,
 				1690B5BF26FB7FDA00037328 /* FriendsTableViewController.swift in Sources */,
 				1627AD4D2758DA81003F1BD7 /* Proxy.swift in Sources */,
+				1698F70E27EB8300001C43C6 /* WallLoaderView.swift in Sources */,
 				1690B5F226FDE6FC00037328 /* RequestRouter.swift in Sources */,
 				1690B5DB26FCAB7F00037328 /* UIImageExtension.swift in Sources */,
 				1690B60726FE025600037328 /* LoadProfile.swift in Sources */,
@@ -659,6 +710,7 @@
 				1690B5AB26FB7B0100037328 /* SceneDelegate.swift in Sources */,
 				16434A462704A12B00AF5501 /* UIImageViewExtension.swift in Sources */,
 				1690B5E326FCC14B00037328 /* ProfileFirstTableViewCell.swift in Sources */,
+				1698F70827EB7E3B001C43C6 /* WallTableViewController.swift in Sources */,
 				1690B5C326FB809A00037328 /* GroupsTableViewController.swift in Sources */,
 				16EF0CC726FF6C7C00587179 /* PhotoResponse.swift in Sources */,
 			);

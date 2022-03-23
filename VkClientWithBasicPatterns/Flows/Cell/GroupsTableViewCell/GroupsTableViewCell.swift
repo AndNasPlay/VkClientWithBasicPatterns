@@ -66,7 +66,7 @@ class GroupsTableViewCell: UITableViewCell {
 		groupNameLabel.text = groupsViewModel.nameLable
 		groupActivityLabel.text = groupsViewModel.description
 		if groupsViewModel.avatarImage != nil {
-			avatarImageView.kf.setImage(with: URL(string: groupsViewModel.avatarImage ?? "http://placehold.it/50x50"))
+			avatarImageView.kf.setImage(with: URL(string: groupsViewModel.avatarImage ?? "https://via.placeholder.com/50x50"))
 		} else {
 			avatarImageView.image = UIImage(named: "testImg")
 		}

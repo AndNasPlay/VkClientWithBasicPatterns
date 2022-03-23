@@ -9,5 +9,5 @@ import Foundation
 import Alamofire
 
 protocol LoadWallService {
-	func loadWall(completionHandler: @escaping (AFDataResponse<WallResponse>) -> Void)
+	func loadWall(profileId: Int, completionHandler: @escaping (AFDataResponse<WallResponse>) -> Void)
 }

@@ -77,7 +77,7 @@ class FriendsTableViewController: UITableViewController {
 	}
 
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		let profileController = FriendProfileViewController(
+		let profileController = ParentFriendProfileViewController(
 			requestFactory: requestFactory,
 			friendProfile: friendsViewModels[indexPath.row])
 		self.navigationController?.pushViewController(profileController, animated: true)

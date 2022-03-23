@@ -27,9 +27,10 @@ class LoadWall: AbstractRequestFactory, LoadWallService {
 		self.baseUrl = baseUrl
 	}
 
-	func loadWall(completionHandler: @escaping (AFDataResponse<WallResponse>) -> Void) {
+	func loadWall(profileId: Int, completionHandler: @escaping (AFDataResponse<WallResponse>) -> Void) {
 		let requestModel = LoadWallRequest(
-			baseUrl: baseUrl
+			baseUrl: baseUrl,
+			profileId: profileId
 		)
 		self.request(request: requestModel, completionHandler: completionHandler)
 	}
@@ -38,11 +39,12 @@ class LoadWall: AbstractRequestFactory, LoadWallService {
 		let baseUrl: URL
 		let method: HTTPMethod = .get
 		let path: String = "/method/wall.get"
+		let profileId: Int
 		var parameters: Parameters? {[
 			"access_token": UserSettings.shared.token,
-			"user_id": UserSettings.shared.userId,
-			"count": "2",
-			"v": "5.181"
+			"owner_id": profileId,
+			"v": "5.131",
+			"count": "5"
 		]}
 	}
 }

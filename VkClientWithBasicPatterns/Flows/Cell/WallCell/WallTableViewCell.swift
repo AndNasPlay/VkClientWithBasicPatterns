@@ -12,7 +12,7 @@ class WallTableViewCell: UITableViewCell {
 
 	static let identifier = "WallTableViewCell"
 
-	private(set) lazy var avatarWidthHeight: CGFloat = 25.0
+	private(set) lazy var avatarWidthHeight: CGFloat = 50.0
 
 	private(set) lazy var standartIndent: CGFloat = 10.0
 
@@ -24,7 +24,7 @@ class WallTableViewCell: UITableViewCell {
 		let lable = UILabel()
 		lable.textColor = .black
 		lable.font = UIFont.titleCellFont
-		lable.numberOfLines = 1
+		lable.numberOfLines = 0
 		return lable
 	}()
 
@@ -36,7 +36,7 @@ class WallTableViewCell: UITableViewCell {
 		return lable
 	}()
 
-	private(set) lazy var authorAvaterImageView: UIImageView = {
+	private(set) lazy var authorAvatarImageView: UIImageView = {
 		let imageView = UIImageView()
 		imageView.layer.masksToBounds = true
 		imageView.clipsToBounds = true
@@ -50,10 +50,14 @@ class WallTableViewCell: UITableViewCell {
 		return imageView
 	}()
 
-	private(set) lazy var likeImageView: UIImageView = {
-		let imageView = UIImageView()
-		imageView.translatesAutoresizingMaskIntoConstraints = false
-		return imageView
+	private(set) lazy var likeButton: UIButton = {
+		let button = UIButton()
+		button.translatesAutoresizingMaskIntoConstraints = false
+		button.setImage(UIImage(systemName: "heart"), for: .normal)
+		button.tintColor = .gray
+		button.setImage(UIImage(systemName: "heart.fill"), for: .selected)
+		button.setTitleColor(.red, for: .selected)
+		return button
 	}()
 
 	private(set) lazy var likeCountLable: UILabel = {
@@ -68,7 +72,8 @@ class WallTableViewCell: UITableViewCell {
 		let stack = UIStackView()
 		stack.translatesAutoresizingMaskIntoConstraints = false
 		stack.axis = .horizontal
-		stack.distribution = .fill
+		stack.distribution = .fillProportionally
+		stack.layer.cornerRadius = 10.0
 		stack.alignment = .center
 		stack.backgroundColor = .separator
 		return stack
@@ -80,6 +85,7 @@ class WallTableViewCell: UITableViewCell {
 		stack.axis = .horizontal
 		stack.distribution = .fill
 		stack.alignment = .center
+		stack.spacing = 10.0
 		return stack
 	}()
 
@@ -89,6 +95,7 @@ class WallTableViewCell: UITableViewCell {
 		stack.axis = .vertical
 		stack.distribution = .fill
 		stack.alignment = .leading
+		stack.spacing = 8.0
 		return stack
 	}()
 
@@ -99,49 +106,57 @@ class WallTableViewCell: UITableViewCell {
 		selectionStyle = UITableViewCell.SelectionStyle.none
 
 		contentView.addSubview(authorStackView)
-		authorStackView.addArrangedSubview(authorAvaterImageView)
+		authorStackView.addArrangedSubview(authorAvatarImageView)
 		authorStackView.addArrangedSubview(authorLablesStackView)
 		authorLablesStackView.addArrangedSubview(authorNameLabel)
 		authorLablesStackView.addArrangedSubview(authorDateCommitLabel)
 		contentView.addSubview(wallImageView)
 		contentView.addSubview(likeStackView)
-		likeStackView.addArrangedSubview(likeImageView)
+		likeStackView.addArrangedSubview(likeButton)
 		likeStackView.addArrangedSubview(likeCountLable)
 	}
 
-	// swiftlint:disable unavailable_function
 	required init?(coder: NSCoder) {
-		fatalError("init(coder:) has not been implemented")
+		super.init(coder: coder)
 	}
-	// swiftlint:enable unavailable_function
 
-//	func configureCell(wallViewModel: WallViewModel) {
-//		authorNameLabel.text = friendsViewModel.nameLable
-//		authorDateCommitLabel.text = friendsViewModel.cityName
-//		if friendsViewModel.avatarImage != nil {
-//			authorAvaterImageView.kf.setImage(with: URL(string: friendsViewModel.avatarImage ?? "http://placehold.it/50x50"))
-//		} else {
-//			authorAvaterImageView.image = UIImage(named: "testImg")
-//		}
-//	}
+	func configureCell(wallViewModel: WallViewModel) {
+		authorNameLabel.text = wallViewModel.authorNameLable
+		authorDateCommitLabel.text = wallViewModel.authorDateLable
+		likeCountLable.text = wallViewModel.likeCount
+
+		if wallViewModel.authorAvatarImg != nil {
+			authorAvatarImageView.kf.setImage(with: URL(string: wallViewModel.authorAvatarImg ?? "https://via.placeholder.com/50x50"))
+		} else {
+			authorAvatarImageView.kf.setImage(with: URL(string: "https://via.placeholder.com/50x50"))
+		}
+
+		if wallViewModel.wallImg != nil {
+			wallImageView.kf.setImage(with: URL(string: wallViewModel.wallImg ?? "https://via.placeholder.com/300x300"))
+		} else {
+			wallImageView.kf.setImage(with: URL(string: "https://via.placeholder.com/50x50"))
+		}
+	}
 
 	override func layoutSubviews() {
 		super.layoutSubviews()
 
 		NSLayoutConstraint.activate([
-			authorAvaterImageView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: standartIndent),
-			authorAvaterImageView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: standartIndent),
-			authorAvaterImageView.widthAnchor.constraint(equalToConstant: avatarWidthHeight),
-			authorAvaterImageView.heightAnchor.constraint(equalToConstant: avatarWidthHeight),
-			authorAvaterImageView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -standartIndent),
 
-			authorNameLabel.leadingAnchor.constraint(equalTo: self.authorAvaterImageView.trailingAnchor, constant: standartIndent),
-			authorNameLabel.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor, constant: -standartIndent),
-			authorNameLabel.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: nameMultiplier),
+			authorStackView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 5.0),
+			authorStackView.leftAnchor.constraint(equalTo: self.contentView.leftAnchor, constant: 10.0),
+			authorStackView.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -10.0),
+			authorStackView.bottomAnchor.constraint(equalTo: self.wallImageView.topAnchor, constant: -10.0),
 
-			authorDateCommitLabel.leadingAnchor.constraint(equalTo: self.authorAvaterImageView.trailingAnchor, constant: standartIndent),
-			authorDateCommitLabel.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor, constant: standartIndent),
-			authorDateCommitLabel.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: cityMultiplier)
+			wallImageView.topAnchor.constraint(equalTo: self.authorStackView.bottomAnchor, constant: 10.0),
+			wallImageView.leftAnchor.constraint(equalTo: self.contentView.leftAnchor),
+			wallImageView.rightAnchor.constraint(equalTo: self.contentView.rightAnchor),
+			wallImageView.bottomAnchor.constraint(equalTo: self.likeStackView.topAnchor, constant: -10.0),
+
+			likeStackView.topAnchor.constraint(equalTo: self.wallImageView.bottomAnchor, constant: 10.0),
+			likeStackView.leftAnchor.constraint(equalTo: self.contentView.leftAnchor, constant: 10.0),
+			likeStackView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -5.0),
+			likeStackView.widthAnchor.constraint(equalToConstant: 50.0)
 		])
 	}
 
