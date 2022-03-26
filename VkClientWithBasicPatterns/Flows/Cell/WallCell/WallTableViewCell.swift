@@ -8,9 +8,16 @@
 import UIKit
 import Kingfisher
 
+protocol WallTableViewCellDelegate: AnyObject {
+	func addLike(sender: UIButton)
+	func showPhoto(sender: UIImageView)
+}
+
 class WallTableViewCell: UITableViewCell {
 
 	static let identifier = "WallTableViewCell"
+
+	weak var cellDelegate: WallTableViewCellDelegate?
 
 	private(set) lazy var avatarWidthHeight: CGFloat = 50.0
 
@@ -53,10 +60,8 @@ class WallTableViewCell: UITableViewCell {
 	private(set) lazy var likeButton: UIButton = {
 		let button = UIButton()
 		button.translatesAutoresizingMaskIntoConstraints = false
-		button.setImage(UIImage(systemName: "heart"), for: .normal)
+		button.setImage(UIImage(systemName: "heart.fill"), for: .normal)
 		button.tintColor = .gray
-		button.setImage(UIImage(systemName: "heart.fill"), for: .selected)
-		button.setTitleColor(.red, for: .selected)
 		return button
 	}()
 
@@ -99,6 +104,12 @@ class WallTableViewCell: UITableViewCell {
 		return stack
 	}()
 
+	func addGestureRecognizer() {
+		let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+		wallImageView.isUserInteractionEnabled = true
+		wallImageView.addGestureRecognizer(tapGestureRecognizer)
+	}
+
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 
@@ -114,6 +125,13 @@ class WallTableViewCell: UITableViewCell {
 		contentView.addSubview(likeStackView)
 		likeStackView.addArrangedSubview(likeButton)
 		likeStackView.addArrangedSubview(likeCountLable)
+
+		likeButton.addTarget(self,
+							 action: #selector(handleAddLikeTouchUpInseide),
+							 for: .touchUpInside)
+
+		addGestureRecognizer()
+
 	}
 
 	required init?(coder: NSCoder) {
@@ -131,11 +149,17 @@ class WallTableViewCell: UITableViewCell {
 			authorAvatarImageView.kf.setImage(with: URL(string: "https://via.placeholder.com/50x50"))
 		}
 
-		if wallViewModel.wallImg != nil {
-			wallImageView.kf.setImage(with: URL(string: wallViewModel.wallImg ?? "https://via.placeholder.com/300x300"))
-		} else {
-			wallImageView.kf.setImage(with: URL(string: "https://via.placeholder.com/50x50"))
-		}
+		wallImageView.kf.setImage(with: URL(string: wallViewModel.wallImg ?? "https://via.placeholder.com/300x300"))
+
+	}
+
+	@objc func handleAddLikeTouchUpInseide() {
+		cellDelegate?.addLike(sender: likeButton)
+	}
+
+	@objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
+		let tappedImage = tapGestureRecognizer.view as? UIImageView
+		cellDelegate?.showPhoto(sender: tappedImage!)
 	}
 
 	override func layoutSubviews() {

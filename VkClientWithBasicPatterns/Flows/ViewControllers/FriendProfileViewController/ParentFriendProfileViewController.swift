@@ -18,7 +18,7 @@ class ParentFriendProfileViewController: UIViewController, CALayerDelegate {
 	lazy var wallViewController = WallTableViewController(requestFactory: requestFactory,
 														  friendProfile: friendProfile)
 
-	lazy var loader = WallLoader(dotSize: CGSize(width: 20.0, height: 20.0),
+	lazy var loader = LoaderView(dotSize: CGSize(width: 20.0, height: 20.0),
 								 dotColor: .black)
 
 	// MARK: - CABasicAnimation
@@ -89,7 +89,7 @@ class ParentFriendProfileViewController: UIViewController, CALayerDelegate {
 			headerViewController.view.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
 			headerViewController.view.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor),
 			headerViewController.view.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor),
-			headerViewController.view.heightAnchor.constraint(equalToConstant: 350.0)
+			headerViewController.view.heightAnchor.constraint(equalToConstant: 300.0)
 		])
 	}
 
@@ -113,6 +113,7 @@ class ParentFriendProfileViewController: UIViewController, CALayerDelegate {
 		wallViewController.view.translatesAutoresizingMaskIntoConstraints = false
 		self.wallViewController.didMove(toParent: self)
 		self.wallViewController.view.isHidden = true
+		self.wallViewController.view.layer.opacity = 0.0
 
 		NSLayoutConstraint.activate([
 			wallViewController.view.topAnchor.constraint(equalTo: self.view.subviews[0].bottomAnchor),
@@ -168,12 +169,17 @@ class ParentFriendProfileViewController: UIViewController, CALayerDelegate {
 
 	public func stopAnimation() {
 
-		[loader.firstView, loader.secondView, loader.theThirdView].forEach {
+		[self.loader.firstView, self.loader.secondView, self.loader.theThirdView].forEach {
 			$0.layer.removeAllAnimations()
 		}
 
-		loader.isHidden = true
-		self.wallViewController.view.isHidden = false
+		UIView.animate(withDuration: 1.0) {
+			self.loader.layer.opacity = 0.0
+			self.loader.isHidden = true
+			self.wallViewController.view.isHidden = false
+			self.wallViewController.view.layer.opacity = 1.0
+		}
+
 	}
 }
 

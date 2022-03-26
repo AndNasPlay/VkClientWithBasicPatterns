@@ -13,21 +13,40 @@ class WallViewModelFactory {
 		groups.compactMap(getViewModel)
 	}
 
-	private func getViewModel(from wall: WallItem) -> WallViewModel {
-		let authorName = "\(wall.ownerID ?? 2)"
-		let authorDate = "\(wall.date ?? 2)"
-		let likeCount = "\(wall.likes?.count ?? 2)"
-		let avatarImage: String = "https://via.placeholder.com/50x50"
-		var image: String = "https://via.placeholder.com/150x150"
+	private var getWallImg = ImageForWallParser()
 
-		if let imageSize: Size = (wall.copyHistory?.first?.attachments?.first?.photo?.sizes?.first(where: { $0.type == "r" })) {
-			image = imageSize.url ?? "https://via.placeholder.com/150x150"
+	private func unixTimeConvertion(unixTime: Double) -> String {
+
+		let date = Date(timeIntervalSince1970: unixTime)
+		let dateFormatter = DateFormatter()
+		dateFormatter.locale = Locale(identifier: "ru")
+		dateFormatter.dateStyle = .medium
+
+		return dateFormatter.string(from: date)
+	}
+
+	private func getViewModel(from wall: WallItem) -> WallViewModel {
+
+		let authorName = "\(wall.fromID ?? 2)"
+		let authorDate = unixTimeConvertion(unixTime: Double(wall.date ?? 0))
+		let likeCount = "\(wall.likes?.count ?? 2)"
+		let wallText = wall.text ?? ""
+		var wallImage: String = ""
+
+		if getWallImg.getImg(from: wall) != nil {
+			wallImage = getWallImg.getImg(from: wall) ?? "https://via.placeholder.com/150x150"
+		} else {
+			wallImage = "https://via.placeholder.com/150x150"
 		}
+
+		let avatarImage: String = "https://via.placeholder.com/50x50"
 
 		return WallViewModel(authorNameLable: authorName,
 							 authorDateLable: authorDate,
 							 authorAvatarImg: avatarImage,
-							 wallImg: image,
-							 likeCount: likeCount)
+							 wallImg: wallImage,
+							 wallText: wallText,
+							 likeCount: likeCount
+		)
 	}
 }

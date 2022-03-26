@@ -9,5 +9,5 @@ import Foundation
 import Alamofire
 
 protocol LoadPhotoService {
-	func loadPhoto(completionHandler: @escaping (AFDataResponse<PhotoResponse>) -> Void)
+	func loadPhoto(profileId: Int, completionHandler: @escaping (AFDataResponse<PhotoResponse>) -> Void)
 }

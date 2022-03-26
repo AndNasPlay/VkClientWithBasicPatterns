@@ -26,9 +26,10 @@ class LoadPhoto: AbstractRequestFactory, LoadPhotoService {
 		self.baseUrl = baseUrl
 	}
 
-	func loadPhoto(completionHandler: @escaping (AFDataResponse<PhotoResponse>) -> Void) {
+	func loadPhoto(profileId: Int, completionHandler: @escaping (AFDataResponse<PhotoResponse>) -> Void) {
 		let requestModel = LoadPhotoRequest(
-			baseUrl: baseUrl
+			baseUrl: baseUrl,
+			profileId: profileId
 		)
 		self.request(request: requestModel, completionHandler: completionHandler)
 	}
@@ -37,9 +38,10 @@ class LoadPhoto: AbstractRequestFactory, LoadPhotoService {
 		let baseUrl: URL
 		let method: HTTPMethod = .get
 		let path: String = "/method/photos.get"
+		let profileId: Int
 		var parameters: Parameters? {[
 			"access_token": UserSettings.shared.token,
-			"user_id": UserSettings.shared.userId,
+			"user_id": profileId,
 			"album_id": "profile",
 			"photo_sizes": 1,
 			"v": "5.131"

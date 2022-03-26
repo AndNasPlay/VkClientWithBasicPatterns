@@ -8,10 +8,16 @@
 import UIKit
 import Kingfisher
 
-class WallTableViewController: UITableViewController {
+class WallTableViewController: UITableViewController, WallTableViewCellDelegate {
 
 	let requestFactory: RequestFactory
+
 	let friendProfile: FriendsViewModel
+
+	private var photoShowViewController = PhotoShowViewController()
+
+	private var likeCount: Int = 0
+
 	init(requestFactory: RequestFactory, friendProfile: FriendsViewModel) {
 		self.requestFactory = requestFactory
 		self.friendProfile = friendProfile
@@ -39,12 +45,59 @@ class WallTableViewController: UITableViewController {
 		self.tableView.register(WallTableViewCell.self,
 								forCellReuseIdentifier: WallTableViewCell.identifier)
 
+//		self.photoShowViewController.delegate
+
 		loadData()
 	}
 
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		self.tableView.reloadData()
+	}
+
+	func addLike(sender: UIButton) {
+
+		let newIndexPath = IndexPath(row: sender.tag, section: 0)
+
+		guard let cell = tableView.cellForRow(at: newIndexPath) as? WallTableViewCell else { return }
+
+		if cell.likeButton.tintColor == .gray {
+			likeCount = Int(wallArray[newIndexPath.row].likeCount ?? "0") ?? 0
+
+			likeCount += 1
+
+			cell.likeCountLable.text = "\(likeCount)"
+
+			cell.likeButton.tintColor = .red
+			cell.likeButton.transform = CGAffineTransform(scaleX: 1.4, y: 1.4)
+
+			UIView.animate(withDuration: 1.0) {
+				cell.likeButton.transform = .identity
+			}
+		} else {
+
+			likeCount -= 1
+
+			cell.likeCountLable.text = "\(likeCount)"
+
+			cell.likeButton.tintColor = .gray
+			cell.likeButton.transform = CGAffineTransform(scaleX: 1.4, y: 1.4)
+
+			UIView.animate(withDuration: 1.0) {
+				cell.likeButton.transform = .identity
+			}
+		}
+	}
+
+	func showPhoto(sender: UIImageView) {
+
+		let newIndexPath = IndexPath(row: sender.tag, section: 0)
+
+		photoShowViewController.mainImageView.kf.setImage(with: URL(string: wallArray[newIndexPath.row].wallImg ?? "https://via.placeholder.com/150x150"))
+
+		photoShowViewController.modalPresentationStyle = .popover
+		photoShowViewController.modalTransitionStyle = .crossDissolve
+		present(photoShowViewController, animated: true, completion: nil)
 	}
 
 	private func loadData() {
@@ -79,6 +132,9 @@ class WallTableViewController: UITableViewController {
 		let cell = self.tableView.dequeueReusableCell(withIdentifier: WallTableViewCell.identifier, for: indexPath) as! WallTableViewCell
 
 		cell.configureCell(wallViewModel: wallArray[indexPath.row])
+		cell.cellDelegate = self
+		cell.likeButton.tag = indexPath.row
+		cell.wallImageView.tag = indexPath.row
 
 		return cell
 	}
@@ -86,4 +142,5 @@ class WallTableViewController: UITableViewController {
 	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 		UITableView.automaticDimension
 	}
+
 }

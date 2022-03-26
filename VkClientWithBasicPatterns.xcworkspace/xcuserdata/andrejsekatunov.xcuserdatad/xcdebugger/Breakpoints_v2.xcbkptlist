@@ -3,4 +3,86 @@
    uuid = "C4F12DBB-5010-4190-9D86-0E71DE8C6485"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6CAD7311-378F-488A-8CCC-EF22DD4E4E5C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VkClientWithBasicPatterns/Core/Network/ImageForWallParser.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "getImg(from:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4173355F-4009-40A0-86B9-99F99F75263A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VkClientWithBasicPatterns/Flows/Cell/ProfilePhotoCell/ProfilePhotoTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "init(style:reuseIdentifier:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BA4F2751-8083-4DA0-943F-34B57324DDFA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VkClientWithBasicPatterns/Flows/Cell/ProfilePhotoCell/ProfilePhotoTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "init(style:reuseIdentifier:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "BA4F2751-8083-4DA0-943F-34B57324DDFA - a82e9b6243035321"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "VkClientWithBasicPatterns.ProfilePhotoTableViewCell.__allocating_init(style: __C.UITableViewCellStyle, reuseIdentifier: Swift.Optional&lt;Swift.String&gt;) -&gt; VkClientWithBasicPatterns.ProfilePhotoTableViewCell"
+                  moduleName = "VkClientWithBasicPatterns"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrejsekatunov/Desktop/GitHubs/VkClientWithBasicPatterns/VkClientWithBasicPatterns/Flows/Cell/ProfilePhotoCell/ProfilePhotoTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "31">
+               </Location>
+               <Location
+                  uuid = "BA4F2751-8083-4DA0-943F-34B57324DDFA - 13e54e9c890e458b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "VkClientWithBasicPatterns.ProfilePhotoTableViewCell.init(style: __C.UITableViewCellStyle, reuseIdentifier: Swift.Optional&lt;Swift.String&gt;) -&gt; VkClientWithBasicPatterns.ProfilePhotoTableViewCell"
+                  moduleName = "VkClientWithBasicPatterns"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrejsekatunov/Desktop/GitHubs/VkClientWithBasicPatterns/VkClientWithBasicPatterns/Flows/Cell/ProfilePhotoCell/ProfilePhotoTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "154">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

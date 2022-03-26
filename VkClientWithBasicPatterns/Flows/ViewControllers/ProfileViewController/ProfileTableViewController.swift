@@ -7,9 +7,27 @@
 
 import UIKit
 
-class ProfileTableViewController: UITableViewController {
+class ProfileTableViewController: UITableViewController, WallTableViewCellDelegate {
 
 	let requestFactory: RequestFactory
+
+	private var tableCellHeight: CGFloat = 210.0
+	private var secondTableCellHeight: CGFloat = 140.0
+	private var sectionCount = 3
+	private var rowCount = 1
+	private var likeCount: Int = 0
+
+	private let profileViewModelFactory = ProfileViewModelFactory()
+	private var photoShowViewController = PhotoShowViewController()
+	private let wallViewModelFactory = WallViewModelFactory()
+	private var profileViewModel = ProfileViewModel(name: "", homeTown: "")
+	private var wallArray: [WallViewModel] = [WallViewModel]()
+
+	private var photoArray: [Photo] = [Photo]()
+
+	private var userPhotoUrl: String?
+	private let profileImageSize: String = "p"
+
 	init(requestFactory: RequestFactory) {
 		self.requestFactory = requestFactory
 		super.init(nibName: nil, bundle: nil)
@@ -21,17 +39,22 @@ class ProfileTableViewController: UITableViewController {
 	}
 	// swiftlint:enable unavailable_function
 
-	private var tableCellHeight: CGFloat = 210.0
-	private var secondTableCellHeight: CGFloat = 140.0
-	private var sectionCount = 3
-	private var rowCount = 1
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		self.tableView.delegate = self
+		self.tableView.dataSource = self
 
-	private let profileViewModelFactory = ProfileViewModelFactory()
-	private let wallViewModelFactory = WallViewModelFactory()
-	private var profileViewModel = ProfileViewModel(name: "", homeTown: "")
-	private var wallArray: [WallViewModel] = [WallViewModel]()
-	private var userPhotoUrl: String?
-	private let profileImageSize: String = "p"
+		self.tableView.backgroundColor = .white
+		self.tableView.separatorColor = UIColor.white
+
+		self.tableView.register(ProfileFirstTableViewCell.self, forCellReuseIdentifier: ProfileFirstTableViewCell.identifier)
+		self.tableView.register(ProfileInfoBlockViewCell.self, forCellReuseIdentifier: ProfileInfoBlockViewCell.identifier)
+		self.tableView.register(ProfilePhotoTableViewCell.self, forCellReuseIdentifier: ProfilePhotoTableViewCell.reuseID)
+		self.tableView.register(WallTableViewCell.self, forCellReuseIdentifier: WallTableViewCell.identifier)
+		loadData()
+		loadPhoto()
+		loadWall()
+	}
 
 	private func loadData() {
 		self.requestFactory.makeLoadProfileRequestFactory().loadProfile { response in
@@ -49,12 +72,16 @@ class ProfileTableViewController: UITableViewController {
 				}
 			}
 		}
+	}
 
-		self.requestFactory.makeLoadPhotoRequestFactory().loadPhoto { response in
+	func loadPhoto() {
+		self.requestFactory.makeLoadPhotoRequestFactory().loadPhoto(profileId: UserSettings.shared.userId) { response in
 			DispatchQueue.main.async {
 				switch response.result {
 				case .success(let photo):
 					guard let new: PhotoUrl = (photo.response?.items?.first?.sizes?.first(where: { $0.type == self.profileImageSize })) else { return }
+					guard let newPhotoArray: [Photo] = photo.response?.items else { return }
+					self.photoArray = newPhotoArray
 					self.userPhotoUrl = new.url
 					self.tableView.reloadData()
 				case .failure(let error):
@@ -62,7 +89,9 @@ class ProfileTableViewController: UITableViewController {
 				}
 			}
 		}
+	}
 
+	func loadWall() {
 		self.requestFactory.makeLoadWallRequestFactory().loadWall(profileId: UserSettings.shared.userId) { response in
 			DispatchQueue.main.async {
 				switch response.result {
@@ -80,27 +109,55 @@ class ProfileTableViewController: UITableViewController {
 		}
 	}
 
-	override func viewDidLoad() {
-		super.viewDidLoad()
-		self.title = "Profile"
-		self.tableView.delegate = self
-		self.tableView.dataSource = self
-		self.tableView.backgroundColor = .white
-		self.tableView.separatorColor = UIColor.white
-		self.tableView.register(ProfileFirstTableViewCell.self, forCellReuseIdentifier: ProfileFirstTableViewCell.identifier)
-		self.tableView.register(ProfileInfoBlockViewCell.self, forCellReuseIdentifier: ProfileInfoBlockViewCell.identifier)
-		self.tableView.register(WallTableViewCell.self, forCellReuseIdentifier: WallTableViewCell.identifier)
-		loadData()
+	func addLike(sender: UIButton) {
+
+		let newIndexPath = IndexPath(row: sender.tag, section: 0)
+
+		guard let cell = tableView.cellForRow(at: newIndexPath) as? WallTableViewCell else { return }
+
+		if cell.likeButton.tintColor == .gray {
+			likeCount = Int(wallArray[newIndexPath.row].likeCount ?? "0") ?? 0
+
+			likeCount += 1
+
+			cell.likeCountLable.text = "\(likeCount)"
+
+			cell.likeButton.tintColor = .red
+			cell.likeButton.transform = CGAffineTransform(scaleX: 1.4, y: 1.4)
+
+			UIView.animate(withDuration: 1.0) {
+				cell.likeButton.transform = .identity
+			}
+		} else {
+
+			likeCount -= 1
+
+			cell.likeCountLable.text = "\(likeCount)"
+
+			cell.likeButton.tintColor = .gray
+			cell.likeButton.transform = CGAffineTransform(scaleX: 1.4, y: 1.4)
+
+			UIView.animate(withDuration: 1.0) {
+				cell.likeButton.transform = .identity
+			}
+		}
+	}
+
+	func showPhoto(sender: UIImageView) {
+
+		let newIndexPath = IndexPath(row: sender.tag, section: 0)
+
+		photoShowViewController.mainImageView.kf.setImage(with: URL(string: wallArray[newIndexPath.row].wallImg ?? "https://via.placeholder.com/150x150"))
+
+		photoShowViewController.modalPresentationStyle = .popover
+		photoShowViewController.modalTransitionStyle = .crossDissolve
+		present(photoShowViewController, animated: true, completion: nil)
 	}
 
 	// MARK: - Table view data source
 
-	override func numberOfSections(in tableView: UITableView) -> Int {
-		1
-	}
-
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		2 + wallArray.count
+		3 + wallArray.count
 	}
 
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -121,12 +178,21 @@ class ProfileTableViewController: UITableViewController {
 			// swiftlint:enable force_cast
 			cell.configureCell(profileViewModel: profileViewModel)
 			return cell
+		} else if indexPath.row == 2 {
+			// swiftlint:disable force_cast
+			let cell = self.tableView.dequeueReusableCell(withIdentifier: ProfilePhotoTableViewCell.reuseID, for: indexPath) as! ProfilePhotoTableViewCell
+			// swiftlint:enable force_cast
+			cell.configureCell(photo: photoArray)
+			
+			return cell
 		} else {
 			// swiftlint:disable force_cast
 			let cell = self.tableView.dequeueReusableCell(withIdentifier: WallTableViewCell.identifier, for: indexPath) as! WallTableViewCell
 			// swiftlint:enable force_cast
-			let newIndexPath = indexPath.row - 2
+			let newIndexPath = indexPath.row - 3
 			cell.configureCell(wallViewModel: wallArray[newIndexPath])
+			cell.cellDelegate = self
+			cell.likeButton.tag = indexPath.row
 			return cell
 		}
 	}
@@ -136,6 +202,8 @@ class ProfileTableViewController: UITableViewController {
 			return tableCellHeight
 		} else if indexPath.row == 1 {
 			return secondTableCellHeight
+		} else if indexPath.row == 2 {
+			return 200.0
 		} else {
 			return UITableView.automaticDimension
 		}

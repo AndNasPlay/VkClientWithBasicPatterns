@@ -1,5 +1,5 @@
 //
-//  WallLoader.swift
+//  LoaderView.swift
 //  VkClientWithBasicPatterns
 //
 //  Created by Андрей Щекатунов on 23.03.2022.
@@ -7,18 +7,13 @@
 
 import UIKit
 
-final class WallLoader: UIView {
+final class LoaderView: UIView {
 
 	private(set) lazy var viewWidthHeight: CGFloat = 20.0
-
 	private(set) lazy var firstView = UIView()
-
 	private(set) lazy var secondView = UIView()
-
 	private(set) lazy var theThirdView = UIView()
-
 	private var dotSize: CGSize
-
 	private var dotColor: UIColor
 
 	// MARK: - Init
@@ -31,8 +26,9 @@ final class WallLoader: UIView {
 		setupUI()
 	}
 
-	required init?(coder: NSCoder) {
-		fatalError("init(coder:) has not been implemented")
+	@available(*, unavailable)
+	public required init?(coder aDecoder: NSCoder) {
+		 fatalError("init(coder:) has not been implemented")
 	}
 
 	// MARK: - UI

@@ -31,6 +31,7 @@ struct WallItem: Codable {
 	let donut: Donut?
 	let shortTextRate: Double?
 	let hash: String?
+	let attachments: [Attachment]?
 
 	enum CodingKeys: String, CodingKey {
 		case id
@@ -44,6 +45,7 @@ struct WallItem: Codable {
 		case comments, likes, reposts, views, donut
 		case shortTextRate = "short_text_rate"
 		case hash
+		case attachments
 	}
 }
 

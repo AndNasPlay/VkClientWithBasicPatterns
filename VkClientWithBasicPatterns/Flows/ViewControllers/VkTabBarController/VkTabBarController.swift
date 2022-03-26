@@ -31,7 +31,7 @@ class VkTabBarController: UITabBarController {
 				title: "Все сообщества",
 				image: UIImage(named: "group")!),
 			createNavController(
-				for: ProfileTableViewController(requestFactory: factory),
+				for: ParentProfileViewController(requestFactory: factory),
 				title: "Profile",
 				image: UIImage(named: "profile")!)
 			// swiftlint:enable force_unwrapping

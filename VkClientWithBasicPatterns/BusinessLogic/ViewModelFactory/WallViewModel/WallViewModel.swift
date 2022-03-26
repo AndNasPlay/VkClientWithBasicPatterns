@@ -13,6 +13,7 @@ struct WallViewModel {
 	let authorDateLable: String?
 	let authorAvatarImg: String?
 	let wallImg: String?
+	let wallText: String?
 	let likeCount: String?
 
 }
