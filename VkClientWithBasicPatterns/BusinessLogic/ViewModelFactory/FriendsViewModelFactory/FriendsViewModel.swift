@@ -15,4 +15,5 @@ struct FriendsViewModel {
 	let online: Int?
 	let education: String?
 	let followersCount: Int?
+	let userId: Int?
 }

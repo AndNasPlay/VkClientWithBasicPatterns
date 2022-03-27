@@ -50,7 +50,7 @@ class FriendsTableViewCell: UITableViewCell {
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 		contentView.backgroundColor = .white
-//		selectionStyle = UITableViewCell.SelectionStyle.none
+		selectionStyle = UITableViewCell.SelectionStyle.none
 		contentView.addSubview(friendNameLabel)
 		contentView.addSubview(avatarImageView)
 		contentView.addSubview(friendCityLabel)
@@ -66,7 +66,7 @@ class FriendsTableViewCell: UITableViewCell {
 		friendNameLabel.text = friendsViewModel.nameLable
 		friendCityLabel.text = friendsViewModel.cityName
 		if friendsViewModel.avatarImage != nil {
-			avatarImageView.kf.setImage(with: URL(string: friendsViewModel.avatarImage ?? "http://placehold.it/50x50"))
+			avatarImageView.kf.setImage(with: URL(string: friendsViewModel.avatarImage ?? "https://via.placeholder.com/50x50"))
 		} else {
 			avatarImageView.image = UIImage(named: "testImg")
 		}

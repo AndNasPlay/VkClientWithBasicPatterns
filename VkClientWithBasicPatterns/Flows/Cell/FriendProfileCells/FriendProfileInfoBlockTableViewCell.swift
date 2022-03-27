@@ -151,6 +151,7 @@ class FriendProfileInfoBlockTableViewCell: UITableViewCell {
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 		contentView.backgroundColor = .white
+		selectionStyle = UITableViewCell.SelectionStyle.none
 		contentView.addSubview(cellStackView)
 		additionStackView()
 		setupCellCorol()

@@ -142,6 +142,7 @@ class FriendProfileFirstTableViewCell: UITableViewCell {
 
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
+		selectionStyle = UITableViewCell.SelectionStyle.none
 		contentView.addSubview(profileNameLabel)
 		contentView.addSubview(avatarImageView)
 		contentView.addSubview(profileActiveStatusLabel)

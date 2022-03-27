@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FriendsTableViewController: UITableViewController {
+class FriendsTableViewController: UITableViewController, CAAnimationDelegate {
 
 	let requestFactory: RequestFactory
 	init(requestFactory: RequestFactory) {
@@ -77,9 +77,24 @@ class FriendsTableViewController: UITableViewController {
 	}
 
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		let profileController = FriendProfileViewController(
-			requestFactory: requestFactory,
-			friendProfile: friendsViewModels[indexPath.row])
-		self.navigationController?.pushViewController(profileController, animated: true)
+
+		guard let cell = tableView.cellForRow(at: indexPath) as? FriendsTableViewCell else { return }
+
+		cell.avatarImageView.transform = CGAffineTransform(translationX: 0, y: -8)
+
+		UIView.animate(withDuration: 1.0,
+					   delay: 0.0,
+					   usingSpringWithDamping: 0.5,
+					   initialSpringVelocity: 0.8,
+					   options: [.curveLinear]
+		) {
+			cell.avatarImageView.transform = .identity
+
+		} completion: { _ in
+			let profileController = ParentFriendProfileViewController(
+				requestFactory: self.requestFactory,
+				friendProfile: self.friendsViewModels[indexPath.row])
+			self.navigationController?.pushViewController(profileController, animated: true)
+		}
 	}
 }

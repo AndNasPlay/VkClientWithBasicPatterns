@@ -18,7 +18,6 @@ class LoadFriendsServiceLoggingProxy: LoadFriendsService {
 
 	func loadFriends(completionHandler: @escaping (AFDataResponse<FriendsResponse>) -> Void) {
 		loadFriendsService.loadFriends(completionHandler: completionHandler)
-		print("Called func for load friends")
 	}
 
 }

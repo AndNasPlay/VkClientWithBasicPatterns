@@ -21,6 +21,7 @@ class FriendsViewModelFactory {
 		let online = friend.online
 		let education = friend.universityName
 		let followersCount = friend.followersCount
+		let userId = friend.id
 		return FriendsViewModel(
 			avatarImage: avatar,
 			nameLable: fullName,
@@ -28,7 +29,8 @@ class FriendsViewModelFactory {
 			domain: trackCode,
 			online: online,
 			education: education,
-			followersCount: followersCount
+			followersCount: followersCount,
+			userId: userId
 		)
 	}
 }

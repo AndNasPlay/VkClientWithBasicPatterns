@@ -55,6 +55,16 @@ class RequestFactory {
 		)
 	}
 
+	func makeLoadWallRequestFactory() -> LoadWallService {
+		let errorParser = makeErrorParser()
+		return LoadWall(
+			errorParser: errorParser,
+			sessionManager: commonSession,
+			queue: sessionCallBackQueue,
+			baseUrl: baseUrl
+		)
+	}
+
 	func makeLoadProfileRequestFactory() -> LoadProfileService {
 		let errorParser = makeErrorParser()
 		return LoadProfile(

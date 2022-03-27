@@ -1,19 +1,20 @@
 //
-//  LoadPhoto.swift
+//  LoadWall.swift
 //  VkClientWithBasicPatterns
 //
-//  Created by Андрей Щекатунов on 25.09.2021.
+//  Created by Андрей Щекатунов on 21.03.2022.
 //
 
 import Foundation
 import Alamofire
 
-class LoadPhoto: AbstractRequestFactory, LoadPhotoService {
+class LoadWall: AbstractRequestFactory, LoadWallService {
 
 	let errorParser: AbstractErrorParser
 	let sessionManager: Session
 	let queue: DispatchQueue
 	let baseUrl: URL
+
 	init(
 		errorParser: AbstractErrorParser,
 		sessionManager: Session,
@@ -26,25 +27,24 @@ class LoadPhoto: AbstractRequestFactory, LoadPhotoService {
 		self.baseUrl = baseUrl
 	}
 
-	func loadPhoto(profileId: Int, completionHandler: @escaping (AFDataResponse<PhotoResponse>) -> Void) {
-		let requestModel = LoadPhotoRequest(
+	func loadWall(profileId: Int, completionHandler: @escaping (AFDataResponse<WallResponse>) -> Void) {
+		let requestModel = LoadWallRequest(
 			baseUrl: baseUrl,
 			profileId: profileId
 		)
 		self.request(request: requestModel, completionHandler: completionHandler)
 	}
 
-	struct LoadPhotoRequest: RequestRouter {
+	struct LoadWallRequest: RequestRouter {
 		let baseUrl: URL
 		let method: HTTPMethod = .get
-		let path: String = "/method/photos.get"
+		let path: String = "/method/wall.get"
 		let profileId: Int
 		var parameters: Parameters? {[
 			"access_token": UserSettings.shared.token,
-			"user_id": profileId,
-			"album_id": "profile",
-			"photo_sizes": 1,
-			"v": "5.131"
+			"owner_id": profileId,
+			"v": "5.131",
+			"count": "5"
 		]}
 	}
 }
