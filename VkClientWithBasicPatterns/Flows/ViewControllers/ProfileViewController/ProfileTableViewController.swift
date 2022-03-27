@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileTableViewController: UITableViewController, WallTableViewCellDelegate {
+class ProfileTableViewController: UITableViewController, WallTableViewCellDelegate, ProfilePhotoTableViewCellDelegate, UICollectionViewDelegate {
 
 	let requestFactory: RequestFactory
 
@@ -18,12 +18,14 @@ class ProfileTableViewController: UITableViewController, WallTableViewCellDelega
 	private var likeCount: Int = 0
 
 	private let profileViewModelFactory = ProfileViewModelFactory()
-	private var photoShowViewController = PhotoShowViewController()
+
 	private let wallViewModelFactory = WallViewModelFactory()
 	private var profileViewModel = ProfileViewModel(name: "", homeTown: "")
 	private var wallArray: [WallViewModel] = [WallViewModel]()
-
+	private var photoShowViewController = PhotoShowViewController()
 	private var photoArray: [Photo] = [Photo]()
+
+	private let imageFinder = ImageForProfileParser()
 
 	private var userPhotoUrl: String?
 	private let profileImageSize: String = "p"
@@ -143,6 +145,17 @@ class ProfileTableViewController: UITableViewController, WallTableViewCellDelega
 		}
 	}
 
+	func openPhoto(sender: IndexPath) {
+		let newIndexPath = sender
+
+		photoShowViewController.mainImageView.kf.setImage(with: URL(string: imageFinder.getImg(
+			from: photoArray[newIndexPath.row]) ?? "https://via.placeholder.com/150x150"))
+
+		photoShowViewController.modalPresentationStyle = .popover
+		photoShowViewController.modalTransitionStyle = .crossDissolve
+		present(photoShowViewController, animated: true, completion: nil)
+	}
+
 	func showPhoto(sender: UIImageView) {
 
 		let newIndexPath = IndexPath(row: sender.tag, section: 0)
@@ -183,7 +196,10 @@ class ProfileTableViewController: UITableViewController, WallTableViewCellDelega
 			let cell = self.tableView.dequeueReusableCell(withIdentifier: ProfilePhotoTableViewCell.reuseID, for: indexPath) as! ProfilePhotoTableViewCell
 			// swiftlint:enable force_cast
 			cell.configureCell(photo: photoArray)
-			
+			cell.photoDelegate = self
+			cell.collectionView.delegate = self
+			cell.layer.borderWidth = 1.0
+			cell.layer.borderColor = UIColor.lightGray.cgColor
 			return cell
 		} else {
 			// swiftlint:disable force_cast
@@ -203,7 +219,7 @@ class ProfileTableViewController: UITableViewController, WallTableViewCellDelega
 		} else if indexPath.row == 1 {
 			return secondTableCellHeight
 		} else if indexPath.row == 2 {
-			return 200.0
+			return 190.0
 		} else {
 			return UITableView.automaticDimension
 		}

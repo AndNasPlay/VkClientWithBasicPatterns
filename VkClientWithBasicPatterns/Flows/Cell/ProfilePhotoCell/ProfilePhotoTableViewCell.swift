@@ -8,13 +8,19 @@
 import UIKit
 import Kingfisher
 
-class ProfilePhotoTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+protocol ProfilePhotoTableViewCellDelegate: AnyObject {
+	func openPhoto(sender: IndexPath)
+}
+
+class ProfilePhotoTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, PhotoCollectionViewCellDelegate {
 
 	static let reuseID = "profilePhotoTableViewCell"
 
 	var photoArr: [Photo] = [Photo]()
 
 	private let imageFinder = ImageForProfileParser()
+
+	weak var photoDelegate: ProfilePhotoTableViewCellDelegate?
 
 	private(set) lazy var collectionView: UICollectionView = {
 		let layout = UICollectionViewFlowLayout()
@@ -48,8 +54,12 @@ class ProfilePhotoTableViewCell: UITableViewCell, UICollectionViewDelegate, UICo
 		super.init(coder: coder)
 	}
 
-	func configureCell(photo: [Photo]) {
+	func showPhoto(sender: UIImageView) {
+		let newIndexPath = IndexPath(row: sender.tag, section: 0)
+		photoDelegate?.openPhoto(sender: newIndexPath)
+	}
 
+	func configureCell(photo: [Photo]) {
 		self.photoArr = photo
 		self.collectionView.reloadData()
 	}
@@ -63,6 +73,8 @@ class ProfilePhotoTableViewCell: UITableViewCell, UICollectionViewDelegate, UICo
 		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionViewCell.reuseID, for: indexPath) as! PhotoCollectionViewCell
 		// swiftlint:enable force_cast
 		cell.profileImageView.kf.setImage(with: URL(string: imageFinder.getImg(from: photoArr[indexPath.item]) ?? "https://via.placeholder.com/150x150"))
+		cell.profileImageView.tag = indexPath.row
+		cell.delegate = self
 
 		return cell
 	}
@@ -76,8 +88,8 @@ class ProfilePhotoTableViewCell: UITableViewCell, UICollectionViewDelegate, UICo
 		NSLayoutConstraint.activate([
 
 			collectionView.topAnchor.constraint(equalTo: self.contentView.topAnchor),
-			collectionView.leftAnchor.constraint(equalTo: self.contentView.leftAnchor),
-			collectionView.rightAnchor.constraint(equalTo: self.contentView.rightAnchor),
+			collectionView.leftAnchor.constraint(equalTo: self.contentView.leftAnchor, constant: 5.0),
+			collectionView.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -5.0),
 			collectionView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor)
 
 		])

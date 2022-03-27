@@ -31,7 +31,18 @@ class PhotoShowViewController: UIViewController {
 	}
 
 	@objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
-		self.dismiss(animated: true, completion: nil)
+
+		UIView.animate(withDuration: 0.8,
+					   delay: 0.0,
+					   options: .autoreverse
+		) {
+			self.mainImageView.layer.opacity = 0.4
+			self.mainImageView.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+		} completion: { [weak self] _ in
+			self?.mainImageView.transform = .identity
+			self?.mainImageView.layer.opacity = 1.0
+			self?.dismiss(animated: true, completion: nil)
+		}
 	}
 
 	func constraintsInit() {

@@ -248,8 +248,8 @@
 		16434A5227061B0F00AF5501 /* FriendProfileViewController */ = {
 			isa = PBXGroup;
 			children = (
-				16434A5327061B3700AF5501 /* FriendProfileViewController.swift */,
 				1698F70427EB7DD1001C43C6 /* ParentFriendProfileViewController.swift */,
+				16434A5327061B3700AF5501 /* FriendProfileViewController.swift */,
 				1698F70727EB7E3B001C43C6 /* WallTableViewController.swift */,
 			);
 			path = FriendProfileViewController;

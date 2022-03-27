@@ -45,8 +45,6 @@ class WallTableViewController: UITableViewController, WallTableViewCellDelegate 
 		self.tableView.register(WallTableViewCell.self,
 								forCellReuseIdentifier: WallTableViewCell.identifier)
 
-//		self.photoShowViewController.delegate
-
 		loadData()
 	}
 
