@@ -100,9 +100,9 @@ class WallTableViewController: UITableViewController, WallTableViewCellDelegate 
 
 	private func loadData() {
 
-		guard friendProfile.userId != nil else { return }
+		guard let friendId = friendProfile.userId else { return }
 
-		self.requestFactory.makeLoadWallRequestFactory().loadWall(profileId: friendProfile.userId!) { response in
+		self.requestFactory.makeLoadWallRequestFactory().loadWall(profileId: friendId) { response in
 			DispatchQueue.main.async {
 				switch response.result {
 				case .success(let wall):

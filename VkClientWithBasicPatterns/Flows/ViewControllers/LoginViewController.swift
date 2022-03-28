@@ -35,8 +35,8 @@ class LoginViewController: UIViewController, WKUIDelegate {
 			URLQueryItem(name: "response_type", value: "token"),
 			URLQueryItem(name: "v", value: "5.131")
 		]
-
-		let request = URLRequest(url: components.url!)
+		guard let componentsUrl = components.url else { return }
+		let request = URLRequest(url: componentsUrl)
 		webView.load(request)
 	}
 

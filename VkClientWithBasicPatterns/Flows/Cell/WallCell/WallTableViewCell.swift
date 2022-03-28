@@ -158,8 +158,8 @@ class WallTableViewCell: UITableViewCell {
 	}
 
 	@objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
-		let tappedImage = tapGestureRecognizer.view as? UIImageView
-		cellDelegate?.showPhoto(sender: tappedImage!)
+		guard let tappedImage = tapGestureRecognizer.view as? UIImageView else { return }
+		cellDelegate?.showPhoto(sender: tappedImage)
 	}
 
 	override func layoutSubviews() {
