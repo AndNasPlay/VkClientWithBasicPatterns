@@ -42,7 +42,7 @@ class PhotoCollectionViewCell: UICollectionViewCell {
 	}
 
 	@objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
-		let tappedImage = tapGestureRecognizer.view as? UIImageView
+		guard let tappedImage = tapGestureRecognizer.view as? UIImageView else { return }
 		UIView.animate(withDuration: 0.8,
 					   delay: 0.0,
 					   options: .autoreverse
@@ -52,7 +52,7 @@ class PhotoCollectionViewCell: UICollectionViewCell {
 		} completion: { [weak self] _ in
 			self?.profileImageView.transform = .identity
 			self?.profileImageView.layer.opacity = 1.0
-			self?.delegate?.showPhoto(sender: tappedImage!)
+			self?.delegate?.showPhoto(sender: tappedImage)
 		}
 	}
 

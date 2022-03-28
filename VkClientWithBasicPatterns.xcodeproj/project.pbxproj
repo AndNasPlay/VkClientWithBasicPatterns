@@ -62,6 +62,7 @@
 		169A82C227EF5A6400112E0F /* ProfilePhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169A82C127EF5A6400112E0F /* ProfilePhotoTableViewCell.swift */; };
 		169A82C427EF5B5200112E0F /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169A82C327EF5B5200112E0F /* PhotoCollectionViewCell.swift */; };
 		169A82C727EF61C000112E0F /* ImageForProfileParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169A82C627EF61C000112E0F /* ImageForProfileParser.swift */; };
+		169A82CA27F09CD600112E0F /* ImageForPhotoVCParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169A82C927F09CD600112E0F /* ImageForPhotoVCParser.swift */; };
 		16DFD17427E90C4700E91EF9 /* WallTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DFD17327E90C4700E91EF9 /* WallTableViewCell.swift */; };
 		16DFD17627E912C100E91EF9 /* WallResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DFD17527E912C100E91EF9 /* WallResponse.swift */; };
 		16DFD17927E913CF00E91EF9 /* LoadWall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DFD17827E913CF00E91EF9 /* LoadWall.swift */; };
@@ -136,6 +137,7 @@
 		169A82C127EF5A6400112E0F /* ProfilePhotoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePhotoTableViewCell.swift; sourceTree = "<group>"; };
 		169A82C327EF5B5200112E0F /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		169A82C627EF61C000112E0F /* ImageForProfileParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageForProfileParser.swift; sourceTree = "<group>"; };
+		169A82C927F09CD600112E0F /* ImageForPhotoVCParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageForPhotoVCParser.swift; sourceTree = "<group>"; };
 		16DFD17327E90C4700E91EF9 /* WallTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallTableViewCell.swift; sourceTree = "<group>"; };
 		16DFD17527E912C100E91EF9 /* WallResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallResponse.swift; sourceTree = "<group>"; };
 		16DFD17827E913CF00E91EF9 /* LoadWall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadWall.swift; sourceTree = "<group>"; };
@@ -509,6 +511,7 @@
 			children = (
 				169A82B727ECCD7600112E0F /* ImageForWallParser.swift */,
 				169A82C627EF61C000112E0F /* ImageForProfileParser.swift */,
+				169A82C927F09CD600112E0F /* ImageForPhotoVCParser.swift */,
 			);
 			path = ImageService;
 			sourceTree = "<group>";
@@ -728,6 +731,7 @@
 				1607A9B42700D53B003874FA /* UIColorExtension.swift in Sources */,
 				16434A512706053300AF5501 /* UIFontExtension.swift in Sources */,
 				16EF0CC326FF6C4F00587179 /* LoadPhoto.swift in Sources */,
+				169A82CA27F09CD600112E0F /* ImageForPhotoVCParser.swift in Sources */,
 				169A82BA27EF216000112E0F /* ParentProfileViewController.swift in Sources */,
 				169A82C727EF61C000112E0F /* ImageForProfileParser.swift in Sources */,
 				16434A4B2704C35E00AF5501 /* GroupsViewModel.swift in Sources */,

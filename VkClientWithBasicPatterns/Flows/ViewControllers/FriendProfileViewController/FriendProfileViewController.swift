@@ -66,7 +66,8 @@ class FriendProfileViewController: UITableViewController, ProfilePhotoTableViewC
 	// MARK: - Network
 
 	func loadPhoto() {
-		self.requestFactory.makeLoadPhotoRequestFactory().loadPhoto(profileId: friendProfile.userId!) { response in
+		guard let userId = friendProfile.userId else { return }
+		self.requestFactory.makeLoadPhotoRequestFactory().loadPhoto(profileId: userId) { response in
 			DispatchQueue.main.async {
 				switch response.result {
 				case .success(let photo):
@@ -96,13 +97,8 @@ class FriendProfileViewController: UITableViewController, ProfilePhotoTableViewC
 
 	func openPhoto(sender: IndexPath) {
 		let newIndexPath = sender
-
-		photoShowViewController.mainImageView.kf.setImage(with: URL(string: imageFinder.getImg(
-			from: photoArray[newIndexPath.row]) ?? "https://via.placeholder.com/150x150"))
-
-		photoShowViewController.modalPresentationStyle = .popover
-		photoShowViewController.modalTransitionStyle = .crossDissolve
-		present(photoShowViewController, animated: true, completion: nil)
+		photoShowViewController.addPhotoArray(photo: photoArray, and: newIndexPath.row)
+		self.navigationController?.pushViewController(photoShowViewController, animated: true)
 	}
 
 	// MARK: - Table view data source
