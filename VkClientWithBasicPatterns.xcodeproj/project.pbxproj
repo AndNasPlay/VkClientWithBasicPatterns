@@ -63,6 +63,11 @@
 		169A82C427EF5B5200112E0F /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169A82C327EF5B5200112E0F /* PhotoCollectionViewCell.swift */; };
 		169A82C727EF61C000112E0F /* ImageForProfileParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169A82C627EF61C000112E0F /* ImageForProfileParser.swift */; };
 		169A82CA27F09CD600112E0F /* ImageForPhotoVCParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169A82C927F09CD600112E0F /* ImageForPhotoVCParser.swift */; };
+		169A82CD27F1F26200112E0F /* PushPhotoViewControllerAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169A82CC27F1F26200112E0F /* PushPhotoViewControllerAnimation.swift */; };
+		169A82CF27F1F57C00112E0F /* PopNavigationControllerAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169A82CE27F1F57C00112E0F /* PopNavigationControllerAnimation.swift */; };
+		169A82D127F1F59900112E0F /* PushNavigationControllerAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169A82D027F1F59900112E0F /* PushNavigationControllerAnimation.swift */; };
+		169A82D527F2460700112E0F /* InterectiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169A82D427F2460700112E0F /* InterectiveTransition.swift */; };
+		169A82D727F3564000112E0F /* PopPhotoViewControllerAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169A82D627F3564000112E0F /* PopPhotoViewControllerAnimation.swift */; };
 		16DFD17427E90C4700E91EF9 /* WallTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DFD17327E90C4700E91EF9 /* WallTableViewCell.swift */; };
 		16DFD17627E912C100E91EF9 /* WallResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DFD17527E912C100E91EF9 /* WallResponse.swift */; };
 		16DFD17927E913CF00E91EF9 /* LoadWall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DFD17827E913CF00E91EF9 /* LoadWall.swift */; };
@@ -138,6 +143,11 @@
 		169A82C327EF5B5200112E0F /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		169A82C627EF61C000112E0F /* ImageForProfileParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageForProfileParser.swift; sourceTree = "<group>"; };
 		169A82C927F09CD600112E0F /* ImageForPhotoVCParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageForPhotoVCParser.swift; sourceTree = "<group>"; };
+		169A82CC27F1F26200112E0F /* PushPhotoViewControllerAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushPhotoViewControllerAnimation.swift; sourceTree = "<group>"; };
+		169A82CE27F1F57C00112E0F /* PopNavigationControllerAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopNavigationControllerAnimation.swift; sourceTree = "<group>"; };
+		169A82D027F1F59900112E0F /* PushNavigationControllerAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNavigationControllerAnimation.swift; sourceTree = "<group>"; };
+		169A82D427F2460700112E0F /* InterectiveTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterectiveTransition.swift; sourceTree = "<group>"; };
+		169A82D627F3564000112E0F /* PopPhotoViewControllerAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopPhotoViewControllerAnimation.swift; sourceTree = "<group>"; };
 		16DFD17327E90C4700E91EF9 /* WallTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallTableViewCell.swift; sourceTree = "<group>"; };
 		16DFD17527E912C100E91EF9 /* WallResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallResponse.swift; sourceTree = "<group>"; };
 		16DFD17827E913CF00E91EF9 /* LoadWall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadWall.swift; sourceTree = "<group>"; };
@@ -411,6 +421,7 @@
 		1690B5E626FDDD7F00037328 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				169A82CB27F1F20800112E0F /* Animation */,
 				169A82C827EF61C600112E0F /* ImageService */,
 				1690B5D926FCAB6600037328 /* Extensions */,
 				1690B5B326FB7B0300037328 /* LaunchScreen.storyboard */,
@@ -514,6 +525,34 @@
 				169A82C927F09CD600112E0F /* ImageForPhotoVCParser.swift */,
 			);
 			path = ImageService;
+			sourceTree = "<group>";
+		};
+		169A82CB27F1F20800112E0F /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				169A82D427F2460700112E0F /* InterectiveTransition.swift */,
+				169A82D327F1F5DA00112E0F /* PhotoViewControllerAnimation */,
+				169A82D227F1F5CD00112E0F /* NavigationControllerAnimation */,
+			);
+			path = Animation;
+			sourceTree = "<group>";
+		};
+		169A82D227F1F5CD00112E0F /* NavigationControllerAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				169A82D027F1F59900112E0F /* PushNavigationControllerAnimation.swift */,
+				169A82CE27F1F57C00112E0F /* PopNavigationControllerAnimation.swift */,
+			);
+			path = NavigationControllerAnimation;
+			sourceTree = "<group>";
+		};
+		169A82D327F1F5DA00112E0F /* PhotoViewControllerAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				169A82CC27F1F26200112E0F /* PushPhotoViewControllerAnimation.swift */,
+				169A82D627F3564000112E0F /* PopPhotoViewControllerAnimation.swift */,
+			);
+			path = PhotoViewControllerAnimation;
 			sourceTree = "<group>";
 		};
 		16DFD17227E90C2600E91EF9 /* WallCell */ = {
@@ -696,12 +735,14 @@
 				1690B5F826FDE77A00037328 /* LoadFriends.swift in Sources */,
 				1690B5F026FDE6E000037328 /* AbstractRequestFactory.swift in Sources */,
 				161ED3EE270C64C700F5BE89 /* FriendProfileFirstTableViewCell.swift in Sources */,
+				169A82CD27F1F26200112E0F /* PushPhotoViewControllerAnimation.swift in Sources */,
 				1690B5FD26FDFC7D00037328 /* LoadGroupsService.swift in Sources */,
 				16434A442704973900AF5501 /* FriendsViewModelFactory.swift in Sources */,
 				1690B5D626FC653600037328 /* FriendsTableViewCell.swift in Sources */,
 				16434A5627062A4B00AF5501 /* ProfileInfoBlockViewCell.swift in Sources */,
 				16DFD17427E90C4700E91EF9 /* WallTableViewCell.swift in Sources */,
 				16DFD17627E912C100E91EF9 /* WallResponse.swift in Sources */,
+				169A82CF27F1F57C00112E0F /* PopNavigationControllerAnimation.swift in Sources */,
 				1698F70527EB7DD1001C43C6 /* ParentFriendProfileViewController.swift in Sources */,
 				1690B5EA26FDE69000037328 /* AbstractErrorParser.swift in Sources */,
 				1690B5DE26FCAED700037328 /* VkTabBarController.swift in Sources */,
@@ -712,15 +753,18 @@
 				1690B5BF26FB7FDA00037328 /* FriendsTableViewController.swift in Sources */,
 				1627AD4D2758DA81003F1BD7 /* Proxy.swift in Sources */,
 				169A82BE27EF4B3A00112E0F /* PhotoShowViewController.swift in Sources */,
+				169A82D127F1F59900112E0F /* PushNavigationControllerAnimation.swift in Sources */,
 				1698F70E27EB8300001C43C6 /* LoaderView.swift in Sources */,
 				1690B5F226FDE6FC00037328 /* RequestRouter.swift in Sources */,
 				169A82C227EF5A6400112E0F /* ProfilePhotoTableViewCell.swift in Sources */,
 				1690B5DB26FCAB7F00037328 /* UIImageExtension.swift in Sources */,
 				1690B60726FE025600037328 /* LoadProfile.swift in Sources */,
+				169A82D527F2460700112E0F /* InterectiveTransition.swift in Sources */,
 				16DFD17927E913CF00E91EF9 /* LoadWall.swift in Sources */,
 				169A82BC27EF40CC00112E0F /* ParentProfileView.swift in Sources */,
 				1690B60426FE022100037328 /* LoadProfileService.swift in Sources */,
 				16DFD18027E91ADB00E91EF9 /* WallViewModelFactory.swift in Sources */,
+				169A82D727F3564000112E0F /* PopPhotoViewControllerAnimation.swift in Sources */,
 				16434A5427061B3700AF5501 /* FriendProfileViewController.swift in Sources */,
 				16434A4D2704C3B100AF5501 /* GroupsViewModelFactory.swift in Sources */,
 				1607A9B827039FB8003874FA /* ProfileViewModel.swift in Sources */,

@@ -24,6 +24,7 @@ class FriendsTableViewController: UITableViewController, CAAnimationDelegate {
 	private let friendsViewModelFactory = FriendsViewModelFactory()
 	private var friendsViewModels: [FriendsViewModel] = []
 	private var tableCellHeight: CGFloat = 70.0
+	let interectiveTransition = InterectiveTransition()
 
 	private func loadData() {
 		self.requestFactory.makeLoadFriendsWithPeoxyRequestFactory().loadFriends { response in
@@ -94,7 +95,50 @@ class FriendsTableViewController: UITableViewController, CAAnimationDelegate {
 			let profileController = ParentFriendProfileViewController(
 				requestFactory: self.requestFactory,
 				friendProfile: self.friendsViewModels[indexPath.row])
+			self.navigationController?.delegate = self
 			self.navigationController?.pushViewController(profileController, animated: true)
 		}
+	}
+}
+
+extension FriendsTableViewController: UIViewControllerTransitioningDelegate {
+
+	func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+		PushNavigationControllerAnimation()
+	}
+
+	func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+		PopNavigationControllerAnimation()
+	}
+}
+
+extension FriendsTableViewController: UINavigationControllerDelegate {
+
+	func navigationController(
+		_ navigationController: UINavigationController,
+		animationControllerFor operation: UINavigationController.Operation,
+		from fromVC: UIViewController,
+		to toVC: UIViewController
+	) -> UIViewControllerAnimatedTransitioning? {
+		if fromVC is FriendsTableViewController || toVC is FriendsTableViewController {
+			if operation == .pop {
+				if navigationController.viewControllers.first != toVC {
+					interectiveTransition.viewController = toVC
+				}
+				return PopNavigationControllerAnimation()
+			} else {
+				interectiveTransition.viewController = toVC
+				return PushNavigationControllerAnimation()
+			}
+		}
+		return nil
+	}
+
+	func navigationController(
+		_ navigationController: UINavigationController,
+		interactionControllerFor animationController: UIViewControllerAnimatedTransitioning
+	) -> UIViewControllerInteractiveTransitioning? {
+
+	interectiveTransition.hasStarted ? interectiveTransition : nil
 	}
 }

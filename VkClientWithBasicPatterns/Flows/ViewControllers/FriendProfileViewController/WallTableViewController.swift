@@ -93,9 +93,7 @@ class WallTableViewController: UITableViewController, WallTableViewCellDelegate 
 
 		photoShowViewController.mainImageView.kf.setImage(with: URL(string: wallArray[newIndexPath.row].wallImg ?? "https://via.placeholder.com/150x150"))
 
-		photoShowViewController.modalPresentationStyle = .popover
-		photoShowViewController.modalTransitionStyle = .crossDissolve
-		present(photoShowViewController, animated: true, completion: nil)
+		self.navigationController?.pushViewController(photoShowViewController, animated: true)
 	}
 
 	private func loadData() {

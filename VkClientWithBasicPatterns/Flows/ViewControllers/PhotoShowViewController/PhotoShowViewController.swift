@@ -31,6 +31,7 @@ class PhotoShowViewController: UIViewController {
 		addSwipeRightGestureRecognizer()
 		addSwipeLeftGestureRecognizer()
 		addStopGestureRecognizer()
+		addSwipeDownGestureRecognizer()
 	}
 
 	func addPhotoArray(photo: [Photo], and index: Int) {
@@ -56,6 +57,14 @@ class PhotoShowViewController: UIViewController {
 		view.addGestureRecognizer(swipeGestureRecognizer)
 	}
 
+	private func addSwipeDownGestureRecognizer() {
+		let swipeDownGestureRecognizer = UISwipeGestureRecognizer(target: self,
+															  action: #selector(viewSwipeDown(swipeGestureRecognizer:)))
+		swipeDownGestureRecognizer.direction = .up
+		view.isUserInteractionEnabled = true
+		view.addGestureRecognizer(swipeDownGestureRecognizer)
+	}
+
 	private func addSwipeLeftGestureRecognizer() {
 		let swipeGestureRecognizer = UISwipeGestureRecognizer(target: self,
 															  action: #selector(viewSwipeLeft(swipeGestureRecognizer:)))
@@ -68,6 +77,21 @@ class PhotoShowViewController: UIViewController {
 		self.mainImageView.stopAnimating()
 		self.mainImageView.layer.removeAllAnimations()
 		self.mainImageView.layoutIfNeeded()
+	}
+
+	@objc func viewSwipeDown(swipeGestureRecognizer: UITapGestureRecognizer) {
+
+		UIView.animate(withDuration: 2.0,
+					   delay: 0.0,
+					   options: .curveLinear
+		) {
+			let translation = CGAffineTransform(translationX: 0, y: -400.0)
+			let scale = CGAffineTransform(scaleX: 0.8, y: 0.8)
+			self.mainImageView.transform = translation.concatenating(scale)
+		} completion: { _ in
+			self.mainImageView.transform = .identity
+			self.navigationController?.popViewController(animated: true)
+		}
 	}
 
 	@objc func viewSwipeRight(swipeGestureRecognizer: UITapGestureRecognizer) {
