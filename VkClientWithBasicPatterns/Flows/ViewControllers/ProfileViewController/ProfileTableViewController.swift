@@ -151,9 +151,7 @@ class ProfileTableViewController: UITableViewController, WallTableViewCellDelega
 		photoShowViewController.mainImageView.kf.setImage(with: URL(string: imageFinder.getImg(
 			from: photoArray[newIndexPath.row]) ?? "https://via.placeholder.com/150x150"))
 
-		photoShowViewController.modalPresentationStyle = .popover
-		photoShowViewController.modalTransitionStyle = .crossDissolve
-		present(photoShowViewController, animated: true, completion: nil)
+		self.navigationController?.pushViewController(photoShowViewController, animated: true)
 	}
 
 	func showPhoto(sender: UIImageView) {
@@ -162,9 +160,7 @@ class ProfileTableViewController: UITableViewController, WallTableViewCellDelega
 
 		photoShowViewController.mainImageView.kf.setImage(with: URL(string: wallArray[newIndexPath.row].wallImg ?? "https://via.placeholder.com/150x150"))
 
-		photoShowViewController.modalPresentationStyle = .popover
-		photoShowViewController.modalTransitionStyle = .crossDissolve
-		present(photoShowViewController, animated: true, completion: nil)
+		self.navigationController?.pushViewController(photoShowViewController, animated: true)
 	}
 
 	// MARK: - Table view data source

@@ -98,6 +98,7 @@ class FriendProfileViewController: UITableViewController, ProfilePhotoTableViewC
 	func openPhoto(sender: IndexPath) {
 		let newIndexPath = sender
 		photoShowViewController.addPhotoArray(photo: photoArray, and: newIndexPath.row)
+		self.navigationController?.delegate = self
 		self.navigationController?.pushViewController(photoShowViewController, animated: true)
 	}
 
@@ -142,5 +143,41 @@ class FriendProfileViewController: UITableViewController, ProfilePhotoTableViewC
 		} else {
 			return photoCollectionViewHeight
 		}
+	}
+}
+
+extension FriendProfileViewController: UIViewControllerTransitioningDelegate {
+
+	func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+		PushPhotoViewControllerAnimation()
+	}
+
+	func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+		PopPhotoViewControllerAnimation()
+	}
+}
+
+extension FriendProfileViewController: UINavigationControllerDelegate {
+
+	func navigationController(
+		_ navigationController: UINavigationController,
+		animationControllerFor operation: UINavigationController.Operation,
+		from fromVC: UIViewController,
+		to toVC: UIViewController
+	) -> UIViewControllerAnimatedTransitioning? {
+		if (fromVC is ParentFriendProfileViewController && toVC is PhotoShowViewController) || (fromVC is PhotoShowViewController && toVC is ParentFriendProfileViewController) {
+			if operation == .pop {
+				return PopPhotoViewControllerAnimation()
+			} else {
+				return PushPhotoViewControllerAnimation()
+			}
+		} else {
+			if operation == .pop {
+				return PopNavigationControllerAnimation()
+			} else {
+				return PushNavigationControllerAnimation()
+			}
+		}
+		return nil
 	}
 }

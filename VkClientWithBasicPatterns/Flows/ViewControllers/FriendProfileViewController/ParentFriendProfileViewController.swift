@@ -12,7 +12,7 @@ class ParentFriendProfileViewController: UIViewController, CALayerDelegate {
 	let requestFactory: RequestFactory
 	let friendProfile: FriendsViewModel
 
-	lazy var headerViewController = FriendProfileViewController(requestFactory: requestFactory,
+	lazy var headerViewController: FriendProfileViewController = FriendProfileViewController(requestFactory: requestFactory,
 																friendProfile: friendProfile)
 
 	lazy var wallViewController = WallTableViewController(requestFactory: requestFactory,
@@ -62,7 +62,6 @@ class ParentFriendProfileViewController: UIViewController, CALayerDelegate {
 		configureUI()
 		setupAnimation()
 		startAnimation()
-
 	}
 
 	// MARK: - Private
@@ -116,7 +115,7 @@ class ParentFriendProfileViewController: UIViewController, CALayerDelegate {
 		self.wallViewController.view.layer.opacity = 0.0
 
 		NSLayoutConstraint.activate([
-			wallViewController.view.topAnchor.constraint(equalTo: self.view.subviews[0].bottomAnchor),
+			wallViewController.view.topAnchor.constraint(equalTo: self.view.subviews[0].bottomAnchor, constant: 5.0),
 			wallViewController.view.leftAnchor.constraint(equalTo: self.view.leftAnchor),
 			wallViewController.view.rightAnchor.constraint(equalTo: self.view.rightAnchor),
 			wallViewController.view.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
