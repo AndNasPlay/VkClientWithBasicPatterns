@@ -32,6 +32,8 @@ class WallViewModelFactory {
 		let likeCount = "\(wall.likes?.count ?? 2)"
 		let wallText = wall.text ?? ""
 		var wallImage: String = ""
+		let commentCount = "\(wall.comments?.count ?? 0)"
+		let viewsCount = "\(wall.views?.count ?? 0)"
 
 		if getWallImg.getImg(from: wall) != nil {
 			wallImage = getWallImg.getImg(from: wall) ?? "https://via.placeholder.com/150x150"
@@ -46,7 +48,9 @@ class WallViewModelFactory {
 							 authorAvatarImg: avatarImage,
 							 wallImg: wallImage,
 							 wallText: wallText,
-							 likeCount: likeCount
+							 likeCount: likeCount,
+							 commentCount: commentCount,
+							 viewsCount: viewsCount
 		)
 	}
 }

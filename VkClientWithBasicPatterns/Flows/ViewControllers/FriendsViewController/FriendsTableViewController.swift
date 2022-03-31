@@ -27,7 +27,7 @@ class FriendsTableViewController: UITableViewController, CAAnimationDelegate {
 	let interectiveTransition = InterectiveTransition()
 
 	private func loadData() {
-		self.requestFactory.makeLoadFriendsWithPeoxyRequestFactory().loadFriends { response in
+		self.requestFactory.makeLoadFriendsWithProxyRequestFactory().loadFriends { response in
 			DispatchQueue.main.async {
 				switch response.result {
 				case .success(let catalog):

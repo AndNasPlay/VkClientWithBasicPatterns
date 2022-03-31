@@ -21,19 +21,23 @@ class VkTabBarController: UITabBarController {
 
 	func setupVCs() {
 		viewControllers = [
+			// swiftlint:disable force_unwrapping
 			createNavController(
 				for: FriendsTableViewController(requestFactory: factory),
-				// swiftlint:disable force_unwrapping
-				title: "Друзья",
-				image: UIImage(named: "friends")!),
+				   title: "Друзья",
+				   image: UIImage(named: "friends")!),
 			createNavController(
 				for: GroupsTableViewController(requestFactory: factory),
-				title: "Все сообщества",
-				image: UIImage(named: "group")!),
+				   title: "Все сообщества",
+				   image: UIImage(named: "group")!),
+			createNavController(
+				for: NewsTableViewController(requestFactory: factory),
+				   title: "News",
+				   image: UIImage(systemName: "newspaper")!),
 			createNavController(
 				for: ParentProfileViewController(requestFactory: factory),
-				title: "Profile",
-				image: UIImage(named: "profile")!)
+				   title: "Profile",
+				   image: UIImage(named: "profile")!)
 			// swiftlint:enable force_unwrapping
 		]
 	}

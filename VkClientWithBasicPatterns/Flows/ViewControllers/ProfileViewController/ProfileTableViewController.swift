@@ -56,6 +56,7 @@ class ProfileTableViewController: UITableViewController, WallTableViewCellDelega
 		loadData()
 		loadPhoto()
 		loadWall()
+		loadNews()
 	}
 
 	private func loadData() {
@@ -69,6 +70,19 @@ class ProfileTableViewController: UITableViewController, WallTableViewCellDelega
 					// swiftlint:enable force_unwrapping
 					self.title = profile.response?.screenName
 					self.tableView.reloadData()
+				case .failure(let error):
+					print(error.localizedDescription)
+				}
+			}
+		}
+	}
+
+	private func loadNews() {
+		self.requestFactory.makeLoadNewsRequestFactory().loadNews { response in
+			DispatchQueue.main.async {
+				switch response.result {
+				case .success(let news):
+					guard news.response != nil else { return }
 				case .failure(let error):
 					print(error.localizedDescription)
 				}

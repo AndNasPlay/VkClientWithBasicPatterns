@@ -57,6 +57,16 @@ class WallTableViewCell: UITableViewCell {
 		return imageView
 	}()
 
+	private(set) lazy var wallTextLable: UILabel = {
+		let lable = UILabel()
+		lable.translatesAutoresizingMaskIntoConstraints = false
+		lable.textColor = .black
+		lable.font = UIFont.titleCellFont
+		lable.numberOfLines = 0
+		lable.text = "Текст отсутствует"
+		return lable
+	}()
+
 	private(set) lazy var likeButton: UIButton = {
 		let button = UIButton()
 		button.translatesAutoresizingMaskIntoConstraints = false
@@ -73,14 +83,46 @@ class WallTableViewCell: UITableViewCell {
 		return lable
 	}()
 
-	private(set) lazy var likeStackView: UIStackView = {
+	private(set) lazy var commentButton: UIButton = {
+		let button = UIButton()
+		button.translatesAutoresizingMaskIntoConstraints = false
+		button.setImage(UIImage(systemName: "bubble.left"), for: .normal)
+		button.tintColor = .gray
+		return button
+	}()
+
+	private(set) lazy var commentCountLable: UILabel = {
+		let lable = UILabel()
+		lable.textColor = .black
+		lable.font = UIFont.titleCellFont
+		lable.numberOfLines = 1
+		return lable
+	}()
+
+	private(set) lazy var viewsButton: UIButton = {
+		let button = UIButton()
+		button.translatesAutoresizingMaskIntoConstraints = false
+		button.setImage(UIImage(systemName: "message"), for: .normal)
+		button.tintColor = .gray
+		return button
+	}()
+
+	private(set) lazy var viewsCountLable: UILabel = {
+		let lable = UILabel()
+		lable.textColor = .black
+		lable.font = UIFont.titleCellFont
+		lable.numberOfLines = 1
+		return lable
+	}()
+
+	private(set) lazy var itemsStackView: UIStackView = {
 		let stack = UIStackView()
 		stack.translatesAutoresizingMaskIntoConstraints = false
 		stack.axis = .horizontal
 		stack.distribution = .fillProportionally
 		stack.layer.cornerRadius = 10.0
 		stack.alignment = .center
-		stack.backgroundColor = .separator
+		stack.backgroundColor = .lightGray
 		return stack
 	}()
 
@@ -117,14 +159,23 @@ class WallTableViewCell: UITableViewCell {
 		selectionStyle = UITableViewCell.SelectionStyle.none
 
 		contentView.addSubview(authorStackView)
+
 		authorStackView.addArrangedSubview(authorAvatarImageView)
 		authorStackView.addArrangedSubview(authorLablesStackView)
+
 		authorLablesStackView.addArrangedSubview(authorNameLabel)
 		authorLablesStackView.addArrangedSubview(authorDateCommitLabel)
+
+		contentView.addSubview(wallTextLable)
 		contentView.addSubview(wallImageView)
-		contentView.addSubview(likeStackView)
-		likeStackView.addArrangedSubview(likeButton)
-		likeStackView.addArrangedSubview(likeCountLable)
+		contentView.addSubview(itemsStackView)
+
+		itemsStackView.addArrangedSubview(likeButton)
+		itemsStackView.addArrangedSubview(likeCountLable)
+		itemsStackView.addArrangedSubview(commentButton)
+		itemsStackView.addArrangedSubview(commentCountLable)
+		itemsStackView.addArrangedSubview(viewsButton)
+		itemsStackView.addArrangedSubview(viewsCountLable)
 
 		likeButton.addTarget(self,
 							 action: #selector(handleAddLikeTouchUpInseide),
@@ -142,6 +193,9 @@ class WallTableViewCell: UITableViewCell {
 		authorNameLabel.text = wallViewModel.authorNameLable
 		authorDateCommitLabel.text = wallViewModel.authorDateLable
 		likeCountLable.text = wallViewModel.likeCount
+		commentCountLable.text = wallViewModel.commentCount
+		viewsCountLable.text = wallViewModel.viewsCount
+		wallTextLable.text = wallViewModel.wallText
 
 		if wallViewModel.authorAvatarImg != nil {
 			authorAvatarImageView.kf.setImage(with: URL(string: wallViewModel.authorAvatarImg ?? "https://via.placeholder.com/50x50"))
@@ -165,22 +219,42 @@ class WallTableViewCell: UITableViewCell {
 	override func layoutSubviews() {
 		super.layoutSubviews()
 
+		let authorStackViewBottomAnchor = authorStackView.bottomAnchor.constraint(equalTo: self.wallTextLable.topAnchor,
+																				  constant: -10.0)
+
+		let wallTextLableTopAnchor = wallTextLable.topAnchor.constraint(equalTo: self.authorStackView.bottomAnchor,
+																		constant: 10.0)
+		let wallTextLableBottomAnchor = wallTextLable.bottomAnchor.constraint(equalTo: self.wallImageView.topAnchor,
+																			  constant: -10.0)
+
+		let wallImageViewTopAnchor = wallImageView.topAnchor.constraint(equalTo: self.wallTextLable.bottomAnchor,
+																		constant: 10.0)
+		authorStackViewBottomAnchor.priority = .defaultLow
+		wallTextLableTopAnchor.priority = .defaultLow
+		wallTextLableBottomAnchor.priority = .defaultLow
+		wallImageViewTopAnchor.priority = .defaultLow
+
 		NSLayoutConstraint.activate([
 
 			authorStackView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 5.0),
 			authorStackView.leftAnchor.constraint(equalTo: self.contentView.leftAnchor, constant: 10.0),
 			authorStackView.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -10.0),
-			authorStackView.bottomAnchor.constraint(equalTo: self.wallImageView.topAnchor, constant: -10.0),
+			authorStackViewBottomAnchor,
 
-			wallImageView.topAnchor.constraint(equalTo: self.authorStackView.bottomAnchor, constant: 10.0),
+			wallTextLableTopAnchor,
+			wallTextLable.leftAnchor.constraint(equalTo: self.contentView.leftAnchor),
+			wallTextLable.rightAnchor.constraint(equalTo: self.contentView.rightAnchor),
+			wallTextLableBottomAnchor,
+
+			wallImageViewTopAnchor,
 			wallImageView.leftAnchor.constraint(equalTo: self.contentView.leftAnchor),
 			wallImageView.rightAnchor.constraint(equalTo: self.contentView.rightAnchor),
-			wallImageView.bottomAnchor.constraint(equalTo: self.likeStackView.topAnchor, constant: -10.0),
+			wallImageView.bottomAnchor.constraint(equalTo: self.itemsStackView.topAnchor, constant: -10.0),
 
-			likeStackView.topAnchor.constraint(equalTo: self.wallImageView.bottomAnchor, constant: 10.0),
-			likeStackView.leftAnchor.constraint(equalTo: self.contentView.leftAnchor, constant: 10.0),
-			likeStackView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -5.0),
-			likeStackView.widthAnchor.constraint(equalToConstant: 50.0)
+			itemsStackView.topAnchor.constraint(equalTo: self.wallImageView.bottomAnchor, constant: 10.0),
+			itemsStackView.leftAnchor.constraint(equalTo: self.contentView.leftAnchor, constant: 10.0),
+			itemsStackView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -5.0),
+			itemsStackView.widthAnchor.constraint(equalToConstant: 150.0)
 		])
 	}
 

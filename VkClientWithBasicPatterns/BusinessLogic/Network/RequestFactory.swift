@@ -40,9 +40,19 @@ class RequestFactory {
 		)
 	}
 
-	func makeLoadFriendsWithPeoxyRequestFactory() -> LoadFriendsServiceLoggingProxy {
+	func makeLoadFriendsWithProxyRequestFactory() -> LoadFriendsServiceLoggingProxy {
 		LoadFriendsServiceLoggingProxy(loadFriendsService: makeLoadFriendsRequestFactory())
 
+	}
+
+	func makeLoadNewsRequestFactory() -> LoadNewsService {
+		let errorParser = makeErrorParser()
+		return LoadNews(
+			errorParser: errorParser,
+			sessionManager: commonSession,
+			queue: sessionCallBackQueue,
+			baseUrl: baseUrl
+		)
 	}
 
 	func makeLoadGroupsRequestFactory() -> LoadGroupsService {
